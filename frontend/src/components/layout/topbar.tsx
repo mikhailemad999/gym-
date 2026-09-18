@@ -11,8 +11,12 @@ const navLinks = [
   { label: 'Nutrition', href: '/app/nutrition' },
   { label: 'Progress', href: '/app/progress' },
   { label: 'AI Coach', href: '/app/ai-coach' },
+  { label: 'Appointments', href: '/app/appointments' },
+  { label: 'Messages', href: '/app/messages' },
   { label: 'Store', href: '/app/store' },
+  { label: 'Plans', href: '/app/subscriptions' },
   { label: 'Coach Console', href: '/coach' },
+  { label: 'Admin', href: '/admin' },
 ];
 
 export function Topbar() {

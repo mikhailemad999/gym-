@@ -11,11 +11,15 @@ const operationsLinks = [
   { label: 'Nutrition', href: '/app/nutrition', icon: 'restaurant' },
   { label: 'Progress', href: '/app/progress', icon: 'monitoring' },
   { label: 'AI Coach', href: '/app/ai-coach', icon: 'psychology' },
+  { label: 'Appointments', href: '/app/appointments', icon: 'calendar_add_on' },
 ];
 
 const channelsLinks = [
+  { label: 'Messages', href: '/app/messages', icon: 'forum' },
   { label: 'Store', href: '/app/store', icon: 'shopping_bag' },
+  { label: 'Subscriptions', href: '/app/subscriptions', icon: 'card_membership' },
   { label: 'Coach Console', href: '/coach', icon: 'sports_gymnastics' },
+  { label: 'System Admin', href: '/admin', icon: 'admin_panel_settings' },
 ];
 
 export function Sidebar() {

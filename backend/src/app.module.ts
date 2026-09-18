@@ -10,6 +10,9 @@ import { ProgressModule } from './modules/progress/progress.module';
 import { StoreModule } from './modules/store/store.module';
 import { CoachModule } from './modules/coach/coach.module';
 import { AiModule } from './modules/ai/ai.module';
+import { AppointmentsModule } from './modules/appointments/appointments.module';
+import { MessagingModule } from './modules/messaging/messaging.module';
+import { SubscriptionsModule } from './modules/subscriptions/subscriptions.module';
 
 @Module({
   imports: [
@@ -59,6 +62,9 @@ import { AiModule } from './modules/ai/ai.module';
     StoreModule,
     CoachModule,
     AiModule,
+    AppointmentsModule,
+    MessagingModule,
+    SubscriptionsModule,
   ],
 })
 export class AppModule {}

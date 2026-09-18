@@ -73,15 +73,36 @@ The platform strictly adheres to a sports science laboratory aesthetic:
 - **CNS Recovery Index**: Readiness metrics derived from HRV, resting heart rate, and sleep duration.
 - **Body Composition & Velocity**: Weekly weigh-ins and phase targets.
 
-### 5. Coach Command Center (`/coach`)
+### 5. Appointments & Telemetry Video Booking (`/app/appointments`)
+- **CSCS Specialist Booking**: Schedule 1-on-1 video reviews with lead coach Marcus Vance or nutritionist Sarah Jenkins.
+- **Protocol Presets**: Frame-by-frame Biomechanical Review, Macro & Fueling Telemetry Audit, CNS Fatigue Diagnostics, and Competition Peaking.
+- **Integrated Video Rooms**: Auto-generated encrypted telemetry session URLs.
+
+### 6. Coach-Athlete Direct Telemetry Messaging (`/app/messages`)
+- **Encrypted Dispatch Channel**: Live thread between athlete and assigned CSCS coach.
+- **Biometric Card Attachments**: Direct one-click embedding of live PRs, velocity metrics, and CNS recovery scores inside chat.
+- **Staff Roster Rails**: Quick switcher between Lead Strength Coach, Nutritionist, and AI Performance Copilot.
+
+### 7. Performance Subscriptions & Tiers (`/app/subscriptions`)
+- **Granular Tiers**: Starter Telemetry ($49/mo), Tier 1 Pro Athlete ($149/mo), and Tier 2 Elite Olympian ($299/mo).
+- **Billing Optimization**: Monthly or Annual protocols with an automatic 18% savings badge.
+- **On-Demand Specialist Packs**: Single movement biomechanical audits and blood panel calibrations.
+
+### 8. Coach Command Center (`/coach`)
 - **Roster Telemetry Matrix**: Real-time overview of active athletes, mesocycle completion, and adherence percentages.
 - **Priority Triage Queue**: Instant risk flagging for HRV spikes, missed check-ins, or acute fatigue boundaries.
 - **AI Bio-Intervention Proposals**: Algorithmic suggestions for deload periods, volume reductions, and nutritional shifts.
 - **Action Triggers**: One-click review & calibrate, bulk plan push, and emergency recovery injection protocols.
 
-### 6. Athlete Store & Dispensary (`/app/store`)
+### 9. Athlete Store & Dispensary (`/app/store`)
 - **WADA-Compliant Ergogenic Aids**: High-purity supplements (Creatine Creapure, Whey Isolate, Hydration Electrolytes).
 - **Cart & Order Processing**: Full checkout pipeline backed by NestJS order entities.
+
+### 10. System Administration & Security Console (`/admin`)
+- **Cluster KPIs**: Real-time ARR ($218k), cluster API latency (42ms), uptime (99.98%), and active user counts.
+- **User & Role Calibration**: Granular RBAC assignment (Client, Coach, Nutritionist, Store Manager, Admin).
+- **Dispensary Catalog & Stock**: Full CRUD formulation creator with batch verification records.
+- **Cryptographic Audit Log**: Immutable SHA-256 system audit trail for security events.
 
 ---
 
