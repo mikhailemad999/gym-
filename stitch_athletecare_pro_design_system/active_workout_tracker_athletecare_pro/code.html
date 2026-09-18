@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "primary-fixed-dim": "#c6c6c6", "on-secondary-fixed": "#1a1c1c", "surface-container": "#202020", "border-strong": "#BDBDBD", "on-tertiary-container": "#757575", "surface-elevated": "#171717", "surface-variant": "#353534", "error-container": "#93000a", "inverse-on-surface": "#313030", "background": "#131313", "on-tertiary-fixed-variant": "#474747", "text-inverse": "#0A0A0A", "surface-bright": "#3a3939", "border-light": "#D9D9D9", "primary-container": "#000000", "on-tertiary-fixed": "#1b1b1b", "surface-container-low": "#1c1b1b", "outline-variant": "#4c4546", "error": "#ffb4ab", "tertiary-container": "#000000", "outline": "#988e90", "secondary-container": "#454747", "border-medium": "#4A4A4A", "tertiary": "#c6c6c6", "surface-container-high": "#2a2a2a", "inverse-surface": "#e5e2e1", "on-error-container": "#ffdad6", "surface-card": "#111111", "on-secondary-fixed-variant": "#454747", "surface-dim": "#131313", "surface-container-highest": "#353534", "primary": "#c6c6c6", "surface": "#131313", "on-tertiary": "#303030", "surface-canvas": "#0A0A0A", "on-primary": "#303030", "border-subtle": "#242424", "on-primary-fixed-variant": "#474747", "inverse-primary": "#5e5e5e", "text-primary": "#FFFFFF", "tertiary-fixed-dim": "#c6c6c6", "secondary-fixed-dim": "#c6c6c7", "text-muted": "#777777", "on-background": "#e5e2e1", "secondary": "#c6c6c7", "on-surface-variant": "#cfc4c5", "text-secondary": "#BDBDBD", "surface-container-lowest": "#0e0e0e", "surface-tint": "#c6c6c6", "on-primary-container": "#757575", "on-error": "#690005", "primary-fixed": "#e2e2e2", "on-primary-fixed": "#1b1b1b", "on-secondary": "#2f3131", "surface-base": "#000000", "secondary-fixed": "#e2e2e2", "tertiary-fixed": "#e2e2e2", "on-surface": "#e5e2e1", "on-secondary-container": "#b4b5b5" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin-mobile": "1rem", "space-xs": "0.375rem", "gutter-desktop": "1.5rem", "space-lg": "1.5rem", "space-md": "1rem", "margin": "2rem", "margin-desktop": "4rem", "space-xl": "2.5rem", "margin-tablet": "2rem", "gutter-mobile": "0.75rem", "gutter-tablet": "1rem", "space-sm": "0.625rem", "space-2xl": "4rem", "gutter": "1.5rem", "space-2xs": "0.25rem" }, "fontFamily": { "caption": [ "Inter" ], "label-md": [ "Inter" ], "label-sm": [ "Inter" ], "headline-sm": [ "Inter" ], "body-sm": [ "Inter" ], "headline-xl-mobile": [ "Inter" ], "display": [ "Inter" ], "headline-lg": [ "Inter" ], "body-lg": [ "Inter" ], "headline-md": [ "Inter" ], "headline-xl": [ "Inter" ], "display-mobile": [ "Inter" ], "headline-lg-mobile": [ "Inter" ], "body-md": [ "Inter" ] }, "fontSize": { "caption": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "500" } ], "label-md": [ "14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" } ], "label-sm": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "600" } ], "headline-sm": [ "22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "body-sm": [ "14px", { "lineHeight": "20px", "letterSpacing": "0.005em", "fontWeight": "400" } ], "headline-xl-mobile": [ "36px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "display": [ "72px", { "lineHeight": "76px", "letterSpacing": "-0.03em", "fontWeight": "800" } ], "headline-lg": [ "40px", { "lineHeight": "46px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "body-lg": [ "18px", { "lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "400" } ], "headline-md": [ "30px", { "lineHeight": "36px", "letterSpacing": "-0.015em", "fontWeight": "700" } ], "headline-xl": [ "56px", { "lineHeight": "60px", "letterSpacing": "-0.025em", "fontWeight": "700" } ], "display-mobile": [ "44px", { "lineHeight": "48px", "letterSpacing": "-0.025em", "fontWeight": "800" } ], "headline-lg-mobile": [ "28px", { "lineHeight": "34px", "letterSpacing": "-0.015em", "fontWeight": "700" } ], "body-md": [ "16px", { "lineHeight": "25px", "letterSpacing": "0em", "fontWeight": "400" } ] } } } };</script></head><body class="bg-surface-base text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-card border-b border-border-subtle"><div class="h-16 w-full px-margin-tablet lg:px-margin flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm"><img alt="AthleteCare Pro Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XXXyKIVx7uyhzGtNSycFx1ZTZQ8Q8M2V5A61HvFSnGDcRbwqHWTHMUC7N-wPw5PKeyShUC_cGItHd_GeTZ9n6eIcOnKPogPD2rkNKbhEes10QtbESC_VZdZOttEhZ25KTl1A4M1pV-XWriuYUzQ_UUAsDoKMIDhjXSTaX1on3zuCj2jM8NZqOzBFdAtLbRPU-nHhBHM9UnukKSdaccAOoAEbFMchBRRjhF1NDdde0dHAqwshY5IrhCQCU"/><div class="flex flex-col"><span class="font-label-md text-label-md tracking-tight uppercase text-text-primary">AthleteCare</span><span class="font-caption text-caption tracking-widest uppercase text-text-muted">Pro Telemetry</span></div></div><nav class="hidden xl:flex items-center gap-space-lg ml-space-md" data-active-classes="text-text-primary border-b-2 border-text-primary py-space-sm"><a class="font-label-sm text-label-sm uppercase tracking-wider text-text-muted hover:text-text-primary transition-colors" data-path="overview" href="#">Overview</a><a aria-current="page" class="font-label-sm uppercase tracking-wider transition-colors text-text-primary border-b-2 border-text-primary py-space-sm" data-path="workout" href="#">Workout</a><a class="font-label-sm text-label-sm uppercase tracking-wider text-text-muted hover:text-text-primary transition-colors" data-path="nutrition" href="#">Nutrition</a><a class="font-label-sm text-label-sm uppercase tracking-wider text-text-muted hover:text-text-primary transition-colors" data-path="progress" href="#">Progress</a><a class="font-label-sm text-label-sm uppercase tracking-wider text-text-muted hover:text-text-primary transition-colors" data-path="ai-coach" href="#">AI Coach</a><a class="font-label-sm text-label-sm uppercase tracking-wider text-text-muted hover:text-text-primary transition-colors" data-path="store" href="#">Store</a><a class="font-label-sm text-label-sm uppercase tracking-wider text-text-muted hover:text-text-primary transition-colors" data-path="messages" href="#">Messages</a></nav></div><div class="flex items-center gap-space-md"><div class="hidden sm:flex items-center gap-space-xs px-space-sm py-space-2xs bg-surface-elevated border border-border-subtle rounded-lg"><span class="material-symbols-outlined text-text-primary text-base">bolt</span><div class="flex items-baseline gap-space-2xs"><span class="font-label-sm text-label-sm text-text-primary">18</span><span class="font-caption text-caption uppercase text-text-muted">Day Streak</span></div></div><button aria-label="Notifications" class="relative p-space-xs text-text-muted hover:text-text-primary transition-colors" type="button"><span class="material-symbols-outlined text-xl">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 bg-text-primary rounded-full ring-2 ring-surface-card"></span></button><div class="h-6 w-px bg-border-subtle hidden sm:block"></div><div class="flex items-center gap-space-sm pl-space-2xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover border border-border-medium" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDD_GiDZtEzAJxK_LW74UFTNjSXu5x_d1-0Nd89VonEHECAmC4ep8qfG8l08Yis6ivMVy3dozSZlhtRDFXE0BJhCp6kbqXpDIP4lV0B4C44T_KpZSzMj8dLNzbsM5OBK3lDssL9RCgXdWuD4_mTI4jS0ygQT2Ptf0e-ZnCTngO-qQNRTFu_9sVrwBu-xPXr5olVHhQ8M9JulC7V65MWTpe7_EAs_FYSb60RhxnFduuF7AjNreKcHbeh"/><div class="hidden md:flex flex-col text-left"><span class="font-label-sm text-label-sm text-text-primary leading-tight">Mikhail R.</span><span class="font-caption text-caption uppercase tracking-wider text-text-muted leading-tight">Pro Athlete</span></div></div></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-64 bg-surface-card border-r border-border-subtle z-40 hidden lg:flex flex-col justify-between py-space-lg px-space-md"><div class="flex flex-col gap-space-lg"><div class="px-space-xs"><span class="font-caption text-caption tracking-widest uppercase text-text-muted block mb-space-xs">Operations</span><nav class="flex flex-col gap-space-2xs" data-active-classes="bg-surface-elevated text-text-primary border-l-2 border-text-primary font-label-md"><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg font-body-sm text-body-sm text-text-muted hover:bg-surface-elevated hover:text-text-primary transition-colors" data-path="overview" href="#"><span class="material-symbols-outlined text-lg">dashboard</span>Overview</a><a aria-current="page" class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg transition-colors bg-surface-elevated text-text-primary border-l-2 border-text-primary font-label-md" data-path="workout" href="#"><span class="material-symbols-outlined text-lg">fitness_center</span>Workout</a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg font-body-sm text-body-sm text-text-muted hover:bg-surface-elevated hover:text-text-primary transition-colors" data-path="nutrition" href="#"><span class="material-symbols-outlined text-lg">restaurant</span>Nutrition</a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg font-body-sm text-body-sm text-text-muted hover:bg-surface-elevated hover:text-text-primary transition-colors" data-path="progress" href="#"><span class="material-symbols-outlined text-lg">monitoring</span>Progress</a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg font-body-sm text-body-sm text-text-muted hover:bg-surface-elevated hover:text-text-primary transition-colors" data-path="ai-coach" href="#"><span class="material-symbols-outlined text-lg">psychology</span>AI Coach</a></nav></div><div class="px-space-xs"><span class="font-caption text-caption tracking-widest uppercase text-text-muted block mb-space-xs">Channels</span><nav class="flex flex-col gap-space-2xs" data-active-classes="bg-surface-elevated text-text-primary border-l-2 border-text-primary font-label-md"><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg font-body-sm text-body-sm text-text-muted hover:bg-surface-elevated hover:text-text-primary transition-colors" data-path="store" href="#"><span class="material-symbols-outlined text-lg">shopping_bag</span>Store</a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg font-body-sm text-body-sm text-text-muted hover:bg-surface-elevated hover:text-text-primary transition-colors" data-path="messages" href="#"><span class="material-symbols-outlined text-lg">forum</span>Messages</a></nav></div></div><div class="p-space-sm bg-surface-canvas border border-border-subtle rounded-lg flex items-center justify-between"><div class="flex flex-col"><span class="font-caption text-caption uppercase text-text-muted">Vitals Telemetry</span><span class="font-label-sm text-label-sm text-text-primary">Live Feed 99.8%</span></div><span class="material-symbols-outlined text-text-primary text-base">sensors</span></div></aside><div class="lg:pl-64"><main class="w-full pt-16 bg-surface-base min-h-screen"><div class="flex flex-col w-full">
+<!-- Active Workout HUD Bar -->
+<div class="w-full bg-surface-base px-margin-tablet lg:px-margin py-space-md">
+<div class="max-w-[1400px] mx-auto flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<!-- Session Name & Telemetry Chips -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="px-space-xs py-space-2xs bg-surface-elevated rounded text-caption font-caption tracking-widest text-text-primary uppercase">HYPERTROPHY CYCLE 4</span>
+<span class="px-space-xs py-space-2xs bg-surface-card rounded text-caption font-caption tracking-widest text-text-muted uppercase">BLOCK 02 • WEEK 3</span>
+<div class="flex items-center gap-space-2xs">
+<span class="w-2 h-2 rounded-full bg-text-primary animate-pulse"></span>
+<span class="text-caption font-caption text-text-primary uppercase tracking-wider">LIVE TELEMETRY</span>
+</div>
+</div>
+<h1 class="text-headline-md font-headline-md text-text-primary tracking-tight uppercase m-0">CHEST &amp; TRICEPS HYPERTROPHY</h1>
+</div>
+<!-- Quick Session Stats & Actions -->
+<div class="flex items-center gap-space-lg flex-wrap">
+<div class="flex items-center gap-space-md bg-surface-elevated px-space-md py-space-xs rounded-lg">
+<div class="flex flex-col">
+<span class="text-caption font-caption uppercase tracking-wider text-text-muted">SESSION TIME</span>
+<span class="text-label-md font-label-md text-text-primary font-mono tracking-tight" id="session-timer">00:24:15</span>
+</div>
+<div class="w-px h-6 bg-surface-variant"></div>
+<div class="flex flex-col">
+<span class="text-caption font-caption uppercase tracking-wider text-text-muted">ENERGY</span>
+<span class="text-label-md font-label-md text-text-primary tracking-tight">248 kcal</span>
+</div>
+<div class="w-px h-6 bg-surface-variant"></div>
+<div class="flex flex-col">
+<span class="text-caption font-caption uppercase tracking-wider text-text-muted">PROGRESS</span>
+<span class="text-label-md font-label-md text-text-primary tracking-tight">Set 7/16 <span class="text-text-muted font-normal">(44%)</span></span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="px-space-md py-space-xs bg-surface-elevated hover:bg-surface-card text-text-primary rounded-lg text-label-sm font-label-sm uppercase tracking-wider transition-transform active:scale-95 flex items-center gap-space-xs" id="pause-btn" type="button">
+<span class="material-symbols-outlined text-base">pause</span>
+<span>Pause</span>
+</button>
+<button class="px-space-md py-space-xs bg-text-primary text-surface-base hover:bg-primary rounded-lg text-label-sm font-label-sm uppercase tracking-wider font-bold transition-transform active:scale-95 flex items-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-base">task_alt</span>
+<span>Finish &amp; Log</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Micro Linear Progress Bar -->
+<div class="max-w-[1400px] mx-auto w-full bg-surface-elevated h-1 rounded-full mt-space-sm overflow-hidden">
+<div class="bg-text-primary h-full transition-all duration-300" style="width: 44%;"></div>
+</div>
+</div>
+<!-- Primary Workspace: Split Grid -->
+<div class="w-full px-margin-tablet lg:px-margin py-space-lg">
+<div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- Center Workstation: Current Exercise Focus Card (Cols 1-8) -->
+<div class="lg:col-span-8 flex flex-col gap-space-lg">
+<!-- Active Exercise Container -->
+<div class="bg-surface-card rounded-xl p-space-lg flex flex-col gap-space-lg shadow-md relative overflow-hidden">
+<!-- Tactical Top Banner / Video Hook -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="flex flex-col gap-space-2xs">
+<div class="flex items-center gap-space-xs">
+<span class="px-space-xs py-space-2xs bg-surface-container rounded text-caption font-caption uppercase tracking-wider text-text-muted">EXERCISE 01 OF 04</span>
+<span class="px-space-xs py-space-2xs bg-surface-elevated rounded text-caption font-caption uppercase tracking-widest text-text-primary">COMPOUND • PRIMARY</span>
+</div>
+<h2 class="text-headline-lg font-headline-lg text-text-primary uppercase tracking-tight m-0">BARBELL INCLINE BENCH PRESS</h2>
+<p class="text-body-sm font-body-sm text-text-muted m-0">
+                Primary: <span class="text-text-primary">Chest (Upper Clavicular Pectoralis)</span> • Secondary: <span class="text-text-secondary">Anterior Deltoid, Triceps Brachii</span>
+</p>
+</div>
+<!-- Video Modal Trigger & Plate Calc Button -->
+<div class="flex items-center gap-space-xs">
+<button class="relative group overflow-hidden rounded-lg bg-surface-elevated flex items-center p-space-xs gap-space-xs hover:bg-surface-container transition-all" id="video-trigger" type="button">
+<div class="w-12 h-12 rounded bg-surface-container flex items-center justify-center relative overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Athletic male performing a heavy barbell incline bench press with precision form in an elite minimalist industrial gym, dramatic cinematic top lighting in high contrast monochrome tone." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0OzEdZRm_aAjPbFvUpfKkSZMbrPD4kjknExcWdUFttfVF_1vqYcGM95hcK9ZaZHc-LFvHD6_wRdLghBlvMyTKi-LiVmvadBwfnBSrgz7kIHQUWYhgULsMR-PaBfHDSCgRjPr9pvYo-Z-lyjgwxl8ltAewqf5pXPX0PYO5H018LKT0pOueFn3xvShlTtiEYEMRbiJTKHmV7OG2rNVGLv-4zXJy5Al_gCPTVCVGX9eduqITgFaJpMyf"/>
+<span class="material-symbols-outlined text-text-primary absolute text-xl">play_arrow</span>
+</div>
+<div class="flex flex-col text-left pr-space-xs">
+<span class="text-label-sm font-label-sm text-text-primary leading-tight">Form 4K</span>
+<span class="text-caption font-caption text-text-muted uppercase">0:35 Cue</span>
+</div>
+</button>
+</div>
+</div>
+<!-- Coach Operational Prescription Note -->
+<div class="bg-surface-elevated rounded-lg p-space-md flex items-start gap-space-md">
+<span class="material-symbols-outlined text-text-primary text-xl">terminal</span>
+<div class="flex flex-col gap-space-2xs">
+<span class="text-caption font-caption tracking-widest uppercase text-text-muted">COACH PROTOCOL • MIKHAIL R.</span>
+<p class="text-body-sm font-body-sm text-text-primary m-0 leading-relaxed">
+                Retract scapulae firmly into the bench. Drive heels through floor. Maintain strict 2.0s eccentric lower phase to clavicle notch; pause 0.3s without bounce; explosive concentric lock.
+              </p>
+</div>
+</div>
+<!-- Sets Execution Matrix -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between pb-space-xs">
+<span class="text-caption font-caption tracking-widest uppercase text-text-muted">EXECUTION MATRIX</span>
+<span class="text-caption font-caption text-text-muted tracking-wider uppercase">REST DELAY: 90s TARGET</span>
+</div>
+<!-- Set 1: Completed -->
+<div class="flex items-center justify-between p-space-md rounded-lg bg-surface-elevated transition-colors">
+<div class="flex items-center gap-space-md">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-label-sm font-label-sm text-text-muted">1</div>
+<div class="flex flex-col">
+<div class="flex items-baseline gap-space-xs">
+<span class="text-headline-sm font-headline-sm text-text-primary">80.0</span>
+<span class="text-caption font-caption uppercase text-text-muted">KG</span>
+<span class="text-headline-sm font-headline-sm text-text-muted mx-space-xs">×</span>
+<span class="text-headline-sm font-headline-sm text-text-primary">10</span>
+<span class="text-caption font-caption uppercase text-text-muted">REPS</span>
+</div>
+<span class="text-caption font-caption text-text-muted uppercase tracking-wider">Completed • RPE 8.0</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<!-- Set 2: Completed -->
+<div class="flex items-center justify-between p-space-md rounded-lg bg-surface-elevated transition-colors">
+<div class="flex items-center gap-space-md">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-label-sm font-label-sm text-text-muted">2</div>
+<div class="flex flex-col">
+<div class="flex items-baseline gap-space-xs">
+<span class="text-headline-sm font-headline-sm text-text-primary">85.0</span>
+<span class="text-caption font-caption uppercase text-text-muted">KG</span>
+<span class="text-headline-sm font-headline-sm text-text-muted mx-space-xs">×</span>
+<span class="text-headline-sm font-headline-sm text-text-primary">8</span>
+<span class="text-caption font-caption uppercase text-text-muted">REPS</span>
+</div>
+<span class="text-caption font-caption text-text-muted uppercase tracking-wider">Completed • RPE 8.5</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<!-- Set 3: ACTIVE FOCUS SET CARD -->
+<div class="flex flex-col gap-space-md p-space-lg rounded-xl bg-surface-container transition-all">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="px-space-xs py-space-2xs bg-text-primary text-surface-base rounded text-caption font-caption font-bold uppercase tracking-wider">CURRENT SET 03</span>
+<span class="text-label-sm font-label-sm text-text-primary">Target: 85.0 kg × 8 reps</span>
+</div>
+<span class="text-caption font-caption text-text-muted uppercase tracking-widest">RECORDING ACTIVE</span>
+</div>
+<!-- Big Stepper Controller: Weight & Reps -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- Weight Stepper -->
+<div class="flex flex-col bg-surface-card p-space-md rounded-lg gap-space-xs">
+<span class="text-caption font-caption uppercase tracking-wider text-text-muted">LOAD (KG)</span>
+<div class="flex items-center justify-between mt-space-2xs">
+<button class="w-12 h-12 rounded-lg bg-surface-elevated hover:bg-surface-bright active:scale-95 text-text-primary flex items-center justify-center transition-all" id="weight-minus" type="button">
+<span class="material-symbols-outlined text-2xl">remove</span>
+</button>
+<div class="flex items-baseline gap-space-2xs">
+<span class="text-headline-lg font-headline-lg text-text-primary tracking-tight" id="active-weight">85.0</span>
+<span class="text-body-sm font-body-sm text-text-muted uppercase">kg</span>
+</div>
+<button class="w-12 h-12 rounded-lg bg-surface-elevated hover:bg-surface-bright active:scale-95 text-text-primary flex items-center justify-center transition-all" id="weight-plus" type="button">
+<span class="material-symbols-outlined text-2xl">add</span>
+</button>
+</div>
+</div>
+<!-- Reps Stepper -->
+<div class="flex flex-col bg-surface-card p-space-md rounded-lg gap-space-xs">
+<span class="text-caption font-caption uppercase tracking-wider text-text-muted">REPETITIONS</span>
+<div class="flex items-center justify-between mt-space-2xs">
+<button class="w-12 h-12 rounded-lg bg-surface-elevated hover:bg-surface-bright active:scale-95 text-text-primary flex items-center justify-center transition-all" id="reps-minus" type="button">
+<span class="material-symbols-outlined text-2xl">remove</span>
+</button>
+<div class="flex items-baseline gap-space-2xs">
+<span class="text-headline-lg font-headline-lg text-text-primary tracking-tight" id="active-reps">8</span>
+<span class="text-body-sm font-body-sm text-text-muted uppercase">reps</span>
+</div>
+<button class="w-12 h-12 rounded-lg bg-surface-elevated hover:bg-surface-bright active:scale-95 text-text-primary flex items-center justify-center transition-all" id="reps-plus" type="button">
+<span class="material-symbols-outlined text-2xl">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- RPE Selector -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption uppercase tracking-wider text-text-muted">EXERTION INTENSITY (RPE)</span>
+<span class="text-caption font-caption text-text-primary" id="rpe-label">RPE 8.5 • 1.5 Reps In Reserve</span>
+</div>
+<div class="grid grid-cols-7 gap-space-xs" id="rpe-bar">
+<button class="rpe-btn py-space-xs rounded bg-surface-elevated hover:bg-surface-bright text-label-sm font-label-sm text-text-muted transition-colors" data-rpe="7.0" type="button">7.0</button>
+<button class="rpe-btn py-space-xs rounded bg-surface-elevated hover:bg-surface-bright text-label-sm font-label-sm text-text-muted transition-colors" data-rpe="7.5" type="button">7.5</button>
+<button class="rpe-btn py-space-xs rounded bg-surface-elevated hover:bg-surface-bright text-label-sm font-label-sm text-text-muted transition-colors" data-rpe="8.0" type="button">8.0</button>
+<button class="rpe-btn py-space-xs rounded bg-text-primary text-surface-base font-bold transition-colors" data-rpe="8.5" type="button">8.5</button>
+<button class="rpe-btn py-space-xs rounded bg-surface-elevated hover:bg-surface-bright text-label-sm font-label-sm text-text-muted transition-colors" data-rpe="9.0" type="button">9.0</button>
+<button class="rpe-btn py-space-xs rounded bg-surface-elevated hover:bg-surface-bright text-label-sm font-label-sm text-text-muted transition-colors" data-rpe="9.5" type="button">9.5</button>
+<button class="rpe-btn py-space-xs rounded bg-surface-elevated hover:bg-surface-bright text-label-sm font-label-sm text-text-muted transition-colors" data-rpe="10" type="button">10</button>
+</div>
+</div>
+<!-- Primary Execution Complete CTA -->
+<button class="w-full py-space-md bg-text-primary hover:bg-primary-fixed text-surface-base rounded-lg text-label-md font-label-md tracking-wider uppercase font-bold flex items-center justify-center gap-space-sm transition-all active:scale-[0.99]" id="complete-set-btn" type="button">
+<span class="material-symbols-outlined text-xl">done_all</span>
+<span>COMPLETE SET 3</span>
+</button>
+</div>
+<!-- Set 4: Upcoming -->
+<div class="flex items-center justify-between p-space-md rounded-lg bg-surface-card opacity-50">
+<div class="flex items-center gap-space-md">
+<div class="w-8 h-8 rounded-full bg-surface-elevated flex items-center justify-center text-label-sm font-label-sm text-text-muted">4</div>
+<div class="flex flex-col">
+<div class="flex items-baseline gap-space-xs">
+<span class="text-headline-sm font-headline-sm text-text-muted">87.5</span>
+<span class="text-caption font-caption uppercase text-text-muted">KG</span>
+<span class="text-headline-sm font-headline-sm text-text-muted mx-space-xs">×</span>
+<span class="text-headline-sm font-headline-sm text-text-muted">6-8</span>
+<span class="text-caption font-caption uppercase text-text-muted">REPS</span>
+</div>
+<span class="text-caption font-caption text-text-muted uppercase tracking-wider">Projected Top Overload Set</span>
+</div>
+</div>
+<span class="text-caption font-caption uppercase tracking-wider text-text-muted">QUEUED</span>
+</div>
+</div>
+<!-- Bottom Micro Telemetry Strip: Previous Performance -->
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-xs pt-space-xs bg-surface-canvas p-space-sm rounded-lg">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-text-primary text-base">history</span>
+<span class="text-caption font-caption text-text-muted uppercase">BENCHMARK COMPARISON:</span>
+<span class="text-caption font-caption text-text-primary font-bold">Last Session: 82.5 kg × 8 reps</span>
+</div>
+<div class="flex items-center gap-space-2xs">
+<span class="material-symbols-outlined text-text-primary text-sm">trending_up</span>
+<span class="text-caption font-caption text-text-primary tracking-wider uppercase font-semibold">+2.5 kg Progressive Overload</span>
+</div>
+</div>
+</div>
+<!-- Secondary Utility Strip: Visual Plate Calculator Widget -->
+<div class="bg-surface-card rounded-xl p-space-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-text-primary text-lg">view_week</span>
+<h3 class="text-label-md font-label-md text-text-primary uppercase tracking-wider m-0">PLATE CALCULATION PROTOCOL</h3>
+</div>
+<span class="text-caption font-caption text-text-muted uppercase">STANDARD OLYMPIC BAR (20 KG)</span>
+</div>
+<!-- Bar Visualizer Diagram -->
+<div class="w-full bg-surface-elevated rounded-lg p-space-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption text-text-muted uppercase tracking-widest">PER SIDE (32.5 KG EACH SIDE)</span>
+<span class="text-label-sm font-label-sm text-text-primary font-mono font-bold">TOTAL: 85.0 KG</span>
+</div>
+<!-- Plate Schematic Representation -->
+<div class="flex items-center gap-space-xs overflow-x-auto py-space-xs">
+<!-- Barbell collar sleeve -->
+<div class="h-14 w-8 bg-surface-container rounded-sm flex items-center justify-center text-caption font-caption text-text-muted">SLEEVE</div>
+<!-- Plate 20kg -->
+<div class="h-24 w-7 bg-text-primary text-surface-base rounded-sm flex flex-col items-center justify-center font-label-sm font-bold shadow-md">
+<span>20</span>
+<span class="text-[9px] uppercase leading-none">kg</span>
+</div>
+<!-- Plate 10kg -->
+<div class="h-20 w-6 bg-surface-variant text-text-primary rounded-sm flex flex-col items-center justify-center font-label-sm font-bold">
+<span>10</span>
+<span class="text-[9px] uppercase leading-none">kg</span>
+</div>
+<!-- Plate 2.5kg -->
+<div class="h-14 w-5 bg-surface-bright text-text-primary rounded-sm flex flex-col items-center justify-center text-caption font-caption font-bold">
+<span>2.5</span>
+</div>
+<!-- Collar Clip -->
+<div class="h-10 w-3 bg-surface-container-high rounded-full ml-space-xs"></div>
+<!-- Rest of bar -->
+<div class="h-4 flex-1 bg-surface-variant rounded-r"></div>
+</div>
+<div class="flex items-center gap-space-md text-caption font-caption text-text-muted uppercase flex-wrap">
+<span class="flex items-center gap-space-2xs"><span class="w-2.5 h-2.5 bg-text-primary rounded-full"></span> 1× 20kg</span>
+<span class="flex items-center gap-space-2xs"><span class="w-2.5 h-2.5 bg-surface-variant rounded-full"></span> 1× 10kg</span>
+<span class="flex items-center gap-space-2xs"><span class="w-2.5 h-2.5 bg-surface-bright rounded-full"></span> 1× 2.5kg</span>
+<span class="text-text-primary ml-auto font-medium">Olympic Lock Coloured Ring Clamps Confirmed</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Live Rest Timer & Routine Queue (Cols 9-12) -->
+<div class="lg:col-span-4 flex flex-col gap-space-lg">
+<!-- Interactive Rest Intermission HUD -->
+<div class="bg-surface-card rounded-xl p-space-lg flex flex-col items-center text-center gap-space-md relative overflow-hidden shadow-md">
+<div class="w-full flex items-center justify-between">
+<span class="text-caption font-caption tracking-widest uppercase text-text-muted">INTERMISSION RECOVERY</span>
+<div class="flex items-center gap-space-2xs text-text-primary">
+<span class="material-symbols-outlined text-sm">timelapse</span>
+<span class="text-caption font-caption uppercase tracking-wider">AUTO-SYNC</span>
+</div>
+</div>
+<!-- Circular SVG Graphic Timer Gauge -->
+<div class="relative w-48 h-48 flex items-center justify-center my-space-xs">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<!-- Background Ring -->
+<circle cx="50" cy="50" fill="transparent" r="44" stroke="#202020" stroke-width="6"></circle>
+<!-- Animated Progress Indicator -->
+<circle class="transition-all duration-1000" cx="50" cy="50" fill="transparent" id="rest-ring" r="44" stroke="#FFFFFF" stroke-dasharray="276.46" stroke-dashoffset="100" stroke-linecap="round" stroke-width="6"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-headline-xl font-headline-xl text-text-primary font-mono tracking-tight" id="rest-countdown">01:15</span>
+<span class="text-caption font-caption uppercase tracking-widest text-text-muted -mt-1">RECOVERY TIME</span>
+</div>
+</div>
+<!-- Rest Controls -->
+<div class="w-full grid grid-cols-2 gap-space-xs">
+<button class="py-space-sm px-space-md rounded-lg bg-surface-elevated hover:bg-surface-bright text-text-primary text-label-sm font-label-sm uppercase tracking-wider transition-transform active:scale-95 flex items-center justify-center gap-space-2xs" id="add-rest-btn" type="button">
+<span class="material-symbols-outlined text-base">add</span>
+<span>+30s Rest</span>
+</button>
+<button class="py-space-sm px-space-md rounded-lg bg-surface-elevated hover:bg-surface-bright text-text-primary text-label-sm font-label-sm uppercase tracking-wider transition-transform active:scale-95 flex items-center justify-center gap-space-2xs" id="skip-rest-btn" type="button">
+<span class="material-symbols-outlined text-base">skip_next</span>
+<span>Skip Rest</span>
+</button>
+</div>
+<div class="w-full flex items-center justify-between text-caption font-caption text-text-muted uppercase pt-space-xs">
+<span>Next: Set 4 of 4</span>
+<span class="text-text-primary font-bold">Prep Scapula Anchors</span>
+</div>
+</div>
+<!-- Routine Execution Schedule & Progression Queue -->
+<div class="bg-surface-card rounded-xl p-space-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption tracking-widest uppercase text-text-muted">SESSION QUEUE</span>
+<span class="text-caption font-caption text-text-primary font-bold uppercase">4 EXERCISES TOTAL</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<!-- Exercise 1 (Active) -->
+<div class="p-space-md rounded-lg bg-surface-elevated flex items-center justify-between">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-8 h-8 rounded bg-text-primary text-surface-base flex items-center justify-center font-label-sm font-bold">01</div>
+<div class="flex flex-col min-w-0">
+<span class="text-label-sm font-label-sm text-text-primary uppercase truncate font-bold">Incline Barbell Bench Press</span>
+<span class="text-caption font-caption text-text-muted">In Progress • Set 3 of 4</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-text-primary text-lg animate-pulse">radio_button_checked</span>
+</div>
+<!-- Exercise 2 (Upcoming) -->
+<div class="p-space-md rounded-lg bg-surface-canvas hover:bg-surface-elevated transition-colors flex items-center justify-between">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-8 h-8 rounded bg-surface-elevated text-text-muted flex items-center justify-center font-label-sm">02</div>
+<div class="flex flex-col min-w-0">
+<span class="text-label-sm font-label-sm text-text-secondary uppercase truncate">Weighted Chest Dips</span>
+<span class="text-caption font-caption text-text-muted">4 Sets • Target: +25 kg × 10</span>
+</div>
+</div>
+<span class="text-caption font-caption uppercase text-text-muted">Queued</span>
+</div>
+<!-- Exercise 3 (Upcoming) -->
+<div class="p-space-md rounded-lg bg-surface-canvas hover:bg-surface-elevated transition-colors flex items-center justify-between">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-8 h-8 rounded bg-surface-elevated text-text-muted flex items-center justify-center font-label-sm">03</div>
+<div class="flex flex-col min-w-0">
+<span class="text-label-sm font-label-sm text-text-secondary uppercase truncate">Incline Dumbbell Flyes</span>
+<span class="text-caption font-caption text-text-muted">4 Sets • Target: 24 kg × 12</span>
+</div>
+</div>
+<span class="text-caption font-caption uppercase text-text-muted">Queued</span>
+</div>
+<!-- Exercise 4 (Upcoming) -->
+<div class="p-space-md rounded-lg bg-surface-canvas hover:bg-surface-elevated transition-colors flex items-center justify-between">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-8 h-8 rounded bg-surface-elevated text-text-muted flex items-center justify-center font-label-sm">04</div>
+<div class="flex flex-col min-w-0">
+<span class="text-label-sm font-label-sm text-text-secondary uppercase truncate">Rope Cable Triceps Pushdown</span>
+<span class="text-caption font-caption text-text-muted">4 Sets • Target: 42 kg × 15</span>
+</div>
+</div>
+<span class="text-caption font-caption uppercase text-text-muted">Queued</span>
+</div>
+</div>
+</div>
+<!-- Biometric Telemetry Micro-Card -->
+<div class="bg-surface-card rounded-xl p-space-md flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="text-caption font-caption tracking-widest uppercase text-text-muted">HEART RATE TELEMETRY</span>
+<span class="text-caption font-caption text-text-primary font-mono uppercase">CHEST STRAP V3 • ONLINE</span>
+</div>
+<div class="flex items-baseline justify-between">
+<div class="flex items-baseline gap-space-2xs">
+<span class="text-headline-md font-headline-md text-text-primary">148</span>
+<span class="text-caption font-caption text-text-muted uppercase">BPM</span>
+</div>
+<span class="text-label-sm font-label-sm text-text-primary uppercase tracking-wider">Zone 3 • Aerobic/Lactate</span>
+</div>
+<!-- Sparkline representation -->
+<div class="w-full h-8 flex items-end gap-1 pt-space-xs">
+<div class="flex-1 bg-surface-variant h-4 rounded-t-sm"></div>
+<div class="flex-1 bg-surface-variant h-5 rounded-t-sm"></div>
+<div class="flex-1 bg-surface-variant h-6 rounded-t-sm"></div>
+<div class="flex-1 bg-surface-variant h-7 rounded-t-sm"></div>
+<div class="flex-1 bg-surface-bright h-6 rounded-t-sm"></div>
+<div class="flex-1 bg-surface-bright h-7 rounded-t-sm"></div>
+<div class="flex-1 bg-text-primary h-8 rounded-t-sm"></div>
+<div class="flex-1 bg-text-primary h-8 rounded-t-sm"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Form Cue Modal Overlay (Hidden by Default) -->
+<div class="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm hidden items-center justify-center p-space-md" id="video-modal">
+<div class="bg-surface-card rounded-xl max-w-2xl w-full p-space-lg flex flex-col gap-space-md shadow-2xl relative">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-caption font-caption text-text-muted uppercase tracking-wider">Kinematic Standard</span>
+<h4 class="text-headline-sm font-headline-sm text-text-primary uppercase m-0">Incline Bench Press • Form Check</h4>
+</div>
+<button class="w-9 h-9 rounded-lg bg-surface-elevated text-text-primary hover:bg-surface-container flex items-center justify-center" id="modal-close" type="button">
+<span class="material-symbols-outlined text-lg">close</span>
+</button>
+</div>
+<!-- Preview Image Player Frame -->
+<div class="w-full aspect-video rounded-lg overflow-hidden bg-surface-base relative flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="High quality athletic sports science training cue: full extension top lockout barbell incline bench press demonstration with biomechanical path lines displayed in stark monochrome aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7Z96A8t4jakwKEfevOiUSJXeaslTx3FAlypHbHNTh083pJoPcD1kLHCrBoAmqNXYXiUxRY9NiYT4iECU3LOngZ8A4bR_GfgvKcZHZIwiqkuDO33thlCT5bx5EazaPSt5olyeOIGAGN5uuiHDEBsDS08mYxX8DIukGqwUWG9LqqgPS9850cF3t3clyFO1qjTL1PmOMhaVffVjZT_xs9L3c0Iv0tI5bzp5ECjbAkOH5XadkYxfKvpWj"/>
+<div class="absolute inset-0 bg-surface-base/30 flex items-center justify-center">
+<div class="w-16 h-16 rounded-full bg-text-primary text-surface-base flex items-center justify-center shadow-xl cursor-pointer hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-3xl">play_arrow</span>
+</div>
+</div>
+</div>
+<!-- Tactical Cues -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+<div class="p-space-sm bg-surface-elevated rounded-lg">
+<span class="text-caption font-caption text-text-muted uppercase block">CUE 01</span>
+<span class="text-label-sm font-label-sm text-text-primary">Elbows tucked 45-60° relative to torso.</span>
+</div>
+<div class="p-space-sm bg-surface-elevated rounded-lg">
+<span class="text-caption font-caption text-text-muted uppercase block">CUE 02</span>
+<span class="text-label-sm font-label-sm text-text-primary">Drive glutes and shoulder blades into pad.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive Gym Micro-Logic -->
+<script>
+  (function() {
+    // Stepper Handlers for Weight & Reps
+    let weight = 85.0;
+    let reps = 8;
+    const weightEl = document.getElementById('active-weight');
+    const repsEl = document.getElementById('active-reps');
+
+    document.getElementById('weight-minus').addEventListener('click', () => {
+      if (weight > 20) {
+        weight = parseFloat((weight - 2.5).toFixed(1));
+        weightEl.textContent = weight.toFixed(1);
+      }
+    });
+
+    document.getElementById('weight-plus').addEventListener('click', () => {
+      weight = parseFloat((weight + 2.5).toFixed(1));
+      weightEl.textContent = weight.toFixed(1);
+    });
+
+    document.getElementById('reps-minus').addEventListener('click', () => {
+      if (reps > 1) {
+        reps--;
+        repsEl.textContent = reps;
+      }
+    });
+
+    document.getElementById('reps-plus').addEventListener('click', () => {
+      reps++;
+      repsEl.textContent = reps;
+    });
+
+    // RPE Selector logic
+    const rpeButtons = document.querySelectorAll('.rpe-btn');
+    const rpeLabel = document.getElementById('rpe-label');
+    const rpeDescriptions = {
+      '7.0': '3 Reps In Reserve',
+      '7.5': '2-3 Reps In Reserve',
+      '8.0': '2 Reps In Reserve',
+      '8.5': '1.5 Reps In Reserve',
+      '9.0': '1 Rep In Reserve',
+      '9.5': '0-1 Reps In Reserve',
+      '10': '0 Reps In Reserve • Maximum Exertion'
+    };
+
+    rpeButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        rpeButtons.forEach(b => {
+          b.className = 'rpe-btn py-space-xs rounded bg-surface-elevated hover:bg-surface-bright text-label-sm font-label-sm text-text-muted transition-colors';
+        });
+        btn.className = 'rpe-btn py-space-xs rounded bg-text-primary text-surface-base font-bold transition-colors';
+        const val = btn.getAttribute('data-rpe');
+        rpeLabel.textContent = `RPE ${val} • ${rpeDescriptions[val] || ''}`;
+      });
+    });
+
+    // Rest Countdown Timer logic
+    let totalRestSeconds = 75; // 01:15
+    let currentRestSeconds = totalRestSeconds;
+    const restCountdownEl = document.getElementById('rest-countdown');
+    const restRing = document.getElementById('rest-ring');
+    const maxCircumference = 276.46;
+
+    function formatTime(sec) {
+      const m = Math.floor(sec / 60).toString().padStart(2, '0');
+      const s = (sec % 60).toString().padStart(2, '0');
+      return `${m}:${s}`;
+    }
+
+    function updateTimer() {
+      if (currentRestSeconds > 0) {
+        currentRestSeconds--;
+        restCountdownEl.textContent = formatTime(currentRestSeconds);
+        const offset = maxCircumference * (1 - (currentRestSeconds / totalRestSeconds));
+        restRing.style.strokeDashoffset = offset;
+      } else {
+        restCountdownEl.textContent = '00:00';
+        restRing.style.strokeDashoffset = maxCircumference;
+      }
+    }
+
+    let timerInterval = setInterval(updateTimer, 1000);
+
+    document.getElementById('add-rest-btn').addEventListener('click', () => {
+      currentRestSeconds += 30;
+      totalRestSeconds += 30;
+      restCountdownEl.textContent = formatTime(currentRestSeconds);
+    });
+
+    document.getElementById('skip-rest-btn').addEventListener('click', () => {
+      currentRestSeconds = 0;
+      restCountdownEl.textContent = '00:00';
+      restRing.style.strokeDashoffset = maxCircumference;
+    });
+
+    // Modal Video Toggle
+    const modal = document.getElementById('video-modal');
+    const openBtn = document.getElementById('video-trigger');
+    const closeBtn = document.getElementById('modal-close');
+
+    openBtn.addEventListener('click', () => {
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    });
+
+    closeBtn.addEventListener('click', () => {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    });
+
+    // Complete Set Flash Feedback
+    const completeBtn = document.getElementById('complete-set-btn');
+    completeBtn.addEventListener('click', () => {
+      const origText = completeBtn.innerHTML;
+      completeBtn.innerHTML = '<span class="material-symbols-outlined text-xl">check</span><span>LOGGED &amp; COMMITTED</span>';
+      completeBtn.classList.add('bg-text-secondary');
+      setTimeout(() => {
+        completeBtn.innerHTML = origText;
+        completeBtn.classList.remove('bg-text-secondary');
+        currentRestSeconds = 90;
+        totalRestSeconds = 90;
+      }, 1500);
+    });
+  })();
+</script></main></div></body></html>

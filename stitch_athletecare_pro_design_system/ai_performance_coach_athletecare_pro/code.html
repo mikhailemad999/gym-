@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "primary-fixed-dim": "#c6c6c6", "on-secondary-fixed": "#1a1c1c", "surface-container": "#202020", "border-strong": "#BDBDBD", "on-tertiary-container": "#757575", "surface-elevated": "#171717", "surface-variant": "#353534", "error-container": "#93000a", "inverse-on-surface": "#313030", "background": "#131313", "on-tertiary-fixed-variant": "#474747", "text-inverse": "#0A0A0A", "surface-bright": "#3a3939", "border-light": "#D9D9D9", "primary-container": "#000000", "on-tertiary-fixed": "#1b1b1b", "surface-container-low": "#1c1b1b", "outline-variant": "#4c4546", "error": "#ffb4ab", "tertiary-container": "#000000", "outline": "#988e90", "secondary-container": "#454747", "border-medium": "#4A4A4A", "tertiary": "#c6c6c6", "surface-container-high": "#2a2a2a", "inverse-surface": "#e5e2e1", "on-error-container": "#ffdad6", "surface-card": "#111111", "on-secondary-fixed-variant": "#454747", "surface-dim": "#131313", "surface-container-highest": "#353534", "primary": "#c6c6c6", "surface": "#131313", "on-tertiary": "#303030", "surface-canvas": "#0A0A0A", "on-primary": "#303030", "border-subtle": "#242424", "on-primary-fixed-variant": "#474747", "inverse-primary": "#5e5e5e", "text-primary": "#FFFFFF", "tertiary-fixed-dim": "#c6c6c6", "secondary-fixed-dim": "#c6c6c7", "text-muted": "#777777", "on-background": "#e5e2e1", "secondary": "#c6c6c7", "on-surface-variant": "#cfc4c5", "text-secondary": "#BDBDBD", "surface-container-lowest": "#0e0e0e", "surface-tint": "#c6c6c6", "on-primary-container": "#757575", "on-error": "#690005", "primary-fixed": "#e2e2e2", "on-primary-fixed": "#1b1b1b", "on-secondary": "#2f3131", "surface-base": "#000000", "secondary-fixed": "#e2e2e2", "tertiary-fixed": "#e2e2e2", "on-surface": "#e5e2e1", "on-secondary-container": "#b4b5b5" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin-mobile": "1rem", "space-xs": "0.375rem", "gutter-desktop": "1.5rem", "space-lg": "1.5rem", "space-md": "1rem", "margin": "2rem", "margin-desktop": "4rem", "space-xl": "2.5rem", "margin-tablet": "2rem", "gutter-mobile": "0.75rem", "gutter-tablet": "1rem", "space-sm": "0.625rem", "space-2xl": "4rem", "gutter": "1.5rem", "space-2xs": "0.25rem" }, "fontFamily": { "caption": [ "Inter" ], "label-md": [ "Inter" ], "label-sm": [ "Inter" ], "headline-sm": [ "Inter" ], "body-sm": [ "Inter" ], "headline-xl-mobile": [ "Inter" ], "display": [ "Inter" ], "headline-lg": [ "Inter" ], "body-lg": [ "Inter" ], "headline-md": [ "Inter" ], "headline-xl": [ "Inter" ], "display-mobile": [ "Inter" ], "headline-lg-mobile": [ "Inter" ], "body-md": [ "Inter" ] }, "fontSize": { "caption": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "500" } ], "label-md": [ "14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" } ], "label-sm": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "600" } ], "headline-sm": [ "22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "body-sm": [ "14px", { "lineHeight": "20px", "letterSpacing": "0.005em", "fontWeight": "400" } ], "headline-xl-mobile": [ "36px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "display": [ "72px", { "lineHeight": "76px", "letterSpacing": "-0.03em", "fontWeight": "800" } ], "headline-lg": [ "40px", { "lineHeight": "46px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "body-lg": [ "18px", { "lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "400" } ], "headline-md": [ "30px", { "lineHeight": "36px", "letterSpacing": "-0.015em", "fontWeight": "700" } ], "headline-xl": [ "56px", { "lineHeight": "60px", "letterSpacing": "-0.025em", "fontWeight": "700" } ], "display-mobile": [ "44px", { "lineHeight": "48px", "letterSpacing": "-0.025em", "fontWeight": "800" } ], "headline-lg-mobile": [ "28px", { "lineHeight": "34px", "letterSpacing": "-0.015em", "fontWeight": "700" } ], "body-md": [ "16px", { "lineHeight": "25px", "letterSpacing": "0em", "fontWeight": "400" } ] } } } };</script></head><body class="bg-surface-base text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-card border-b border-border-subtle"><div class="h-16 w-full px-margin-tablet lg:px-margin flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm"><img alt="AthleteCare Pro Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XXXyKIVx7uyhzGtNSycFx1ZTZQ8Q8M2V5A61HvFSnGDcRbwqHWTHMUC7N-wPw5PKeyShUC_cGItHd_GeTZ9n6eIcOnKPogPD2rkNKbhEes10QtbESC_VZdZOttEhZ25KTl1A4M1pV-XWriuYUzQ_UUAsDoKMIDhjXSTaX1on3zuCj2jM8NZqOzBFdAtLbRPU-nHhBHM9UnukKSdaccAOoAEbFMchBRRjhF1NDdde0dHAqwshY5IrhCQCU"/><div class="flex flex-col"><span class="font-label-md text-label-md tracking-tight uppercase text-text-primary">AthleteCare</span><span class="font-caption text-caption tracking-widest uppercase text-text-muted">Pro Telemetry</span></div></div><nav class="hidden xl:flex items-center gap-space-lg ml-space-md" data-active-classes="text-text-primary border-b-2 border-text-primary py-space-sm"><a class="font-label-sm text-label-sm uppercase tracking-wider text-text-muted hover:text-text-primary transition-colors" data-path="overview" href="#">Overview</a><a class="font-label-sm text-label-sm uppercase tracking-wider text-text-muted hover:text-text-primary transition-colors" data-path="workout" href="#">Workout</a><a class="font-label-sm text-label-sm uppercase tracking-wider text-text-muted hover:text-text-primary transition-colors" data-path="nutrition" href="#">Nutrition</a><a class="font-label-sm text-label-sm uppercase tracking-wider text-text-muted hover:text-text-primary transition-colors" data-path="progress" href="#">Progress</a><a aria-current="page" class="font-label-sm uppercase tracking-wider transition-colors text-text-primary border-b-2 border-text-primary py-space-sm" data-path="ai-coach" href="#">AI Coach</a><a class="font-label-sm text-label-sm uppercase tracking-wider text-text-muted hover:text-text-primary transition-colors" data-path="store" href="#">Store</a><a class="font-label-sm text-label-sm uppercase tracking-wider text-text-muted hover:text-text-primary transition-colors" data-path="messages" href="#">Messages</a></nav></div><div class="flex items-center gap-space-md"><div class="hidden sm:flex items-center gap-space-xs px-space-sm py-space-2xs bg-surface-elevated border border-border-subtle rounded-lg"><span class="material-symbols-outlined text-text-primary text-base">bolt</span><div class="flex items-baseline gap-space-2xs"><span class="font-label-sm text-label-sm text-text-primary">18</span><span class="font-caption text-caption uppercase text-text-muted">Day Streak</span></div></div><button aria-label="Notifications" class="relative p-space-xs text-text-muted hover:text-text-primary transition-colors" type="button"><span class="material-symbols-outlined text-xl">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 bg-text-primary rounded-full ring-2 ring-surface-card"></span></button><div class="h-6 w-px bg-border-subtle hidden sm:block"></div><div class="flex items-center gap-space-sm pl-space-2xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover border border-border-medium" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDD_GiDZtEzAJxK_LW74UFTNjSXu5x_d1-0Nd89VonEHECAmC4ep8qfG8l08Yis6ivMVy3dozSZlhtRDFXE0BJhCp6kbqXpDIP4lV0B4C44T_KpZSzMj8dLNzbsM5OBK3lDssL9RCgXdWuD4_mTI4jS0ygQT2Ptf0e-ZnCTngO-qQNRTFu_9sVrwBu-xPXr5olVHhQ8M9JulC7V65MWTpe7_EAs_FYSb60RhxnFduuF7AjNreKcHbeh"/><div class="hidden md:flex flex-col text-left"><span class="font-label-sm text-label-sm text-text-primary leading-tight">Mikhail R.</span><span class="font-caption text-caption uppercase tracking-wider text-text-muted leading-tight">Pro Athlete</span></div></div></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-64 bg-surface-card border-r border-border-subtle z-40 hidden lg:flex flex-col justify-between py-space-lg px-space-md"><div class="flex flex-col gap-space-lg"><div class="px-space-xs"><span class="font-caption text-caption tracking-widest uppercase text-text-muted block mb-space-xs">Operations</span><nav class="flex flex-col gap-space-2xs" data-active-classes="bg-surface-elevated text-text-primary border-l-2 border-text-primary font-label-md"><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg font-body-sm text-body-sm text-text-muted hover:bg-surface-elevated hover:text-text-primary transition-colors" data-path="overview" href="#"><span class="material-symbols-outlined text-lg">dashboard</span>Overview</a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg font-body-sm text-body-sm text-text-muted hover:bg-surface-elevated hover:text-text-primary transition-colors" data-path="workout" href="#"><span class="material-symbols-outlined text-lg">fitness_center</span>Workout</a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg font-body-sm text-body-sm text-text-muted hover:bg-surface-elevated hover:text-text-primary transition-colors" data-path="nutrition" href="#"><span class="material-symbols-outlined text-lg">restaurant</span>Nutrition</a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg font-body-sm text-body-sm text-text-muted hover:bg-surface-elevated hover:text-text-primary transition-colors" data-path="progress" href="#"><span class="material-symbols-outlined text-lg">monitoring</span>Progress</a><a aria-current="page" class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg transition-colors bg-surface-elevated text-text-primary border-l-2 border-text-primary font-label-md" data-path="ai-coach" href="#"><span class="material-symbols-outlined text-lg">psychology</span>AI Coach</a></nav></div><div class="px-space-xs"><span class="font-caption text-caption tracking-widest uppercase text-text-muted block mb-space-xs">Channels</span><nav class="flex flex-col gap-space-2xs" data-active-classes="bg-surface-elevated text-text-primary border-l-2 border-text-primary font-label-md"><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg font-body-sm text-body-sm text-text-muted hover:bg-surface-elevated hover:text-text-primary transition-colors" data-path="store" href="#"><span class="material-symbols-outlined text-lg">shopping_bag</span>Store</a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg font-body-sm text-body-sm text-text-muted hover:bg-surface-elevated hover:text-text-primary transition-colors" data-path="messages" href="#"><span class="material-symbols-outlined text-lg">forum</span>Messages</a></nav></div></div><div class="p-space-sm bg-surface-canvas border border-border-subtle rounded-lg flex items-center justify-between"><div class="flex flex-col"><span class="font-caption text-caption uppercase text-text-muted">Vitals Telemetry</span><span class="font-label-sm text-label-sm text-text-primary">Live Feed 99.8%</span></div><span class="material-symbols-outlined text-text-primary text-base">sensors</span></div></aside><div class="lg:pl-64"><main class="w-full pt-16 bg-surface-base min-h-screen"><div class="flex flex-col w-full">
+<div class="w-full px-margin-mobile sm:px-margin-tablet lg:px-margin-desktop py-space-lg flex flex-col gap-space-lg max-w-[1400px] mx-auto">
+<!-- 1. AI Coach Context Banner -->
+<section class="bg-surface-elevated rounded-xl p-space-md sm:p-space-lg shadow-xl relative overflow-hidden flex flex-col gap-space-md">
+<div class="absolute -right-16 -top-16 w-64 h-64 bg-surface-bright/20 rounded-full blur-3xl pointer-events-none"></div>
+<!-- Overline & System Ident -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pb-space-sm bg-surface-elevated">
+<div class="flex items-center gap-space-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-text-primary animate-pulse"></span>
+<h1 class="font-label-sm text-label-sm uppercase tracking-wider text-text-primary">
+            AthleteCare AI Coach <span class="text-text-muted px-space-2xs">•</span> Performance Intelligence
+          </h1>
+</div>
+<div class="flex items-center gap-space-xs text-text-muted font-caption text-caption uppercase tracking-wider">
+<span class="material-symbols-outlined text-sm">terminal</span>
+<span>Engine Model v4.8-BioTelemetry</span>
+</div>
+</div>
+<!-- Context Pill Tags -->
+<div class="flex flex-wrap items-center gap-space-xs sm:gap-space-sm">
+<div class="bg-surface-card px-space-sm py-space-2xs rounded-lg flex items-center gap-space-xs text-text-secondary">
+<span class="font-caption text-caption uppercase text-text-muted">Client:</span>
+<span class="font-label-sm text-label-sm text-text-primary">Mikhail R.</span>
+</div>
+<div class="bg-surface-card px-space-sm py-space-2xs rounded-lg flex items-center gap-space-xs text-text-secondary">
+<span class="font-caption text-caption uppercase text-text-muted">Goal:</span>
+<span class="font-label-sm text-label-sm text-text-primary">Hypertrophy &amp; Strength</span>
+</div>
+<div class="bg-surface-card px-space-sm py-space-2xs rounded-lg flex items-center gap-space-xs text-text-secondary">
+<span class="material-symbols-outlined text-xs text-text-primary">sync</span>
+<span class="font-caption text-caption uppercase text-text-muted">Sync:</span>
+<span class="font-label-sm text-label-sm text-text-primary">Health Data Live</span>
+</div>
+<div class="bg-surface-card px-space-sm py-space-2xs rounded-lg flex items-center gap-space-xs text-text-secondary">
+<span class="material-symbols-outlined text-xs text-text-primary">verified_user</span>
+<span class="font-caption text-caption uppercase text-text-muted">Safety:</span>
+<span class="font-label-sm text-label-sm text-text-primary">Verified Wellness Advisor</span>
+</div>
+</div>
+<!-- Automated Diagnostic Matrix -->
+<div class="bg-surface-canvas rounded-xl p-space-md flex flex-col md:flex-row gap-space-md justify-between items-stretch">
+<div class="flex-1 flex flex-col justify-between">
+<div class="flex items-center gap-space-xs mb-space-2xs">
+<span class="material-symbols-outlined text-base text-text-muted">bedtime</span>
+<span class="font-caption text-caption uppercase tracking-wider text-text-muted">Sleep Duration</span>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-headline-md text-headline-md text-text-primary">7h 45m</span>
+<span class="font-caption text-caption text-text-secondary tracking-wide">(+45m vs 7d avg)</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5 mt-space-sm overflow-hidden">
+<div class="bg-text-primary h-full w-[82%]"></div>
+</div>
+</div>
+<div class="w-full md:w-px h-px md:h-auto bg-surface-container"></div>
+<div class="flex-1 flex flex-col justify-between">
+<div class="flex items-center gap-space-xs mb-space-2xs">
+<span class="material-symbols-outlined text-base text-text-muted">ecg_heart</span>
+<span class="font-caption text-caption uppercase tracking-wider text-text-muted">Readiness Score</span>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-headline-md text-headline-md text-text-primary">94</span>
+<span class="font-label-md text-label-md text-text-muted">/100</span>
+<span class="font-caption text-caption text-text-secondary tracking-wide ml-space-xs">Optimal CNS recovery</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5 mt-space-sm overflow-hidden">
+<div class="bg-text-primary h-full w-[94%]"></div>
+</div>
+</div>
+<div class="w-full md:w-px h-px md:h-auto bg-surface-container"></div>
+<div class="flex-[1.5] flex flex-col justify-between">
+<div class="flex items-center gap-space-xs mb-space-2xs">
+<span class="material-symbols-outlined text-base text-text-muted">insights</span>
+<span class="font-caption text-caption uppercase tracking-wider text-text-muted">Training Directive</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-primary leading-snug">
+            Prime condition for progressive overload on chest presses today. Target +2.5kg increase.
+          </p>
+<div class="flex items-center gap-space-xs mt-space-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-text-primary"></span>
+<span class="font-caption text-caption uppercase tracking-widest text-text-muted">Load capacity: maximum nominal</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Dynamic Content Grid: Stream & Side Biosensors -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg items-start">
+<!-- Left Column: Chat / Consultation Workspace -->
+<div class="xl:col-span-8 flex flex-col gap-space-lg">
+<!-- Stream Container -->
+<div class="bg-surface-card rounded-xl p-space-md sm:p-space-lg shadow-md flex flex-col gap-space-xl">
+<!-- Timestamp Anchor -->
+<div class="flex items-center justify-center">
+<span class="bg-surface-container px-space-sm py-space-2xs rounded text-text-muted font-caption text-caption uppercase tracking-widest">
+              Today • Real-Time Session Opened 08:14 AM
+            </span>
+</div>
+<!-- Message 1: AI Coach Initial Briefing -->
+<div class="flex items-start gap-space-md max-w-2xl">
+<div class="w-9 h-9 rounded-lg bg-surface-canvas flex items-center justify-center text-text-primary shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-lg">psychology</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-text-primary">AthleteCare AI Coach</span>
+<span class="font-caption text-caption text-text-muted">08:15 AM</span>
+</div>
+<div class="bg-surface-elevated rounded-xl rounded-tl-none p-space-md text-text-primary font-body-md text-body-md shadow-sm">
+                Good morning Mikhail. I reviewed your recovery data from last night and your nutrition log from yesterday (met 98% of your 210g protein target). Today's workout is Chest &amp; Triceps Hypertrophy. How are your shoulders feeling after Monday's overhead work?
+              </div>
+</div>
+</div>
+<!-- Message 2: Mikhail Reply -->
+<div class="flex items-start gap-space-md max-w-2xl ml-auto flex-row-reverse">
+<div class="w-9 h-9 rounded-lg bg-surface-canvas overflow-hidden shrink-0 shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Close up athletic male profile shot in high contrast monochromatic editorial studio lighting, calm disciplined expression, dark backdrop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBt_muvyDtA_yO1SCUXS62lAvt0AUBryavSVg4hepa3Q8BymcEuk_VHDPXRX7oc6kZCKVFMY7L0Pp7IhQO8te6Uz5J5CoZe9MqJOxAHTRt81VuzHb5P2JZHIb5fOnwpYeuz7V_GyW1XNAhYbyZyFNXQ40d_mgTe_yaDxweWOQn7Mw7h-JqI7C5Y3fpnh83Jx0BlQ-au6sJBOaxBM7Okd-S3gLtK3LvfBBMCagavseh66vdvd9OI0mbI"/>
+</div>
+<div class="flex flex-col gap-space-xs items-end">
+<div class="flex items-center gap-space-sm">
+<span class="font-caption text-caption text-text-muted">08:22 AM</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-text-primary">Mikhail R.</span>
+</div>
+<div class="bg-surface-container rounded-xl rounded-tr-none p-space-md text-text-primary font-body-md text-body-md shadow-sm text-left">
+                Shoulders feel 100%. I want to push for 85kg on the incline bench press today. Should I adjust my warm-up sets?
+              </div>
+</div>
+</div>
+<!-- Message 3: Structured AI Protocol Recommendation -->
+<div class="flex items-start gap-space-md max-w-3xl">
+<div class="w-9 h-9 rounded-lg bg-surface-canvas flex items-center justify-center text-text-primary shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-lg">psychology</span>
+</div>
+<div class="flex flex-col gap-space-sm w-full">
+<div class="flex items-center gap-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-text-primary">AthleteCare AI Coach</span>
+<span class="font-caption text-caption text-text-muted">08:23 AM</span>
+</div>
+<!-- Recommendation Card Box -->
+<div class="bg-surface-elevated rounded-xl rounded-tl-none p-space-md sm:p-space-lg text-text-primary shadow-sm flex flex-col gap-space-md">
+<p class="font-body-md text-body-md text-text-secondary leading-relaxed">
+                  Excellent. With your current recovery score, an 85kg incline bench press aligns with our weekly progressive overload target. Here is your adjusted warm-up protocol:
+                </p>
+<!-- Technical Specification Table Block -->
+<div class="bg-surface-canvas rounded-lg p-space-md flex flex-col gap-space-xs">
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-caption text-caption uppercase tracking-wider text-text-muted">Incline Barbell Press Protocol</span>
+<span class="font-caption text-caption text-text-primary uppercase tracking-widest bg-surface-container px-space-xs py-0.5 rounded">RPE Target: 8.5</span>
+</div>
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<div class="flex items-center justify-between py-space-xs px-space-sm bg-surface-card rounded">
+<div class="flex items-center gap-space-sm">
+<span class="w-6 h-6 rounded bg-surface-container flex items-center justify-center font-caption text-caption text-text-muted">01</span>
+<span class="font-body-sm text-body-sm text-text-primary">Warm-up Set 1</span>
+</div>
+<span class="font-label-sm text-label-sm text-text-secondary">Empty Bar (20kg) × 15 reps</span>
+<span class="font-caption text-caption text-text-muted hidden sm:inline">Controlled tempo</span>
+</div>
+<div class="flex items-center justify-between py-space-xs px-space-sm bg-surface-card rounded">
+<div class="flex items-center gap-space-sm">
+<span class="w-6 h-6 rounded bg-surface-container flex items-center justify-center font-caption text-caption text-text-muted">02</span>
+<span class="font-body-sm text-body-sm text-text-primary">Warm-up Set 2</span>
+</div>
+<span class="font-label-sm text-label-sm text-text-secondary">50kg × 6 reps</span>
+<span class="font-caption text-caption text-text-muted hidden sm:inline">Moderate velocity</span>
+</div>
+<div class="flex items-center justify-between py-space-xs px-space-sm bg-surface-card rounded">
+<div class="flex items-center gap-space-sm">
+<span class="w-6 h-6 rounded bg-surface-container flex items-center justify-center font-caption text-caption text-text-muted">03</span>
+<span class="font-body-sm text-body-sm text-text-primary">Warm-up Set 3</span>
+</div>
+<span class="font-label-sm text-label-sm text-text-secondary">70kg × 3 reps</span>
+<span class="font-caption text-caption text-text-muted hidden sm:inline">Potentiation set</span>
+</div>
+<div class="flex items-center justify-between py-space-xs px-space-sm bg-surface-elevated rounded">
+<div class="flex items-center gap-space-sm">
+<span class="w-6 h-6 rounded bg-text-primary text-text-inverse flex items-center justify-center font-label-sm text-label-sm">W</span>
+<span class="font-label-md text-label-md text-text-primary">Working Sets (3-4)</span>
+</div>
+<span class="font-label-md text-label-md text-text-primary">85kg × 8–10 reps</span>
+<span class="font-caption text-caption text-text-primary hidden sm:inline">Peak Overload</span>
+</div>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary">
+                  Ensure 2 minutes of rest before your first working set. Would you like me to send this updated warm-up directly to your active workout screen?
+                </p>
+<!-- Action CTA Triggers -->
+<div class="flex flex-wrap items-center gap-space-sm pt-space-xs" id="cta-actions">
+<button class="bg-text-primary text-text-inverse px-space-md py-space-sm rounded-lg font-label-md text-label-md hover:bg-surface-variant hover:text-text-primary transition-all flex items-center gap-space-xs shadow-md active:scale-95" id="btn-push-tracker" type="button">
+<span class="material-symbols-outlined text-base">send_to_mobile</span>
+                    Push to Today's Workout Tracker
+                  </button>
+<button class="bg-surface-canvas text-text-primary px-space-md py-space-sm rounded-lg font-label-md text-label-md hover:bg-surface-container transition-all flex items-center gap-space-xs shadow-sm" type="button">
+<span class="material-symbols-outlined text-base">add_comment</span>
+                    Ask Follow-up Question
+                  </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 3. Quick Action Capability Chips -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between px-space-xs">
+<span class="font-caption text-caption uppercase tracking-wider text-text-muted">Suggested Consultations</span>
+<span class="font-caption text-caption uppercase tracking-wider text-text-muted">Tap to Query</span>
+</div>
+<div class="flex flex-wrap gap-space-xs">
+<button class="bg-surface-card hover:bg-surface-elevated text-text-secondary hover:text-text-primary px-space-sm py-space-xs rounded-lg font-label-sm text-label-sm transition-all shadow-sm flex items-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-sm text-text-muted">skillet</span>
+              Build Meal Ideas from Leftover Ingredients
+            </button>
+<button class="bg-surface-card hover:bg-surface-elevated text-text-secondary hover:text-text-primary px-space-sm py-space-xs rounded-lg font-label-sm text-label-sm transition-all shadow-sm flex items-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-sm text-text-muted">show_chart</span>
+              Analyze Last 30 Days Strength Progression
+            </button>
+<button class="bg-surface-card hover:bg-surface-elevated text-text-secondary hover:text-text-primary px-space-sm py-space-xs rounded-lg font-label-sm text-label-sm transition-all shadow-sm flex items-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-sm text-text-muted">sports_gymnastics</span>
+              Explain Incline Bench Scapular Retraction
+            </button>
+<button class="bg-surface-card hover:bg-surface-elevated text-text-secondary hover:text-text-primary px-space-sm py-space-xs rounded-lg font-label-sm text-label-sm transition-all shadow-sm flex items-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-sm text-text-muted">local_grocery_store</span>
+              Generate Grocery List for This Week
+            </button>
+<button class="bg-surface-card hover:bg-surface-elevated text-text-secondary hover:text-text-primary px-space-sm py-space-xs rounded-lg font-label-sm text-label-sm transition-all shadow-sm flex items-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-sm text-text-muted">assignment_turned_in</span>
+              Prepare Weekly Coach Check-in Summary
+            </button>
+</div>
+</div>
+<!-- 4. AI Input Bar -->
+<div class="bg-surface-card rounded-xl p-space-md shadow-lg flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-sm bg-surface-canvas rounded-xl px-space-md py-space-xs shadow-inner">
+<button aria-label="Attach File or Telemetry Log" class="text-text-muted hover:text-text-primary transition-colors p-space-2xs" type="button">
+<span class="material-symbols-outlined text-xl">attach_file</span>
+</button>
+<button aria-label="Audio Input" class="text-text-muted hover:text-text-primary transition-colors p-space-2xs" type="button">
+<span class="material-symbols-outlined text-xl">mic</span>
+</button>
+<input class="w-full bg-transparent text-text-primary font-body-md text-body-md placeholder:text-text-muted focus:outline-none py-space-sm" id="coach-query-input" placeholder="Ask your AI Coach about training, macros, recovery, or exercise form..." type="text"/>
+<button class="bg-text-primary text-text-inverse px-space-md py-space-xs rounded-lg font-label-sm text-label-sm uppercase tracking-wider hover:bg-surface-variant hover:text-text-primary transition-all flex items-center gap-space-xs shrink-0 shadow-sm" id="btn-send-query" type="button">
+<span>Send Inquiry</span>
+<span class="material-symbols-outlined text-base">arrow_forward</span>
+</button>
+</div>
+<!-- Micro-Disclaimer -->
+<div class="flex items-center justify-between px-space-xs">
+<p class="font-caption text-caption text-text-muted flex items-center gap-space-2xs">
+<span class="material-symbols-outlined text-xs">info</span>
+              AthleteCare AI provides wellness and athletic performance guidance. Not intended as medical diagnosis.
+            </p>
+<span class="font-caption text-caption uppercase tracking-widest text-text-muted hidden md:inline">256-bit Encrypted</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Telemetry Feed & Movement Biomechanics Inspector -->
+<div class="xl:col-span-4 flex flex-col gap-space-lg">
+<!-- Movement Mechanics Visualizer Card -->
+<div class="bg-surface-card rounded-xl p-space-lg shadow-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-caption text-caption uppercase tracking-wider text-text-muted">Form Telemetry In-Focus</span>
+<span class="bg-surface-elevated px-space-xs py-space-2xs rounded font-caption text-caption uppercase tracking-widest text-text-primary">Scapular Angle</span>
+</div>
+<div class="relative w-full h-56 rounded-lg overflow-hidden bg-surface-canvas shadow-inner">
+<div class="bg-cover bg-center w-full h-full opacity-70" data-alt="High-contrast black and white photograph of an elite male athlete performing an incline bench barbell press in a dark minimalist gym with sharp dramatic side lighting highlighting shoulder and chest musculature" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC7wyQmXRE7aT1jVGhM6oHyAIHX30LX2Z6IC7NPmsB543yuAlVczNQBOezX5DT0E8Nv4u3swJ0LRTEnLth3NmrkyoOj_tGLu7szWDJJ6mHQLMT8yirobZu1Ep0DcM6GR0hQOcaRHom-pT35S6tP1FIKvDGOptJwPbploaXC01TDTRTgKhwAmPOXqvkMv8uG_WbgiOSyYXBZSXPLwIfQnIr9kkUsIk3629V9cBUMn3qitXokjumIxstV')"></div>
+<!-- Graphic HUD Overlay -->
+<div class="absolute inset-0 p-space-sm flex flex-col justify-between pointer-events-none">
+<div class="flex items-center justify-between">
+<span class="bg-surface-canvas/90 text-text-primary font-caption text-caption px-space-xs py-0.5 rounded tracking-widest uppercase">Target 30° Incline</span>
+<span class="bg-surface-canvas/90 text-text-primary font-caption text-caption px-space-xs py-0.5 rounded tracking-widest uppercase">Path: Linear</span>
+</div>
+<div class="flex items-end justify-between">
+<div class="bg-surface-canvas/90 p-space-xs rounded flex flex-col">
+<span class="font-caption text-caption text-text-muted">Wrist Angle</span>
+<span class="font-label-sm text-label-sm text-text-primary">Neutral 0.4°</span>
+</div>
+<div class="bg-surface-canvas/90 p-space-xs rounded flex flex-col items-end">
+<span class="font-caption text-caption text-text-muted">Tendon Strain</span>
+<span class="font-label-sm text-label-sm text-text-primary">Low (Safe)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Micro-Analysis Points -->
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<div class="flex items-center justify-between text-body-sm">
+<span class="text-text-muted font-body-sm">Shoulder Protraction:</span>
+<span class="text-text-primary font-label-sm">Stabilized / Depressed</span>
+</div>
+<div class="flex items-center justify-between text-body-sm">
+<span class="text-text-muted font-body-sm">Eccentric Cadence:</span>
+<span class="text-text-primary font-label-sm">3.0 sec Target</span>
+</div>
+<div class="flex items-center justify-between text-body-sm">
+<span class="text-text-muted font-body-sm">Concentric Explosiveness:</span>
+<span class="text-text-primary font-label-sm">1.1 sec Optimal</span>
+</div>
+</div>
+</div>
+<!-- Weekly Training Balance Telemetry Chart Card -->
+<div class="bg-surface-card rounded-xl p-space-lg shadow-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-caption text-caption uppercase tracking-wider text-text-muted">7-Day Volume Distribution</span>
+<span class="font-label-md text-label-md text-text-primary">Weekly Hypertrophy Sets</span>
+</div>
+<span class="material-symbols-outlined text-text-muted">bar_chart</span>
+</div>
+<!-- Inline SVG Vector Distribution Graphic -->
+<div class="w-full h-32 flex items-end justify-between gap-space-xs pt-space-md">
+<div class="flex-1 flex flex-col items-center gap-space-2xs">
+<div class="w-full bg-surface-container rounded-t h-16 flex items-end justify-center">
+<div class="w-full bg-text-secondary h-12 rounded-t"></div>
+</div>
+<span class="font-caption text-caption text-text-muted">M</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-space-2xs">
+<div class="w-full bg-surface-container rounded-t h-20 flex items-end justify-center">
+<div class="w-full bg-text-secondary h-16 rounded-t"></div>
+</div>
+<span class="font-caption text-caption text-text-muted">T</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-space-2xs">
+<div class="w-full bg-surface-container rounded-t h-10 flex items-end justify-center">
+<div class="w-full bg-text-secondary h-6 rounded-t"></div>
+</div>
+<span class="font-caption text-caption text-text-muted">W</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-space-2xs">
+<div class="w-full bg-surface-elevated rounded-t h-28 flex items-end justify-center shadow-md">
+<div class="w-full bg-text-primary h-24 rounded-t"></div>
+</div>
+<span class="font-caption text-caption text-text-primary font-bold">T (Now)</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-space-2xs">
+<div class="w-full bg-surface-container rounded-t h-20 flex items-end justify-center opacity-40">
+<div class="w-full bg-surface-variant h-14 rounded-t"></div>
+</div>
+<span class="font-caption text-caption text-text-muted">F</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-space-2xs">
+<div class="w-full bg-surface-container rounded-t h-12 flex items-end justify-center opacity-40">
+<div class="w-full bg-surface-variant h-8 rounded-t"></div>
+</div>
+<span class="font-caption text-caption text-text-muted">S</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-space-2xs">
+<div class="w-full bg-surface-container rounded-t h-8 flex items-end justify-center opacity-40">
+<div class="w-full bg-surface-variant h-0 rounded-t"></div>
+</div>
+<span class="font-caption text-caption text-text-muted">S</span>
+</div>
+</div>
+<div class="bg-surface-canvas p-space-sm rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-text-primary"></span>
+<span class="font-caption text-caption text-text-secondary uppercase">Chest &amp; Triceps</span>
+</div>
+<span class="font-label-sm text-label-sm text-text-primary">18 Sets Scheduled</span>
+</div>
+</div>
+<!-- Coach Directive Quick Status -->
+<div class="bg-surface-elevated rounded-xl p-space-md shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-canvas flex items-center justify-center text-text-primary shadow-inner">
+<span class="material-symbols-outlined text-xl">shield</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-text-primary">Biometric Guardrails Active</span>
+<span class="font-caption text-caption text-text-muted">HRV Spike alert threshold: +15ms</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-text-primary text-sm">lock</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    const pushBtn = document.getElementById('btn-push-tracker');
+    const sendBtn = document.getElementById('btn-send-query');
+    const input = document.getElementById('coach-query-input');
+
+    if (pushBtn) {
+      pushBtn.addEventListener('click', function() {
+        const originalHtml = pushBtn.innerHTML;
+        pushBtn.disabled = true;
+        pushBtn.innerHTML = '<span class="material-symbols-outlined text-base">check_circle</span> Protocol Pushed to Tracker!';
+        pushBtn.classList.replace('bg-text-primary', 'bg-surface-bright');
+        pushBtn.classList.replace('text-text-inverse', 'text-text-primary');
+
+        setTimeout(function() {
+          pushBtn.innerHTML = originalHtml;
+          pushBtn.disabled = false;
+          pushBtn.classList.replace('bg-surface-bright', 'bg-text-primary');
+          pushBtn.classList.replace('text-text-primary', 'text-text-inverse');
+        }, 3000);
+      });
+    }
+
+    if (sendBtn && input) {
+      sendBtn.addEventListener('click', function() {
+        if (!input.value.trim()) return;
+        input.value = '';
+        input.setAttribute('placeholder', 'AI Coach is analyzing response...');
+        setTimeout(function() {
+          input.setAttribute('placeholder', 'Ask your AI Coach about training, macros, recovery, or exercise form...');
+        }, 2000);
+      });
+    }
+  })();
+</script></main></div></body></html>

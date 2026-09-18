@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "primary-fixed-dim": "#c6c6c6", "on-secondary-fixed": "#1a1c1c", "surface-container": "#202020", "border-strong": "#BDBDBD", "on-tertiary-container": "#757575", "surface-elevated": "#171717", "surface-variant": "#353534", "error-container": "#93000a", "inverse-on-surface": "#313030", "background": "#131313", "on-tertiary-fixed-variant": "#474747", "text-inverse": "#0A0A0A", "surface-bright": "#3a3939", "border-light": "#D9D9D9", "primary-container": "#000000", "on-tertiary-fixed": "#1b1b1b", "surface-container-low": "#1c1b1b", "outline-variant": "#4c4546", "error": "#ffb4ab", "tertiary-container": "#000000", "outline": "#988e90", "secondary-container": "#454747", "border-medium": "#4A4A4A", "tertiary": "#c6c6c6", "surface-container-high": "#2a2a2a", "inverse-surface": "#e5e2e1", "on-error-container": "#ffdad6", "surface-card": "#111111", "on-secondary-fixed-variant": "#454747", "surface-dim": "#131313", "surface-container-highest": "#353534", "primary": "#c6c6c6", "surface": "#131313", "on-tertiary": "#303030", "surface-canvas": "#0A0A0A", "on-primary": "#303030", "border-subtle": "#242424", "on-primary-fixed-variant": "#474747", "inverse-primary": "#5e5e5e", "text-primary": "#FFFFFF", "tertiary-fixed-dim": "#c6c6c6", "secondary-fixed-dim": "#c6c6c7", "text-muted": "#777777", "on-background": "#e5e2e1", "secondary": "#c6c6c7", "on-surface-variant": "#cfc4c5", "text-secondary": "#BDBDBD", "surface-container-lowest": "#0e0e0e", "surface-tint": "#c6c6c6", "on-primary-container": "#757575", "on-error": "#690005", "primary-fixed": "#e2e2e2", "on-primary-fixed": "#1b1b1b", "on-secondary": "#2f3131", "surface-base": "#000000", "secondary-fixed": "#e2e2e2", "tertiary-fixed": "#e2e2e2", "on-surface": "#e5e2e1", "on-secondary-container": "#b4b5b5" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin-mobile": "1rem", "space-xs": "0.375rem", "gutter-desktop": "1.5rem", "space-lg": "1.5rem", "space-md": "1rem", "margin": "2rem", "margin-desktop": "4rem", "space-xl": "2.5rem", "margin-tablet": "2rem", "gutter-mobile": "0.75rem", "gutter-tablet": "1rem", "space-sm": "0.625rem", "space-2xl": "4rem", "gutter": "1.5rem", "space-2xs": "0.25rem" }, "fontFamily": { "caption": [ "Inter" ], "label-md": [ "Inter" ], "label-sm": [ "Inter" ], "headline-sm": [ "Inter" ], "body-sm": [ "Inter" ], "headline-xl-mobile": [ "Inter" ], "display": [ "Inter" ], "headline-lg": [ "Inter" ], "body-lg": [ "Inter" ], "headline-md": [ "Inter" ], "headline-xl": [ "Inter" ], "display-mobile": [ "Inter" ], "headline-lg-mobile": [ "Inter" ], "body-md": [ "Inter" ] }, "fontSize": { "caption": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "500" } ], "label-md": [ "14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" } ], "label-sm": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "600" } ], "headline-sm": [ "22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "body-sm": [ "14px", { "lineHeight": "20px", "letterSpacing": "0.005em", "fontWeight": "400" } ], "headline-xl-mobile": [ "36px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "display": [ "72px", { "lineHeight": "76px", "letterSpacing": "-0.03em", "fontWeight": "800" } ], "headline-lg": [ "40px", { "lineHeight": "46px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "body-lg": [ "18px", { "lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "400" } ], "headline-md": [ "30px", { "lineHeight": "36px", "letterSpacing": "-0.015em", "fontWeight": "700" } ], "headline-xl": [ "56px", { "lineHeight": "60px", "letterSpacing": "-0.025em", "fontWeight": "700" } ], "display-mobile": [ "44px", { "lineHeight": "48px", "letterSpacing": "-0.025em", "fontWeight": "800" } ], "headline-lg-mobile": [ "28px", { "lineHeight": "34px", "letterSpacing": "-0.015em", "fontWeight": "700" } ], "body-md": [ "16px", { "lineHeight": "25px", "letterSpacing": "0em", "fontWeight": "400" } ] } } } };</script></head><body class="bg-surface-base text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-card border-b border-border-subtle"><div class="h-16 w-full px-margin-tablet lg:px-margin flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm"><img alt="AthleteCare Pro Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XXXyKIVx7uyhzGtNSycFx1ZTZQ8Q8M2V5A61HvFSnGDcRbwqHWTHMUC7N-wPw5PKeyShUC_cGItHd_GeTZ9n6eIcOnKPogPD2rkNKbhEes10QtbESC_VZdZOttEhZ25KTl1A4M1pV-XWriuYUzQ_UUAsDoKMIDhjXSTaX1on3zuCj2jM8NZqOzBFdAtLbRPU-nHhBHM9UnukKSdaccAOoAEbFMchBRRjhF1NDdde0dHAqwshY5IrhCQCU"/><div class="flex flex-col"><span class="font-label-md text-label-md tracking-tight uppercase text-text-primary">AthleteCare</span><span class="font-caption text-caption tracking-widest uppercase text-text-muted">Pro Telemetry</span></div></div><nav class="hidden xl:flex items-center gap-space-lg ml-space-md" data-active-classes="text-text-primary border-b-2 border-text-primary py-space-sm"><a class="font-label-sm text-label-sm uppercase tracking-wider text-text-muted hover:text-text-primary transition-colors" data-path="overview" href="#">Overview</a><a class="font-label-sm text-label-sm uppercase tracking-wider text-text-muted hover:text-text-primary transition-colors" data-path="workout" href="#">Workout</a><a class="font-label-sm text-label-sm uppercase tracking-wider text-text-muted hover:text-text-primary transition-colors" data-path="nutrition" href="#">Nutrition</a><a class="font-label-sm text-label-sm uppercase tracking-wider text-text-muted hover:text-text-primary transition-colors" data-path="progress" href="#">Progress</a><a class="font-label-sm text-label-sm uppercase tracking-wider text-text-muted hover:text-text-primary transition-colors" data-path="ai-coach" href="#">AI Coach</a><a class="font-label-sm text-label-sm uppercase tracking-wider text-text-muted hover:text-text-primary transition-colors" data-path="store" href="#">Store</a><a class="font-label-sm text-label-sm uppercase tracking-wider text-text-muted hover:text-text-primary transition-colors" data-path="messages" href="#">Messages</a></nav></div><div class="flex items-center gap-space-md"><div class="hidden sm:flex items-center gap-space-xs px-space-sm py-space-2xs bg-surface-elevated border border-border-subtle rounded-lg"><span class="material-symbols-outlined text-text-primary text-base">bolt</span><div class="flex items-baseline gap-space-2xs"><span class="font-label-sm text-label-sm text-text-primary">18</span><span class="font-caption text-caption uppercase text-text-muted">Day Streak</span></div></div><button aria-label="Notifications" class="relative p-space-xs text-text-muted hover:text-text-primary transition-colors" type="button"><span class="material-symbols-outlined text-xl">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 bg-text-primary rounded-full ring-2 ring-surface-card"></span></button><div class="h-6 w-px bg-border-subtle hidden sm:block"></div><div class="flex items-center gap-space-sm pl-space-2xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover border border-border-medium" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDD_GiDZtEzAJxK_LW74UFTNjSXu5x_d1-0Nd89VonEHECAmC4ep8qfG8l08Yis6ivMVy3dozSZlhtRDFXE0BJhCp6kbqXpDIP4lV0B4C44T_KpZSzMj8dLNzbsM5OBK3lDssL9RCgXdWuD4_mTI4jS0ygQT2Ptf0e-ZnCTngO-qQNRTFu_9sVrwBu-xPXr5olVHhQ8M9JulC7V65MWTpe7_EAs_FYSb60RhxnFduuF7AjNreKcHbeh"/><div class="hidden md:flex flex-col text-left"><span class="font-label-sm text-label-sm text-text-primary leading-tight">Mikhail R.</span><span class="font-caption text-caption uppercase tracking-wider text-text-muted leading-tight">Pro Athlete</span></div></div></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-64 bg-surface-card border-r border-border-subtle z-40 hidden lg:flex flex-col justify-between py-space-lg px-space-md"><div class="flex flex-col gap-space-lg"><div class="px-space-xs"><span class="font-caption text-caption tracking-widest uppercase text-text-muted block mb-space-xs">Operations</span><nav class="flex flex-col gap-space-2xs" data-active-classes="bg-surface-elevated text-text-primary border-l-2 border-text-primary font-label-md"><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg font-body-sm text-body-sm text-text-muted hover:bg-surface-elevated hover:text-text-primary transition-colors" data-path="overview" href="#"><span class="material-symbols-outlined text-lg">dashboard</span>Overview</a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg font-body-sm text-body-sm text-text-muted hover:bg-surface-elevated hover:text-text-primary transition-colors" data-path="workout" href="#"><span class="material-symbols-outlined text-lg">fitness_center</span>Workout</a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg font-body-sm text-body-sm text-text-muted hover:bg-surface-elevated hover:text-text-primary transition-colors" data-path="nutrition" href="#"><span class="material-symbols-outlined text-lg">restaurant</span>Nutrition</a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg font-body-sm text-body-sm text-text-muted hover:bg-surface-elevated hover:text-text-primary transition-colors" data-path="progress" href="#"><span class="material-symbols-outlined text-lg">monitoring</span>Progress</a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg font-body-sm text-body-sm text-text-muted hover:bg-surface-elevated hover:text-text-primary transition-colors" data-path="ai-coach" href="#"><span class="material-symbols-outlined text-lg">psychology</span>AI Coach</a></nav></div><div class="px-space-xs"><span class="font-caption text-caption tracking-widest uppercase text-text-muted block mb-space-xs">Channels</span><nav class="flex flex-col gap-space-2xs" data-active-classes="bg-surface-elevated text-text-primary border-l-2 border-text-primary font-label-md"><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg font-body-sm text-body-sm text-text-muted hover:bg-surface-elevated hover:text-text-primary transition-colors" data-path="store" href="#"><span class="material-symbols-outlined text-lg">shopping_bag</span>Store</a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg font-body-sm text-body-sm text-text-muted hover:bg-surface-elevated hover:text-text-primary transition-colors" data-path="messages" href="#"><span class="material-symbols-outlined text-lg">forum</span>Messages</a></nav></div></div><div class="p-space-sm bg-surface-canvas border border-border-subtle rounded-lg flex items-center justify-between"><div class="flex flex-col"><span class="font-caption text-caption uppercase text-text-muted">Vitals Telemetry</span><span class="font-label-sm text-label-sm text-text-primary">Live Feed 99.8%</span></div><span class="material-symbols-outlined text-text-primary text-base">sensors</span></div></aside><div class="lg:pl-64"><main class="w-full pt-16 bg-surface-base min-h-screen"><div class="flex flex-col w-full">
+<!-- Interactive Toast / Feedback Anchor -->
+<div class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-space-sm bg-surface-elevated text-text-primary px-space-md py-space-sm rounded-lg shadow-2xl border-0" id="statusToast">
+<span class="material-symbols-outlined text-text-primary text-base">check_circle</span>
+<span class="font-label-sm text-label-sm tracking-wide" id="toastMessage">Dossier exported to encrypted repository</span>
+</div>
+<div class="w-full px-margin-tablet lg:px-margin py-space-xl flex flex-col gap-space-2xl">
+<!-- PAGE HEADER BAR -->
+<section class="flex flex-col xl:flex-row items-start xl:items-end justify-between gap-space-lg">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="px-space-sm py-0.5 bg-surface-container-high text-text-primary font-caption text-caption uppercase tracking-widest rounded">
+            LONGITUDINAL TELEMETRY // 12-WEEK MESOCYCLE
+          </span>
+<span class="font-caption text-caption text-text-muted uppercase tracking-wider flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-text-primary inline-block"></span>
+            NODE: ATH-SYN-092
+          </span>
+</div>
+<h1 class="font-headline-lg text-headline-lg uppercase text-text-primary tracking-tight">
+          Progress &amp; Biomarkers
+        </h1>
+<p class="font-body-sm text-body-sm text-text-muted max-w-2xl">
+          Clinical-grade athletic progress telemetry, DEXA correlation logs, compound strength velocity, and biomechanical mesocycle tracking.
+        </p>
+</div>
+<!-- Header Controls & Actions -->
+<div class="flex flex-wrap items-center gap-space-sm w-full xl:w-auto">
+<!-- Timeframe Selectors -->
+<div class="bg-surface-canvas p-1 rounded-lg flex items-center gap-0.5 shadow-sm">
+<button class="timeframe-btn px-space-sm py-1 font-label-sm text-label-sm uppercase tracking-wider text-text-muted hover:text-text-primary rounded transition-all" data-tf="4W" type="button">4W</button>
+<button class="timeframe-btn px-space-sm py-1 font-label-sm text-label-sm uppercase tracking-wider bg-surface-container-high text-text-primary rounded transition-all" data-tf="12W" type="button">12W [Active]</button>
+<button class="timeframe-btn px-space-sm py-1 font-label-sm text-label-sm uppercase tracking-wider text-text-muted hover:text-text-primary rounded transition-all" data-tf="6M" type="button">6M</button>
+<button class="timeframe-btn px-space-sm py-1 font-label-sm text-label-sm uppercase tracking-wider text-text-muted hover:text-text-primary rounded transition-all" data-tf="1Y" type="button">1Y</button>
+<button class="timeframe-btn px-space-sm py-1 font-label-sm text-label-sm uppercase tracking-wider text-text-muted hover:text-text-primary rounded transition-all" data-tf="ALL" type="button">ALL</button>
+</div>
+<!-- Export Dossier Secondary Button -->
+<button class="flex items-center gap-space-xs bg-surface-card hover:bg-surface-container-high text-text-primary px-space-md h-10 rounded-lg transition-all shadow-sm" id="exportDossierBtn" type="button">
+<span class="material-symbols-outlined text-base">download</span>
+<span class="font-label-sm text-label-sm tracking-wider uppercase">Export Biometric Dossier</span>
+</button>
+<!-- Log Measurements Primary CTA Button -->
+<button class="flex items-center gap-space-xs bg-text-primary hover:bg-white text-text-inverse px-space-md h-10 rounded-lg transition-transform active:scale-95 shadow-md" id="openLogModalBtn" type="button">
+<span class="material-symbols-outlined text-base font-bold">add</span>
+<span class="font-label-md text-label-md uppercase tracking-wider">Log New Measurements</span>
+</button>
+</div>
+</section>
+<!-- TOP KPI SUMMARY GRID (4 CARDS) -->
+<section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- KPI 1: Body Mass -->
+<div class="bg-surface-card p-space-lg rounded-xl flex flex-col justify-between hover:-translate-y-1 transition-transform duration-200 shadow-md group">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-caption text-caption uppercase text-text-muted tracking-widest">Gross Body Mass</span>
+<div class="flex items-baseline gap-space-xs mt-space-2xs">
+<span class="font-headline-lg text-headline-lg text-text-primary tracking-tight font-bold">82.4</span>
+<span class="font-label-md text-label-md uppercase text-text-muted">KG</span>
+</div>
+</div>
+<span class="px-space-xs py-0.5 bg-surface-canvas text-text-primary font-caption text-caption uppercase tracking-wider rounded">
+            -3.2 KG
+          </span>
+</div>
+<div class="py-space-md">
+<!-- Sparkline SVG -->
+<svg class="w-full h-12 overflow-visible" viewbox="0 0 200 40">
+<polyline fill="none" points="0,15 200,15" stroke="#4A4A4A" stroke-dasharray="3,3" stroke-width="1.5"></polyline>
+<polyline fill="none" points="0,32 30,28 60,30 90,22 120,24 150,16 180,18 200,10" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></polyline>
+<circle cx="200" cy="10" fill="#FFFFFF" r="3.5"></circle>
+</svg>
+</div>
+<div class="pt-space-xs flex items-center justify-between font-caption text-caption text-text-muted">
+<span>Target: 85.0 kg Lean Mass</span>
+<span class="text-text-primary font-label-sm">Mesocycle W08</span>
+</div>
+</div>
+<!-- KPI 2: Estimated Body Fat -->
+<div class="bg-surface-card p-space-lg rounded-xl flex flex-col justify-between hover:-translate-y-1 transition-transform duration-200 shadow-md group">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-caption text-caption uppercase text-text-muted tracking-widest">Est. Body Fat (DEXA)</span>
+<div class="flex items-baseline gap-space-xs mt-space-2xs">
+<span class="font-headline-lg text-headline-lg text-text-primary tracking-tight font-bold">11.8</span>
+<span class="font-label-md text-label-md uppercase text-text-muted">%</span>
+</div>
+</div>
+<span class="px-space-xs py-0.5 bg-surface-canvas text-text-primary font-caption text-caption uppercase tracking-wider rounded">
+            -1.4% DELTA
+          </span>
+</div>
+<div class="py-space-md">
+<div class="flex items-center justify-between text-caption font-caption text-text-muted mb-1.5">
+<span>CALIPER + 3-POINT CHECK</span>
+<span class="text-text-primary">OPTIMAL</span>
+</div>
+<div class="w-full bg-surface-canvas h-2 rounded-full overflow-hidden flex">
+<div class="bg-text-primary h-full rounded-full" style="width: 58%;"></div>
+</div>
+</div>
+<div class="pt-space-xs flex items-center justify-between font-caption text-caption text-text-muted">
+<span>Standard Deviation: ±0.3%</span>
+<span class="text-text-primary uppercase font-label-sm">Tier 1 Athletic</span>
+</div>
+</div>
+<!-- KPI 3: Compound Strength Index -->
+<div class="bg-surface-card p-space-lg rounded-xl flex flex-col justify-between hover:-translate-y-1 transition-transform duration-200 shadow-md group">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-caption text-caption uppercase text-text-muted tracking-widest">Compound Strength Index</span>
+<div class="flex items-baseline gap-space-xs mt-space-2xs">
+<span class="font-headline-lg text-headline-lg text-text-primary tracking-tight font-bold">1,240</span>
+<span class="font-label-md text-label-md uppercase text-text-muted">KG</span>
+</div>
+</div>
+<span class="px-space-xs py-0.5 bg-surface-canvas text-text-primary font-caption text-caption uppercase tracking-wider rounded">
+            +8.5% VEL
+          </span>
+</div>
+<div class="py-space-md">
+<div class="flex items-center justify-between text-caption font-caption text-text-muted mb-1.5">
+<span>WILKS TELEMETRY</span>
+<span class="text-text-primary font-label-sm">412.0 PTS</span>
+</div>
+<div class="grid grid-cols-7 gap-1 h-2">
+<div class="bg-text-primary rounded-xs h-full"></div>
+<div class="bg-text-primary rounded-xs h-full"></div>
+<div class="bg-text-primary rounded-xs h-full"></div>
+<div class="bg-text-primary rounded-xs h-full"></div>
+<div class="bg-text-primary rounded-xs h-full"></div>
+<div class="bg-text-primary rounded-xs h-full"></div>
+<div class="bg-surface-container-high rounded-xs h-full"></div>
+</div>
+</div>
+<div class="pt-space-xs flex items-center justify-between font-caption text-caption text-text-muted">
+<span>Big 4 Aggregate 1RM</span>
+<span class="text-text-primary font-label-sm">+98 KG TOTAL</span>
+</div>
+</div>
+<!-- KPI 4: Sleep & Recovery Consistency -->
+<div class="bg-surface-card p-space-lg rounded-xl flex flex-col justify-between hover:-translate-y-1 transition-transform duration-200 shadow-md group">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-caption text-caption uppercase text-text-muted tracking-widest">Recovery &amp; Sleep Score</span>
+<div class="flex items-baseline gap-space-xs mt-space-2xs">
+<span class="font-headline-lg text-headline-lg text-text-primary tracking-tight font-bold">92.4</span>
+<span class="font-label-md text-label-md uppercase text-text-muted">%</span>
+</div>
+</div>
+<span class="px-space-xs py-0.5 bg-surface-canvas text-text-primary font-caption text-caption uppercase tracking-wider rounded">
+            +3.8%
+          </span>
+</div>
+<div class="py-space-md">
+<div class="flex items-center justify-between text-caption font-caption text-text-muted mb-1.5">
+<span>7-DAY HRV BASELINE</span>
+<span class="text-text-primary font-label-sm">78 MS</span>
+</div>
+<div class="w-full bg-surface-canvas h-2 rounded-full overflow-hidden">
+<div class="bg-text-primary h-full rounded-full" style="width: 92.4%;"></div>
+</div>
+</div>
+<div class="pt-space-xs flex items-center justify-between font-caption text-caption text-text-muted">
+<span>Avg Duration: 7h 48m</span>
+<span class="text-text-primary font-label-sm">High Parasympathetic</span>
+</div>
+</div>
+</section>
+<!-- MAIN ANALYTICS SECTION (2-COLUMN 8:4) -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg items-start">
+<!-- LEFT COLUMN (SPAN 8) -->
+<div class="xl:col-span-8 flex flex-col gap-space-lg">
+<!-- 1. Interactive Multi-Metric Chart Card -->
+<section class="bg-surface-card p-space-lg rounded-xl shadow-md flex flex-col gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pb-space-sm">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-text-primary text-lg">stacked_line_chart</span>
+<h2 class="font-headline-sm text-headline-sm uppercase text-text-primary tracking-tight">
+                  Strength Progression &amp; Volume Load
+                </h2>
+</div>
+<span class="font-caption text-caption uppercase text-text-muted tracking-wider">
+                Normalised Working Set 1RM Progression // kg Over Time
+              </span>
+</div>
+<!-- Series Selection Pills -->
+<div class="flex flex-wrap items-center gap-space-xs">
+<button class="chart-pill px-space-xs py-1 rounded bg-text-primary text-text-inverse font-caption text-caption uppercase tracking-wider transition-all" data-series="bench" type="button">
+                Bench Press
+              </button>
+<button class="chart-pill px-space-xs py-1 rounded bg-surface-canvas text-text-muted hover:text-text-primary font-caption text-caption uppercase tracking-wider transition-all" data-series="squat" type="button">
+                Squat
+              </button>
+<button class="chart-pill px-space-xs py-1 rounded bg-surface-canvas text-text-muted hover:text-text-primary font-caption text-caption uppercase tracking-wider transition-all" data-series="incline" type="button">
+                Incline DB
+              </button>
+<button class="chart-pill px-space-xs py-1 rounded bg-surface-canvas text-text-muted hover:text-text-primary font-caption text-caption uppercase tracking-wider transition-all" data-series="deadlift" type="button">
+                Deadlift
+              </button>
+</div>
+</div>
+<!-- Main SVG Line Chart Container -->
+<div class="relative w-full bg-surface-canvas p-space-md rounded-lg overflow-hidden">
+<!-- Overlay PR Flag Callout -->
+<div class="absolute top-8 right-16 hidden sm:flex items-center gap-space-2xs bg-surface-elevated px-space-sm py-1 rounded shadow-lg text-text-primary font-caption text-caption uppercase tracking-wider">
+<span class="material-symbols-outlined text-xs">star</span>
+<span>W07 Overload Milestone: +2.5 KG PR</span>
+</div>
+<svg class="w-full h-64 overflow-visible" id="telemetryChart" viewbox="0 0 760 220">
+<defs>
+<lineargradient id="areaGradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.16"></stop>
+<stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.00"></stop>
+</lineargradient>
+</defs>
+<!-- Grid Horizontal Reference Lines -->
+<line stroke="#242424" stroke-dasharray="4,4" stroke-width="1" x1="40" x2="740" y1="20" y2="20"></line>
+<text fill="#777777" font-family="Inter" font-size="10" text-anchor="middle" x="15" y="24">130</text>
+<line stroke="#242424" stroke-dasharray="4,4" stroke-width="1" x1="40" x2="740" y1="70" y2="70"></line>
+<text fill="#777777" font-family="Inter" font-size="10" text-anchor="middle" x="15" y="74">120</text>
+<line stroke="#242424" stroke-dasharray="4,4" stroke-width="1" x1="40" x2="740" y1="120" y2="120"></line>
+<text fill="#777777" font-family="Inter" font-size="10" text-anchor="middle" x="15" y="124">110</text>
+<line stroke="#242424" stroke-dasharray="4,4" stroke-width="1" x1="40" x2="740" y1="170" y2="170"></line>
+<text fill="#777777" font-family="Inter" font-size="10" text-anchor="middle" x="15" y="174">100</text>
+<!-- Area Fill Under Path -->
+<polygon fill="url(#areaGradient)" points="50,170 50,165 140,152 230,140 320,132 410,118 500,102 590,75 680,68 730,55 730,170"></polygon>
+<!-- Main Solid Line (Active Bench Series) -->
+<polyline fill="none" id="chartPath" points="50,165 140,152 230,140 320,132 410,118 500,102 590,75 680,68 730,55" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></polyline>
+<!-- Secondary Comparison Velocity Line (Dashed) -->
+<polyline fill="none" points="50,172 140,165 230,155 320,148 410,138 500,126 590,110 680,102 730,92" stroke="#777777" stroke-dasharray="5,5" stroke-linecap="round" stroke-width="1.8"></polyline>
+<!-- Nodes / Dots -->
+<circle cx="50" cy="165" fill="#000000" r="4" stroke="#FFFFFF" stroke-width="2"></circle>
+<circle cx="140" cy="152" fill="#000000" r="4" stroke="#FFFFFF" stroke-width="2"></circle>
+<circle cx="230" cy="140" fill="#000000" r="4" stroke="#FFFFFF" stroke-width="2"></circle>
+<circle cx="320" cy="132" fill="#000000" r="4" stroke="#FFFFFF" stroke-width="2"></circle>
+<circle cx="410" cy="118" fill="#000000" r="4" stroke="#FFFFFF" stroke-width="2"></circle>
+<circle cx="500" cy="102" fill="#000000" r="4" stroke="#FFFFFF" stroke-width="2"></circle>
+<circle cx="590" cy="75" fill="#FFFFFF" r="5" stroke="#000000" stroke-width="2"></circle>
+<circle cx="680" cy="68" fill="#000000" r="4" stroke="#FFFFFF" stroke-width="2"></circle>
+<circle cx="730" cy="55" fill="#FFFFFF" r="5" stroke="#000000" stroke-width="2"></circle>
+<!-- X-Axis Labels -->
+<text fill="#777777" font-family="Inter" font-size="11" text-anchor="middle" x="50" y="200">W01</text>
+<text fill="#777777" font-family="Inter" font-size="11" text-anchor="middle" x="140" y="200">W02</text>
+<text fill="#777777" font-family="Inter" font-size="11" text-anchor="middle" x="230" y="200">W03</text>
+<text fill="#777777" font-family="Inter" font-size="11" text-anchor="middle" x="320" y="200">W04</text>
+<text fill="#777777" font-family="Inter" font-size="11" text-anchor="middle" x="410" y="200">W05</text>
+<text fill="#777777" font-family="Inter" font-size="11" text-anchor="middle" x="500" y="200">W06</text>
+<text fill="#FFFFFF" font-family="Inter" font-size="11" font-weight="600" text-anchor="middle" x="590" y="200">W07 (PR)</text>
+<text fill="#777777" font-family="Inter" font-size="11" text-anchor="middle" x="680" y="200">W08</text>
+<text fill="#FFFFFF" font-family="Inter" font-size="11" font-weight="600" text-anchor="middle" x="730" y="200">LATEST</text>
+</svg>
+</div>
+<!-- Chart Footer Telemetry Breakdown -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-sm pt-space-xs">
+<div class="bg-surface-canvas p-space-sm rounded-lg flex flex-col">
+<span class="font-caption text-caption uppercase text-text-muted">Estimated 1RM</span>
+<span class="font-headline-sm text-headline-sm text-text-primary mt-1">127.5 KG</span>
+<span class="font-caption text-caption text-text-muted mt-0.5">+12.5 kg total cycle</span>
+</div>
+<div class="bg-surface-canvas p-space-sm rounded-lg flex flex-col">
+<span class="font-caption text-caption uppercase text-text-muted">RPE Normalization</span>
+<span class="font-headline-sm text-headline-sm text-text-primary mt-1">8.5 RPE</span>
+<span class="font-caption text-caption text-text-muted mt-0.5">1-2 Reps in Reserve</span>
+</div>
+<div class="bg-surface-canvas p-space-sm rounded-lg flex flex-col">
+<span class="font-caption text-caption uppercase text-text-muted">Total Tonnage</span>
+<span class="font-headline-sm text-headline-sm text-text-primary mt-1">21,450 KG</span>
+<span class="font-caption text-caption text-text-muted mt-0.5">Rolling 7 days</span>
+</div>
+<div class="bg-surface-canvas p-space-sm rounded-lg flex flex-col">
+<span class="font-caption text-caption uppercase text-text-muted">Bar Velocity</span>
+<span class="font-headline-sm text-headline-sm text-text-primary mt-1">0.42 m/s</span>
+<span class="font-caption text-caption text-text-muted mt-0.5">Concentric peak</span>
+</div>
+</div>
+</section>
+<!-- 2. Body Composition & Anthropometry Matrix -->
+<section class="bg-surface-card p-space-lg rounded-xl shadow-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-text-primary text-lg">straighten</span>
+<h2 class="font-headline-sm text-headline-sm uppercase text-text-primary tracking-tight">
+                  Body Composition &amp; Anthropometry Matrix
+                </h2>
+</div>
+<span class="font-caption text-caption uppercase text-text-muted tracking-wider">
+                Precision caliper &amp; laser circumferential scan verifications
+              </span>
+</div>
+<button class="text-text-muted hover:text-text-primary flex items-center gap-1 font-caption text-caption uppercase tracking-wider" id="addMatrixRowBtn" type="button">
+<span class="material-symbols-outlined text-base">tune</span>
+<span>Re-calibrate</span>
+</button>
+</div>
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left font-body-sm text-body-sm">
+<thead>
+<tr class="bg-surface-canvas text-text-muted font-caption text-caption uppercase tracking-wider">
+<th class="py-space-sm px-space-md font-semibold">Anatomical Zone</th>
+<th class="py-space-sm px-space-md font-semibold">Baseline (W01)</th>
+<th class="py-space-sm px-space-md font-semibold">Current (W08)</th>
+<th class="py-space-sm px-space-md font-semibold">Longitudinal Delta</th>
+<th class="py-space-sm px-space-md font-semibold">Verification Audit</th>
+</tr>
+</thead>
+<tbody class="text-text-primary divide-y-0">
+<tr class="bg-surface-elevated/40 hover:bg-surface-elevated transition-colors">
+<td class="py-space-sm px-space-md font-semibold flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 bg-text-primary rounded-full"></span>
+                    Chest / Pectorals
+                  </td>
+<td class="py-space-sm px-space-md text-text-muted">108.0 cm</td>
+<td class="py-space-sm px-space-md font-semibold text-text-primary">111.5 cm</td>
+<td class="py-space-sm px-space-md font-semibold text-text-primary">+3.5 cm</td>
+<td class="py-space-sm px-space-md font-caption text-caption text-text-muted uppercase">Verified 24H Ago // Coach Marcus</td>
+</tr>
+<tr class="bg-surface-card hover:bg-surface-elevated transition-colors">
+<td class="py-space-sm px-space-md font-semibold flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 bg-text-primary rounded-full"></span>
+                    Arms / Biceps (Flexed)
+                  </td>
+<td class="py-space-sm px-space-md text-text-muted">38.2 cm</td>
+<td class="py-space-sm px-space-md font-semibold text-text-primary">40.1 cm</td>
+<td class="py-space-sm px-space-md font-semibold text-text-primary">+1.9 cm</td>
+<td class="py-space-sm px-space-md font-caption text-caption text-text-muted uppercase">Verified 24H Ago // Optical Scan</td>
+</tr>
+<tr class="bg-surface-elevated/40 hover:bg-surface-elevated transition-colors">
+<td class="py-space-sm px-space-md font-semibold flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 bg-text-primary rounded-full"></span>
+                    Waist (Umbilical)
+                  </td>
+<td class="py-space-sm px-space-md text-text-muted">84.5 cm</td>
+<td class="py-space-sm px-space-md font-semibold text-text-primary">81.0 cm</td>
+<td class="py-space-sm px-space-md font-semibold text-text-primary">-3.5 cm</td>
+<td class="py-space-sm px-space-md font-caption text-caption text-text-muted uppercase">Verified 48H Ago // Tape Manual</td>
+</tr>
+<tr class="bg-surface-card hover:bg-surface-elevated transition-colors">
+<td class="py-space-sm px-space-md font-semibold flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 bg-text-primary rounded-full"></span>
+                    Thighs / Quadriceps
+                  </td>
+<td class="py-space-sm px-space-md text-text-muted">61.0 cm</td>
+<td class="py-space-sm px-space-md font-semibold text-text-primary">63.2 cm</td>
+<td class="py-space-sm px-space-md font-semibold text-text-primary">+2.2 cm</td>
+<td class="py-space-sm px-space-md font-caption text-caption text-text-muted uppercase">Verified 48H Ago // Optical Scan</td>
+</tr>
+<tr class="bg-surface-elevated/40 hover:bg-surface-elevated transition-colors">
+<td class="py-space-sm px-space-md font-semibold flex items-center gap-space-xs">
+<span class="w-1.5 h-1.5 bg-text-primary rounded-full"></span>
+                    Neck / Cervical Girth
+                  </td>
+<td class="py-space-sm px-space-md text-text-muted">40.5 cm</td>
+<td class="py-space-sm px-space-md font-semibold text-text-primary">41.0 cm</td>
+<td class="py-space-sm px-space-md font-semibold text-text-primary">+0.5 cm</td>
+<td class="py-space-sm px-space-md font-caption text-caption text-text-muted uppercase">Verified 5D Ago // Baseline Fixed</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- 3. Personal Records (PR) Wall of Fame -->
+<section class="bg-surface-card p-space-lg rounded-xl shadow-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-text-primary text-lg">military_tech</span>
+<h2 class="font-headline-sm text-headline-sm uppercase text-text-primary tracking-tight">
+                  Personal Records // Wall of Fame
+                </h2>
+</div>
+<span class="font-caption text-caption uppercase text-text-muted tracking-wider">
+                Official coach-verified maximal load achievements during current mesocycle
+              </span>
+</div>
+<span class="px-space-sm py-0.5 bg-surface-canvas font-caption text-caption uppercase tracking-wider text-text-muted rounded">
+              4 Validated Badges
+            </span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-sm">
+<!-- Badge 1 -->
+<div class="bg-surface-canvas p-space-md rounded-lg flex flex-col justify-between hover:bg-surface-elevated transition-colors shadow-sm">
+<div>
+<div class="flex items-center justify-between text-text-muted font-caption text-caption mb-space-2xs">
+<span>CHEST / DELTS</span>
+<span class="text-text-primary">VERIFIED</span>
+</div>
+<div class="font-headline-sm text-headline-sm text-text-primary font-bold">85 KG</div>
+<div class="font-label-md text-label-md text-text-muted mt-0.5">× 8 REPS</div>
+<div class="font-body-sm text-body-sm text-text-primary mt-space-xs">Incline DB Press</div>
+</div>
+<div class="mt-space-md pt-space-xs font-caption text-caption text-text-muted flex items-center justify-between">
+<span>04 OCT 2024</span>
+<span class="material-symbols-outlined text-sm text-text-primary">verified</span>
+</div>
+</div>
+<!-- Badge 2 -->
+<div class="bg-surface-canvas p-space-md rounded-lg flex flex-col justify-between hover:bg-surface-elevated transition-colors shadow-sm">
+<div>
+<div class="flex items-center justify-between text-text-muted font-caption text-caption mb-space-2xs">
+<span>TRICEPS / CHEST</span>
+<span class="text-text-primary">VERIFIED</span>
+</div>
+<div class="font-headline-sm text-headline-sm text-text-primary font-bold">+20 KG</div>
+<div class="font-label-md text-label-md text-text-muted mt-0.5">× 10 REPS</div>
+<div class="font-body-sm text-body-sm text-text-primary mt-space-xs">Weighted Parallel Dip</div>
+</div>
+<div class="mt-space-md pt-space-xs font-caption text-caption text-text-muted flex items-center justify-between">
+<span>12 OCT 2024</span>
+<span class="material-symbols-outlined text-sm text-text-primary">verified</span>
+</div>
+</div>
+<!-- Badge 3 -->
+<div class="bg-surface-canvas p-space-md rounded-lg flex flex-col justify-between hover:bg-surface-elevated transition-colors shadow-sm">
+<div>
+<div class="flex items-center justify-between text-text-muted font-caption text-caption mb-space-2xs">
+<span>POSTERIOR CHAIN</span>
+<span class="text-text-primary">VERIFIED</span>
+</div>
+<div class="font-headline-sm text-headline-sm text-text-primary font-bold">95 KG</div>
+<div class="font-label-md text-label-md text-text-muted mt-0.5">× 6 REPS</div>
+<div class="font-body-sm text-body-sm text-text-primary mt-space-xs">Barbell Pendlay Row</div>
+</div>
+<div class="mt-space-md pt-space-xs font-caption text-caption text-text-muted flex items-center justify-between">
+<span>18 OCT 2024</span>
+<span class="material-symbols-outlined text-sm text-text-primary">verified</span>
+</div>
+</div>
+<!-- Badge 4 -->
+<div class="bg-surface-canvas p-space-md rounded-lg flex flex-col justify-between hover:bg-surface-elevated transition-colors shadow-sm">
+<div>
+<div class="flex items-center justify-between text-text-muted font-caption text-caption mb-space-2xs">
+<span>ANTERIOR DELTOID</span>
+<span class="text-text-primary">VERIFIED</span>
+</div>
+<div class="font-headline-sm text-headline-sm text-text-primary font-bold">65 KG</div>
+<div class="font-label-md text-label-md text-text-muted mt-0.5">× 5 REPS</div>
+<div class="font-body-sm text-body-sm text-text-primary mt-space-xs">Overhead Strict Press</div>
+</div>
+<div class="mt-space-md pt-space-xs font-caption text-caption text-text-muted flex items-center justify-between">
+<span>25 OCT 2024</span>
+<span class="material-symbols-outlined text-sm text-text-primary">verified</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- RIGHT COLUMN (SPAN 4) -->
+<div class="xl:col-span-4 flex flex-col gap-space-lg">
+<!-- 1. Visual Transformation & Progress Photos Vault -->
+<section class="bg-surface-card p-space-lg rounded-xl shadow-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-text-primary text-base">photo_camera</span>
+<h3 class="font-headline-sm text-headline-sm uppercase text-text-primary tracking-tight">
+                  Visual Telemetry Vault
+                </h3>
+</div>
+<span class="font-caption text-caption uppercase text-text-muted tracking-wider">
+                Standardized Orthogonal Stances
+              </span>
+</div>
+<div class="flex items-center gap-1 bg-surface-canvas px-space-xs py-1 rounded text-text-muted font-caption text-caption uppercase tracking-wider">
+<span class="material-symbols-outlined text-xs text-text-primary">lock</span>
+<span>Encrypted</span>
+</div>
+</div>
+<!-- Comparison Slider Preview Module -->
+<div class="bg-surface-canvas p-space-sm rounded-lg flex flex-col gap-space-sm">
+<div class="flex items-center justify-between font-caption text-caption uppercase text-text-muted">
+<span>Week 01 vs Week 08 Check-In</span>
+<span class="text-text-primary font-label-sm">Side-by-Side</span>
+</div>
+<!-- Image Comparison Mockup -->
+<div class="relative w-full h-56 rounded-lg overflow-hidden bg-surface-base">
+<!-- Background Image: Week 08 (Latest) -->
+<img class="absolute inset-0 w-full h-full object-cover grayscale" data-alt="Muscular male athletic physique frontal view in dramatic high-contrast studio monochrome lighting with deep black shadows and defined muscular tone." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOmaFj5IWohCyNISquYglXeEFPH18z2C3U2HTI8QH2L-0m2pjlw9mZy3NOtnVVrFNRXuMJpjntBkzd1lOPu7yo1hMV-SiDZ0n680EzbYJbG7WQ2fCaA3mzsi4oFAt48ibR4SHC538URExA21keH1pHTa1LT4mfQWqar101xbXtw4UyXx16IFKMMp3nL2sxDxUtTd2Rg4Dxk0wlyMHP1mp_KaS3tO28EtDI1R-XiTZQWWNFIhNPT1RZ"/>
+<!-- Left Split Reveal: Week 01 (Baseline) -->
+<div class="absolute inset-0 overflow-hidden" id="sliderReveal" style="width: 50%;">
+<img class="absolute inset-0 w-full h-full object-cover grayscale brightness-90 max-w-none" data-alt="Male athlete early mesocycle physical physique test in stark black and white studio lighting standing facing forward." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAL5AMVzvLmWjAkMKcQSmcvMv3q3sI1Tuj0wY9YIhtZmz74SqqCOeD3y-4PLrAEtSfxVP_OuMpbTXM_XWeaGDrwMozCjyC4-LnahxyzVH1ViyKRcHIRUCfGbSHNuzbru5K9lAHAscT-fYObV_Y5M-wFh_z615aKkuZxLGme17Ih8-euEoMyM1gfmqLwbjJghvcOIyS9iEVSgXg_BfXoOez6CBVqzAOhe9tdvKWveLpgomTw0xyl_jm8" style="width: 320px;"/>
+<div class="absolute bottom-2 left-2 px-space-xs py-0.5 bg-surface-base/90 rounded font-caption text-caption text-text-primary uppercase tracking-wider">
+                  W01 Base
+                </div>
+</div>
+<!-- Right Split Badge -->
+<div class="absolute bottom-2 right-2 px-space-xs py-0.5 bg-surface-base/90 rounded font-caption text-caption text-text-primary uppercase tracking-wider">
+                W08 Current
+              </div>
+<!-- Interactive Drag Handle Line -->
+<div class="absolute top-0 bottom-0 w-0.5 bg-text-primary cursor-ew-resize flex items-center justify-center pointer-events-none" id="sliderHandle" style="left: 50%;">
+<div class="w-6 h-6 rounded-full bg-text-primary text-text-inverse flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-xs font-bold">unfold_more</span>
+</div>
+</div>
+<!-- Range Input for Slider Drag Micro-interaction -->
+<input class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-20" id="comparisonRange" max="100" min="0" type="range" value="50"/>
+</div>
+<!-- Orthogonal Thumbnail Triplets -->
+<div class="grid grid-cols-3 gap-space-xs pt-space-xs">
+<div class="flex flex-col gap-1 cursor-pointer group">
+<div class="h-20 w-full rounded overflow-hidden bg-surface-base">
+<img class="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform" data-alt="Close-up monochrome detail of athlete upper torso and abs in studio light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuUoL9oGhBpZX37jpyPCnlRcVoHFl3H_HXObTVqiksc3vJ_Be0FH8ilWw3DWaihwA93lJC9NGqWgB9ctmEnDeW3KqU3HeVFLAEmjN3GuWZ5fDINVtL1Kc_ijesS6IOeZIZDIGfvAejJPHi7t-Tnjn_FNe57T3kQG0Kx27Z_FUUwaJ4KxSMhIZ8XkHM3cmbVBBEO7v0GHu4oENaRuVVwGA2uOFHYKrxyo0T-evue_3dbzwioYo8AROn"/>
+</div>
+<span class="font-caption text-caption uppercase text-text-muted text-center">Anterior</span>
+</div>
+<div class="flex flex-col gap-1 cursor-pointer group">
+<div class="h-20 w-full rounded overflow-hidden bg-surface-base">
+<img class="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform" data-alt="Monochrome athletic physique lateral profile view showing shoulder deltoid and posture alignment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDri7nVyR9hNTbQVZCuQwoh7wMNdCr7soXATXFKeIaCb8dlvY8OgiYsBr6Gc3-UTZzfBFJcyVsv8j-_NvTRZFfCAReuCe68HCJtEUB9XPZGkvsMHZyHtoV325PxRLH4a8zZKNnXj1q0IprQybW3zjHzaj0u9We1jgoch7pCPvmb-7VwT9IprSfkOMVoeG73OS_ZkuflskGAn-bUsBI5o-exuAYAcN7FHh5QKixqYne8EbwiSDGuX-p"/>
+</div>
+<span class="font-caption text-caption uppercase text-text-muted text-center">Lateral</span>
+</div>
+<div class="flex flex-col gap-1 cursor-pointer group">
+<div class="h-20 w-full rounded overflow-hidden bg-surface-base">
+<img class="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform" data-alt="Monochrome muscular back lat spread posture of pro athlete with sharp shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDI1sw96aYGwfedjcSM1HfyQZRk0OKuSXuz0vvWGD6JsMU8PTQRX4yATgg6rQIr0Q6r0HpIBm1D6XvbIKG_tOPzvlCvpSrns2mgl_WdpOWgM-q_ZqofiXccUtuuM1Pf4juiCEpMgRXul3Z7MQBih3TYCcXCc2FCHfAnIjmKcGVHfK2T6SuEduonKgvQNOMfxRms4UDwgWWA79WPazppz3N4rwUPGfQrABFO2QsXjC0s5R5zmR11sVwg"/>
+</div>
+<span class="font-caption text-caption uppercase text-text-muted text-center">Posterior</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 2. Adherence Radar / Microcycle Consistency -->
+<section class="bg-surface-card p-space-lg rounded-xl shadow-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-text-primary text-base">radar</span>
+<h3 class="font-headline-sm text-headline-sm uppercase text-text-primary tracking-tight">
+                  Microcycle Adherence
+                </h3>
+</div>
+<span class="font-caption text-caption uppercase text-text-muted tracking-wider">
+                Current Week 08 Compliance Vector
+              </span>
+</div>
+<span class="px-space-xs py-0.5 bg-surface-canvas text-text-primary font-label-md text-label-md font-bold rounded">
+              94.5% AGG
+            </span>
+</div>
+<!-- Microcycle Pillar Breakdown -->
+<div class="flex flex-col gap-space-sm">
+<!-- Pillar 1: Workouts Completed -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center font-caption text-caption">
+<span class="text-text-primary uppercase tracking-wider">Workout Sessions Complete</span>
+<span class="font-semibold text-text-primary">96% (5/5 Sessions)</span>
+</div>
+<div class="w-full bg-surface-canvas h-1.5 rounded-full overflow-hidden">
+<div class="bg-text-primary h-full rounded-full" style="width: 96%;"></div>
+</div>
+</div>
+<!-- Pillar 2: Nutrition & Caloric Macro Targets -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center font-caption text-caption">
+<span class="text-text-primary uppercase tracking-wider">Nutrition &amp; Macro Compliance</span>
+<span class="font-semibold text-text-primary">94% (±35 kcal)</span>
+</div>
+<div class="w-full bg-surface-canvas h-1.5 rounded-full overflow-hidden">
+<div class="bg-text-primary h-full rounded-full" style="width: 94%;"></div>
+</div>
+</div>
+<!-- Pillar 3: Supplement Protocol -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center font-caption text-caption">
+<span class="text-text-primary uppercase tracking-wider">Supplement &amp; Hydration Protocol</span>
+<span class="font-semibold text-text-primary">100% (Perfect)</span>
+</div>
+<div class="w-full bg-surface-canvas h-1.5 rounded-full overflow-hidden">
+<div class="bg-text-primary h-full rounded-full" style="width: 100%;"></div>
+</div>
+</div>
+<!-- Pillar 4: Sleep Hygiene -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center font-caption text-caption">
+<span class="text-text-primary uppercase tracking-wider">Sleep Duration &amp; HRV Target</span>
+<span class="font-semibold text-text-primary">88% (Target 8.0h)</span>
+</div>
+<div class="w-full bg-surface-canvas h-1.5 rounded-full overflow-hidden">
+<div class="bg-text-primary h-full rounded-full" style="width: 88%;"></div>
+</div>
+</div>
+</div>
+<!-- AI Diagnostic Telemetry Digest -->
+<div class="bg-surface-canvas p-space-sm rounded-lg flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-text-primary text-base mt-0.5">psychology</span>
+<p class="font-caption text-caption text-text-muted leading-relaxed">
+<strong class="text-text-primary uppercase">Bio-Engine Insight:</strong> High mechanical output registered with zero acute fatigue spike. Parasympathetic recovery stable for +2.5% volume increase in microcycle 9.
+            </p>
+</div>
+</section>
+<!-- 3. Coach Marcus Vance Review Note & Audio Check-In -->
+<section class="bg-surface-card p-space-lg rounded-xl shadow-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center font-label-md text-label-md text-text-primary font-bold">
+                MV
+              </div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-text-primary leading-tight">Coach Marcus Vance</span>
+<span class="font-caption text-caption uppercase text-text-muted leading-tight">Head of Sports Science</span>
+</div>
+</div>
+<span class="font-caption text-caption uppercase text-text-muted">Today, 08:30</span>
+</div>
+<!-- Audio Voice Memo Check-In Module -->
+<div class="bg-surface-canvas p-space-sm rounded-lg flex items-center gap-space-sm">
+<button class="w-8 h-8 rounded-full bg-text-primary text-text-inverse flex items-center justify-center hover:scale-105 transition-transform" id="voiceMemoBtn" type="button">
+<span class="material-symbols-outlined text-sm" id="voiceMemoIcon">play_arrow</span>
+</button>
+<div class="flex-1 flex flex-col gap-1">
+<div class="flex items-center justify-between font-caption text-caption text-text-muted">
+<span>Audio Debrief (W08 Review)</span>
+<span id="audioTimer">1:24</span>
+</div>
+<!-- Voice Waveform Mockup -->
+<div class="flex items-center gap-1 h-4">
+<div class="w-1 bg-text-primary h-2 rounded-full"></div>
+<div class="w-1 bg-text-primary h-3 rounded-full"></div>
+<div class="w-1 bg-text-primary h-4 rounded-full"></div>
+<div class="w-1 bg-text-primary h-2.5 rounded-full"></div>
+<div class="w-1 bg-text-primary h-1.5 rounded-full"></div>
+<div class="w-1 bg-text-primary h-3.5 rounded-full"></div>
+<div class="w-1 bg-text-primary h-4 rounded-full"></div>
+<div class="w-1 bg-text-primary h-2 rounded-full"></div>
+<div class="w-1 bg-text-primary h-3 rounded-full"></div>
+<div class="w-1 bg-surface-container-high h-2.5 rounded-full"></div>
+<div class="w-1 bg-surface-container-high h-1.5 rounded-full"></div>
+<div class="w-1 bg-surface-container-high h-2 rounded-full"></div>
+<div class="w-1 bg-surface-container-high h-3 rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Note Content Body -->
+<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed bg-surface-canvas p-space-sm rounded-lg">
+            “Hypertrophy phase 2 on track. Scapular stability improved significantly on incline presses. Cleared to increase working sets to 87.5kg next cycle. Keep fluid intake locked at 4.2L minimum on training days.”
+          </p>
+<div class="flex items-center justify-between pt-space-xs font-caption text-caption text-text-muted">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-text-primary">verified</span>
+              Cleared for Microcycle 9
+            </span>
+<button class="text-text-primary hover:underline uppercase tracking-wider font-semibold" id="replyCoachBtn" type="button">
+              Reply To Coach
+            </button>
+</div>
+</section>
+</div>
+</div>
+</div>
+<!-- LOG MEASUREMENTS MODAL DIALOG (SLIDE-OVER / MODAL OVERLAY) -->
+<div class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden items-center justify-center p-space-md" id="logModal">
+<div class="bg-surface-card max-w-lg w-full p-space-lg rounded-xl shadow-2xl flex flex-col gap-space-md border-0">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex flex-col">
+<span class="font-caption text-caption uppercase text-text-muted tracking-widest">Biometric Ingestion Node</span>
+<h3 class="font-headline-sm text-headline-sm uppercase text-text-primary tracking-tight">Log New Measurements</h3>
+</div>
+<button class="text-text-muted hover:text-text-primary p-1" id="closeLogModalBtn" type="button">
+<span class="material-symbols-outlined text-xl">close</span>
+</button>
+</div>
+<form class="flex flex-col gap-space-md" id="measurementForm">
+<div class="grid grid-cols-2 gap-space-sm">
+<div class="flex flex-col gap-1">
+<label class="font-caption text-caption uppercase text-text-muted">Gross Body Mass (KG)</label>
+<input class="h-11 px-space-sm bg-surface-canvas text-text-primary font-body-md text-body-md rounded-lg focus:outline-none focus:ring-2 focus:ring-text-primary" required="" step="0.1" type="number" value="82.4"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-caption text-caption uppercase text-text-muted">Caliper / Body Fat %</label>
+<input class="h-11 px-space-sm bg-surface-canvas text-text-primary font-body-md text-body-md rounded-lg focus:outline-none focus:ring-2 focus:ring-text-primary" required="" step="0.1" type="number" value="11.8"/>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-space-sm">
+<div class="flex flex-col gap-1">
+<label class="font-caption text-caption uppercase text-text-muted">Chest (CM)</label>
+<input class="h-11 px-space-sm bg-surface-canvas text-text-primary font-body-md text-body-md rounded-lg focus:outline-none focus:ring-2 focus:ring-text-primary" step="0.1" type="number" value="111.5"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-caption text-caption uppercase text-text-muted">Waist (CM)</label>
+<input class="h-11 px-space-sm bg-surface-canvas text-text-primary font-body-md text-body-md rounded-lg focus:outline-none focus:ring-2 focus:ring-text-primary" step="0.1" type="number" value="81.0"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-caption text-caption uppercase text-text-muted">Arms (CM)</label>
+<input class="h-11 px-space-sm bg-surface-canvas text-text-primary font-body-md text-body-md rounded-lg focus:outline-none focus:ring-2 focus:ring-text-primary" step="0.1" type="number" value="40.1"/>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-caption text-caption uppercase text-text-muted">Validation Method &amp; Notes</label>
+<input class="h-11 px-space-sm bg-surface-canvas text-text-primary font-body-md text-body-md rounded-lg focus:outline-none focus:ring-2 focus:ring-text-primary" placeholder="e.g., Caliper 3-point + InBody laser scan verified" type="text" value="Morning fasted post-void baseline check"/>
+</div>
+<div class="flex items-center justify-end gap-space-sm pt-space-xs">
+<button class="px-space-md h-10 bg-surface-canvas hover:bg-surface-elevated text-text-muted hover:text-text-primary rounded-lg font-label-sm text-label-sm uppercase tracking-wider" id="cancelModalBtn" type="button">
+            Cancel
+          </button>
+<button class="px-space-lg h-10 bg-text-primary hover:bg-white text-text-inverse rounded-lg font-label-md text-label-md uppercase tracking-wider shadow-md" type="submit">
+            Commit Telemetry
+          </button>
+</div>
+</form>
+</div>
+</div>
+<!-- INLINE JAVASCRIPT FOR DYNAMIC INTERACTIONS -->
+<script>
+    (function() {
+      // Toast notification helper
+      const toast = document.getElementById('statusToast');
+      const toastMessage = document.getElementById('toastMessage');
+
+      function showToast(msg) {
+        if (!toast) return;
+        toastMessage.textContent = msg;
+        toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+        setTimeout(() => {
+          toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+        }, 3200);
+      }
+
+      // Timeframe switcher pills
+      const tfButtons = document.querySelectorAll('.timeframe-btn');
+      tfButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          tfButtons.forEach(b => {
+            b.classList.remove('bg-surface-container-high', 'text-text-primary');
+            b.classList.add('text-text-muted');
+          });
+          btn.classList.add('bg-surface-container-high', 'text-text-primary');
+          btn.classList.remove('text-text-muted');
+          showToast(`Telemetry timeframe updated to: ${btn.getAttribute('data-tf')}`);
+        });
+      });
+
+      // Chart Series Interactive Switcher
+      const chartPills = document.querySelectorAll('.chart-pill');
+      const chartPath = document.getElementById('chartPath');
+      const seriesCoordinates = {
+        bench: "50,165 140,152 230,140 320,132 410,118 500,102 590,75 680,68 730,55",
+        squat: "50,175 140,160 230,145 320,135 410,110 500,90 590,65 680,50 730,35",
+        incline: "50,150 140,145 230,130 320,125 410,115 500,95 590,88 680,80 730,70",
+        deadlift: "50,180 140,170 230,150 320,130 410,105 500,85 590,60 680,45 730,25"
+      };
+
+      chartPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          chartPills.forEach(p => {
+            p.classList.remove('bg-text-primary', 'text-text-inverse');
+            p.classList.add('bg-surface-canvas', 'text-text-muted');
+          });
+          pill.classList.add('bg-text-primary', 'text-text-inverse');
+          pill.classList.remove('bg-surface-canvas', 'text-text-muted');
+
+          const sKey = pill.getAttribute('data-series');
+          if (chartPath && seriesCoordinates[sKey]) {
+            chartPath.setAttribute('points', seriesCoordinates[sKey]);
+          }
+          showToast(`Stream visualizer: ${pill.textContent.trim()} active`);
+        });
+      });
+
+      // Comparison slider logic
+      const compSlider = document.getElementById('comparisonRange');
+      const sliderReveal = document.getElementById('sliderReveal');
+      const sliderHandle = document.getElementById('sliderHandle');
+
+      if (compSlider && sliderReveal && sliderHandle) {
+        compSlider.addEventListener('input', (e) => {
+          const val = e.target.value;
+          sliderReveal.style.width = `${val}%`;
+          sliderHandle.style.left = `${val}%`;
+        });
+      }
+
+      // Log Modal Controls
+      const logModal = document.getElementById('logModal');
+      const openModalBtn = document.getElementById('openLogModalBtn');
+      const closeModalBtn = document.getElementById('closeLogModalBtn');
+      const cancelModalBtn = document.getElementById('cancelModalBtn');
+      const measurementForm = document.getElementById('measurementForm');
+
+      function openModal() {
+        if (logModal) {
+          logModal.classList.remove('hidden');
+          logModal.classList.add('flex');
+        }
+      }
+
+      function closeModal() {
+        if (logModal) {
+          logModal.classList.add('hidden');
+          logModal.classList.remove('flex');
+        }
+      }
+
+      if (openModalBtn) openModalBtn.addEventListener('click', openModal);
+      if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+      if (cancelModalBtn) cancelModalBtn.addEventListener('click', closeModal);
+
+      if (measurementForm) {
+        measurementForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          closeModal();
+          showToast('New biometric payload verified and added to telemetry chain.');
+        });
+      }
+
+      // Export Dossier Trigger
+      const exportBtn = document.getElementById('exportDossierBtn');
+      if (exportBtn) {
+        exportBtn.addEventListener('click', () => {
+          showToast('Generating encrypted PDF/CSV biometric archive...');
+        });
+      }
+
+      // Audio Memo Play Toggle
+      const voiceMemoBtn = document.getElementById('voiceMemoBtn');
+      const voiceMemoIcon = document.getElementById('voiceMemoIcon');
+      let isPlaying = false;
+
+      if (voiceMemoBtn && voiceMemoIcon) {
+        voiceMemoBtn.addEventListener('click', () => {
+          isPlaying = !isPlaying;
+          voiceMemoIcon.textContent = isPlaying ? 'pause' : 'play_arrow';
+          showToast(isPlaying ? 'Playing Coach Vance audio note' : 'Audio debrief paused');
+        });
+      }
+
+      // Matrix Row Calibration / Recalibrate button
+      const addMatrixBtn = document.getElementById('addMatrixRowBtn');
+      if (addMatrixBtn) {
+        addMatrixBtn.addEventListener('click', () => {
+          showToast('Optical sensor calibration ready. Stand in stance frame.');
+        });
+      }
+
+      // Reply Coach Button
+      const replyCoachBtn = document.getElementById('replyCoachBtn');
+      if (replyCoachBtn) {
+        replyCoachBtn.addEventListener('click', () => {
+          showToast('Direct channel opened to Coach Marcus Vance');
+        });
+      }
+    })();
+  </script>
+</div></main></div></body></html>
