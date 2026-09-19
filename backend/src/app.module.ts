@@ -14,7 +14,12 @@ import { AppointmentsModule } from './modules/appointments/appointments.module';
 import { MessagingModule } from './modules/messaging/messaging.module';
 import { SubscriptionsModule } from './modules/subscriptions/subscriptions.module';
 
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+
 @Module({
+  controllers: [AppController],
+  providers: [AppService],
   imports: [
     // Environment configuration
     ConfigModule.forRoot({
@@ -33,7 +38,7 @@ import { SubscriptionsModule } from './modules/subscriptions/subscriptions.modul
         username: configService.get('DB_USERNAME', 'root'),
         password: configService.get('DB_PASSWORD', '1234'),
         database: configService.get('DB_DATABASE', 'athletecare_pro'),
-        entities: [__dirname + '/**/*.entity{.ts,.js}'],
+        autoLoadEntities: true,
         synchronize: configService.get('NODE_ENV') !== 'production',
         logging: configService.get('NODE_ENV') === 'development',
         charset: 'utf8mb4',

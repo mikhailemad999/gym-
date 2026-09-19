@@ -2,6 +2,7 @@ import {
   IsString,
   IsNumber,
   IsOptional,
+  IsBoolean,
   IsArray,
   IsDateString,
   ValidateNested,
@@ -30,8 +31,10 @@ export class LoggedSetDto {
   @IsNumber()
   rpe: number;
 
-  @ApiProperty({ example: true })
-  completed: boolean;
+  @ApiPropertyOptional({ example: true })
+  @IsOptional()
+  @IsBoolean()
+  completed?: boolean;
 }
 
 export class ExerciseLogItemDto {
@@ -106,4 +109,11 @@ export class CreateWorkoutLogDto {
   @ValidateNested({ each: true })
   @Type(() => ExerciseLogItemDto)
   exercisesData?: ExerciseLogItemDto[];
+
+  @ApiPropertyOptional({ type: [ExerciseLogItemDto] })
+  @IsOptional()
+  @IsArray()
+  @ValidateNested({ each: true })
+  @Type(() => ExerciseLogItemDto)
+  exercises?: ExerciseLogItemDto[];
 }

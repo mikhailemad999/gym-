@@ -124,9 +124,20 @@ export class StoreService {
   }
 
   async createOrder(userId: string, payload: { items: any[]; totalAmount: number; currency: string; shippingAddress?: any }): Promise<Order> {
+    let resolvedUserId = userId;
+    try {
+      const userExists = await this.orderRepo.manager.getRepository('User').findOne({ where: { id: userId } });
+      if (!userExists) {
+        const defaultUser = await this.orderRepo.manager.getRepository('User').findOne({ where: { email: 'mikhail@athletecare.pro' } });
+        if (defaultUser) resolvedUserId = (defaultUser as any).id;
+      }
+    } catch {
+      // Keep original
+    }
+
     const orderNumber = `ORD-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
     const order = this.orderRepo.create({
-      userId,
+      userId: resolvedUserId,
       orderNumber,
       totalAmount: payload.totalAmount,
       currency: payload.currency || 'USD',

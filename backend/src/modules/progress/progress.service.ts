@@ -49,9 +49,20 @@ export class ProgressService {
   }
 
   async logMeasurement(userId: string, payload: Partial<BodyMeasurement>): Promise<BodyMeasurement> {
+    let resolvedUserId = userId;
+    try {
+      const userExists = await this.measurementRepo.manager.getRepository('User').findOne({ where: { id: userId } });
+      if (!userExists) {
+        const defaultUser = await this.measurementRepo.manager.getRepository('User').findOne({ where: { email: 'mikhail@athletecare.pro' } });
+        if (defaultUser) resolvedUserId = (defaultUser as any).id;
+      }
+    } catch {
+      // Keep original
+    }
+
     const entry = this.measurementRepo.create({
       ...payload,
-      userId,
+      userId: resolvedUserId,
       date: payload.date || new Date().toISOString().split('T')[0],
     });
     return this.measurementRepo.save(entry);

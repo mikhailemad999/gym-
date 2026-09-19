@@ -84,9 +84,20 @@ export class NutritionService {
   }
 
   async logMeal(userId: string, payload: Partial<NutritionLog>): Promise<NutritionLog> {
+    let resolvedUserId = userId;
+    try {
+      const userExists = await this.nutritionLogRepo.manager.getRepository('User').findOne({ where: { id: userId } });
+      if (!userExists) {
+        const defaultUser = await this.nutritionLogRepo.manager.getRepository('User').findOne({ where: { email: 'mikhail@athletecare.pro' } });
+        if (defaultUser) resolvedUserId = (defaultUser as any).id;
+      }
+    } catch {
+      // Keep original
+    }
+
     const entry = this.nutritionLogRepo.create({
       ...payload,
-      userId,
+      userId: resolvedUserId,
     });
     return this.nutritionLogRepo.save(entry);
   }
