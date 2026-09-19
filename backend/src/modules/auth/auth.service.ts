@@ -36,7 +36,43 @@ export class AuthService implements OnModuleInit {
         });
         console.log('✅ Default admin created: admin@athletecare.pro');
       } catch (error) {
-        console.log('ℹ️ Admin user already exists or could not be created');
+        console.log('ℹ️ Admin user already exists');
+      }
+    }
+
+    // Create default athlete client
+    const athleteEmail = 'mikhail@athletecare.pro';
+    const existingAthlete = await this.usersService.findByEmail(athleteEmail);
+    if (!existingAthlete) {
+      try {
+        await this.usersService.create({
+          email: athleteEmail,
+          password: 'ProAthlete2026!',
+          firstName: 'Mikhail',
+          lastName: 'R.',
+          roleName: 'client',
+        });
+        console.log('✅ Default athlete created: mikhail@athletecare.pro');
+      } catch (error) {
+        console.log('ℹ️ Athlete user already exists');
+      }
+    }
+
+    // Create default coach
+    const coachEmail = 'coach@athletecare.pro';
+    const existingCoach = await this.usersService.findByEmail(coachEmail);
+    if (!existingCoach) {
+      try {
+        await this.usersService.create({
+          email: coachEmail,
+          password: 'ProCoach2026!',
+          firstName: 'Marcus',
+          lastName: 'Vance',
+          roleName: 'coach',
+        });
+        console.log('✅ Default coach created: coach@athletecare.pro');
+      } catch (error) {
+        console.log('ℹ️ Coach user already exists');
       }
     }
   }

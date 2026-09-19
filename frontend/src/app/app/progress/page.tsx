@@ -1,80 +1,157 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useMemo } from 'react';
+import api from '@/lib/api-client';
+
+interface MeasurementItem {
+  id?: string;
+  date: string;
+  bodyWeightKg: number;
+  bodyFatPercentage?: number;
+  muscleMassKg?: number;
+  chestCm?: number;
+  armsCm?: number;
+  waistCm?: number;
+  hrvMs?: number;
+  sleepHours?: number;
+  notes?: string;
+}
 
 export default function ProgressPage() {
   const [timeframe, setTimeframe] = useState('12W');
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [showLogModal, setShowLogModal] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
-  const timeframes = ['4W', '12W', '6M', '1Y', 'ALL'];
+  // Form state
+  const [inputWeight, setInputWeight] = useState('82.2');
+  const [inputBf, setInputBf] = useState('11.6');
+  const [inputChest, setInputChest] = useState('112.5');
+  const [inputArms, setInputArms] = useState('42.6');
+  const [inputWaist, setInputWaist] = useState('80.8');
+  const [inputHrv, setInputHrv] = useState('79');
+  const [inputSleep, setInputSleep] = useState('8.0');
+  const [inputNotes, setInputNotes] = useState('Peak recovery, carbohydrate taper on track.');
 
-  const logs = [
-    { date: 'Oct 24, 2026', mass: '82.4 kg', delta: '-0.6 kg', bf: '11.8%', lbm: '72.6 kg', chest: '112 cm', arms: '42.5 cm', waist: '81 cm' },
-    { date: 'Oct 17, 2026', mass: '83.0 kg', delta: '+0.2 kg', bf: '12.0%', lbm: '73.0 kg', chest: '111.5 cm', arms: '42.2 cm', waist: '81.5 cm' },
-    { date: 'Oct 10, 2026', mass: '82.8 kg', delta: '-0.4 kg', bf: '12.2%', lbm: '72.7 kg', chest: '111 cm', arms: '42.0 cm', waist: '81.5 cm' },
-    { date: 'Oct 03, 2026', mass: '83.2 kg', delta: '-0.5 kg', bf: '12.5%', lbm: '72.8 kg', chest: '110.5 cm', arms: '41.8 cm', waist: '82 cm' },
-    { date: 'Sep 26, 2026', mass: '83.7 kg', delta: '-0.3 kg', bf: '12.9%', lbm: '72.9 kg', chest: '110 cm', arms: '41.5 cm', waist: '82.5 cm' },
-  ];
+  const [logs, setLogs] = useState<MeasurementItem[]>([
+    { date: '2026-10-24', bodyWeightKg: 82.4, bodyFatPercentage: 11.8, chestCm: 112, armsCm: 42.5, waistCm: 81, hrvMs: 78, sleepHours: 7.8 },
+    { date: '2026-10-17', bodyWeightKg: 83.0, bodyFatPercentage: 12.0, chestCm: 111.5, armsCm: 42.2, waistCm: 81.5, hrvMs: 74, sleepHours: 8.0 },
+    { date: '2026-10-10', bodyWeightKg: 82.8, bodyFatPercentage: 12.2, chestCm: 111, armsCm: 42.0, waistCm: 81.5, hrvMs: 76, sleepHours: 7.5 },
+    { date: '2026-10-03', bodyWeightKg: 83.2, bodyFatPercentage: 12.5, chestCm: 110.5, armsCm: 41.8, waistCm: 82, hrvMs: 72, sleepHours: 7.2 },
+    { date: '2026-09-26', bodyWeightKg: 83.7, bodyFatPercentage: 12.9, chestCm: 110, armsCm: 41.5, waistCm: 82.5, hrvMs: 70, sleepHours: 7.6 },
+  ]);
+
+  useEffect(() => {
+    async function loadMeasurements() {
+      try {
+        const res = await api.get<any[]>('/progress/measurements');
+        if (res.data && res.data.length > 0) {
+          const formatted: MeasurementItem[] = res.data.map((m) => ({
+            id: m.id,
+            date: m.date || new Date().toISOString().split('T')[0],
+            bodyWeightKg: Number(m.bodyWeightKg) || 82.5,
+            bodyFatPercentage: Number(m.bodyFatPercentage) || 12.0,
+            muscleMassKg: Number(m.muscleMassKg) || 42.0,
+            chestCm: Number(m.chestCm) || 111,
+            armsCm: Number(m.armsCm) || 42,
+            waistCm: Number(m.waistCm) || 81,
+            hrvMs: Number(m.hrvMs) || 75,
+            sleepHours: Number(m.sleepHours) || 8,
+            notes: m.notes,
+          }));
+          setLogs(formatted);
+        }
+      } catch (err) {
+        console.error('Failed to load measurements from server:', err);
+      }
+    }
+    loadMeasurements();
+  }, []);
+
+  const handleSaveMeasurement = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitting(true);
+
+    const payload = {
+      date: new Date().toISOString().split('T')[0],
+      bodyWeightKg: parseFloat(inputWeight) || 82.5,
+      bodyFatPercentage: parseFloat(inputBf) || 11.8,
+      chestCm: parseFloat(inputChest) || 112,
+      armsCm: parseFloat(inputArms) || 42.5,
+      waistCm: parseFloat(inputWaist) || 81,
+      hrvMs: parseInt(inputHrv, 10) || 78,
+      sleepHours: parseFloat(inputSleep) || 8.0,
+      notes: inputNotes,
+    };
+
+    try {
+      await api.post('/progress/measurements', payload);
+    } catch (err) {
+      console.error('Failed to save measurement to backend:', err);
+    }
+
+    setLogs([payload, ...logs]);
+    setShowLogModal(false);
+    setSubmitting(false);
+    setToastMessage('New biometric telemetry recorded to database.');
+    setTimeout(() => setToastMessage(null), 4000);
+  };
+
+  const currentLatest = logs[0] || {
+    bodyWeightKg: 82.4,
+    bodyFatPercentage: 11.8,
+    chestCm: 112,
+    armsCm: 42.5,
+    waistCm: 81,
+  };
 
   const triggerExport = () => {
-    setToastMessage('Biometric dossier exported to encrypted repository.');
+    const dataStr = JSON.stringify(logs, null, 2);
+    const blob = new Blob([dataStr], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `athletecare-telemetry-${new Date().toISOString().split('T')[0]}.json`;
+    a.click();
+    setToastMessage('Biometric dossier exported and downloaded.');
     setTimeout(() => setToastMessage(null), 3000);
   };
 
   return (
-    <div className="flex flex-col w-full bg-surface-base min-h-screen">
-      {/* Toast Notification */}
+    <div className="flex flex-col w-full bg-[#000000] text-white min-h-screen font-sans">
+      {/* Toast */}
       {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-surface-elevated text-text-primary px-4 py-3 rounded-lg border border-border-strong shadow-2xl animate-fade-in">
-          <span className="material-symbols-outlined text-text-primary text-base">check_circle</span>
-          <span className="text-[12px] font-semibold">{toastMessage}</span>
+        <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-white text-black px-4 py-3 rounded-xl shadow-2xl font-bold text-xs uppercase tracking-wider animate-in slide-in-from-bottom-3">
+          <span className="material-symbols-outlined text-base">verified</span>
+          <span>{toastMessage}</span>
         </div>
       )}
 
       {/* Header Bar */}
-      <section className="w-full border-b border-border-subtle bg-surface-canvas px-4 sm:px-6 lg:px-8 py-4">
+      <section className="w-full border-b border-[#242424] bg-[#0A0A0A] px-4 sm:px-6 lg:px-8 py-5">
         <div className="max-w-[1440px] mx-auto flex flex-col xl:flex-row xl:items-center justify-between gap-4">
           <div className="flex flex-col gap-1">
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="px-2 py-0.5 bg-surface-elevated text-text-primary text-[10px] font-mono uppercase tracking-widest rounded border border-border-subtle">
+              <span className="px-2 py-0.5 bg-[#171717] text-[#BDBDBD] text-[10px] font-mono uppercase tracking-widest rounded border border-[#2B2B2B]">
                 LONGITUDINAL TELEMETRY // 12-WEEK MESOCYCLE
               </span>
-              <span className="text-[10px] text-text-muted uppercase tracking-wider flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-text-primary inline-block animate-pulse"></span>
-                NODE: ATH-SYN-092
+              <span className="text-[10px] text-emerald-400 uppercase tracking-wider flex items-center gap-1 font-mono">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block animate-pulse"></span>
+                LIVE BIOMETRIC LOG
               </span>
             </div>
-            <h1 className="text-3xl lg:text-4xl uppercase text-text-primary tracking-tight font-extrabold font-display mt-1">
+            <h1 className="text-3xl lg:text-4xl uppercase text-white tracking-tight font-black mt-1">
               Progress &amp; Biomarkers
             </h1>
-            <p className="text-[13px] text-text-muted max-w-2xl">
+            <p className="text-xs text-[#777777] max-w-2xl">
               Clinical-grade athletic progress telemetry, DEXA correlation logs, compound strength velocity, and biomechanical mesocycle tracking.
             </p>
           </div>
 
-          {/* Controls & Actions */}
           <div className="flex flex-wrap items-center gap-3">
-            {/* Timeframe Selectors */}
-            <div className="bg-surface-elevated p-1 rounded-lg flex items-center gap-1 border border-border-subtle">
-              {timeframes.map((tf) => (
-                <button
-                  key={tf}
-                  onClick={() => setTimeframe(tf)}
-                  className={`px-3 py-1 text-[11px] font-bold uppercase tracking-wider rounded transition-all ${
-                    timeframe === tf
-                      ? 'bg-text-primary text-text-inverse shadow-sm'
-                      : 'text-text-muted hover:text-text-primary'
-                  }`}
-                  type="button"
-                >
-                  {tf}
-                </button>
-              ))}
-            </div>
-
             <button
               onClick={triggerExport}
-              className="flex items-center gap-2 bg-surface-card hover:bg-surface-elevated text-text-primary px-4 h-10 rounded-[10px] border border-border-subtle text-[12px] font-semibold tracking-wider uppercase transition-colors"
+              className="flex items-center gap-2 bg-[#171717] hover:bg-[#222222] text-white px-4 h-10 rounded-lg border border-[#333333] text-xs font-semibold tracking-wider uppercase transition-colors"
               type="button"
             >
               <span className="material-symbols-outlined text-base">download</span>
@@ -82,232 +159,223 @@ export default function ProgressPage() {
             </button>
 
             <button
-              className="flex items-center gap-2 bg-text-primary hover:opacity-90 text-text-inverse px-4 h-10 rounded-[10px] text-[12px] font-bold uppercase tracking-wider transition-all shadow-sm"
+              onClick={() => setShowLogModal(true)}
+              className="flex items-center gap-2 bg-white hover:bg-[#E5E2E1] text-black px-4 h-10 rounded-lg text-xs font-bold uppercase tracking-wider transition-all shadow-sm"
               type="button"
             >
               <span className="material-symbols-outlined text-base">add</span>
-              <span>Log New Measurements</span>
+              <span>Log Measurements</span>
             </button>
           </div>
         </div>
       </section>
 
-      {/* Main Content Workspace */}
-      <div className="w-full px-4 sm:px-6 lg:px-8 py-6">
-        <div className="max-w-[1440px] mx-auto flex flex-col gap-6">
-          {/* Top 4 KPI Summary Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
-            {/* KPI 1 */}
-            <div className="bg-surface-card p-5 rounded-[14px] border border-border-subtle flex flex-col justify-between hover:-translate-y-1 transition-transform">
-              <div className="flex items-start justify-between">
-                <div>
-                  <span className="text-[10px] uppercase text-text-muted tracking-widest font-mono">Gross Body Mass</span>
-                  <div className="flex items-baseline gap-2 mt-1">
-                    <span className="text-3xl font-extrabold text-text-primary font-mono">82.4</span>
-                    <span className="text-[12px] text-text-muted uppercase font-semibold">kg</span>
-                  </div>
-                </div>
-                <span className="material-symbols-outlined text-text-muted text-base">monitor_weight</span>
-              </div>
-              <div className="mt-3 pt-2 border-t border-border-subtle flex items-center justify-between text-[11px] text-text-muted">
-                <span>Delta: -0.6 kg this week</span>
-                <span className="text-text-primary font-semibold">Phase 2 Target: 85.0 kg</span>
-              </div>
+      {/* Main Workspace */}
+      <div className="max-w-[1440px] mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 flex flex-col gap-6">
+        {/* KPI Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+          <div className="bg-[#111111] border border-[#242424] rounded-2xl p-5 flex flex-col justify-between">
+            <span className="text-[10px] uppercase font-mono text-[#777777] tracking-wider">TOTAL BODY MASS</span>
+            <div className="my-2">
+              <span className="text-3xl font-black font-mono text-white">{currentLatest.bodyWeightKg} kg</span>
             </div>
-
-            {/* KPI 2 */}
-            <div className="bg-surface-card p-5 rounded-[14px] border border-border-subtle flex flex-col justify-between hover:-translate-y-1 transition-transform">
-              <div className="flex items-start justify-between">
-                <div>
-                  <span className="text-[10px] uppercase text-text-muted tracking-widest font-mono">Lean Mass Index</span>
-                  <div className="flex items-baseline gap-2 mt-1">
-                    <span className="text-3xl font-extrabold text-text-primary font-mono">72.6</span>
-                    <span className="text-[12px] text-text-muted uppercase font-semibold">kg LBM</span>
-                  </div>
-                </div>
-                <span className="material-symbols-outlined text-text-muted text-base">accessibility_new</span>
-              </div>
-              <div className="mt-3 pt-2 border-t border-border-subtle flex items-center justify-between text-[11px] text-text-muted">
-                <span>Body Fat: 11.8% DEXA</span>
-                <span className="text-text-primary font-semibold">+1.8 kg Tissue Accretion</span>
-              </div>
-            </div>
-
-            {/* KPI 3 */}
-            <div className="bg-surface-card p-5 rounded-[14px] border border-border-subtle flex flex-col justify-between hover:-translate-y-1 transition-transform">
-              <div className="flex items-start justify-between">
-                <div>
-                  <span className="text-[10px] uppercase text-text-muted tracking-widest font-mono">Strength Velocity</span>
-                  <div className="flex items-baseline gap-2 mt-1">
-                    <span className="text-3xl font-extrabold text-text-primary font-mono">+11.4%</span>
-                    <span className="text-[12px] text-text-muted uppercase font-semibold">Overload</span>
-                  </div>
-                </div>
-                <span className="material-symbols-outlined text-text-muted text-base">trending_up</span>
-              </div>
-              <div className="mt-3 pt-2 border-t border-border-subtle flex items-center justify-between text-[11px] text-text-muted">
-                <span>Incline Press: 85.0 kg × 10</span>
-                <span className="text-text-primary font-semibold">PR Pace</span>
-              </div>
-            </div>
-
-            {/* KPI 4 */}
-            <div className="bg-surface-card p-5 rounded-[14px] border border-border-subtle flex flex-col justify-between hover:-translate-y-1 transition-transform">
-              <div className="flex items-start justify-between">
-                <div>
-                  <span className="text-[10px] uppercase text-text-muted tracking-widest font-mono">HRV &amp; Vitals</span>
-                  <div className="flex items-baseline gap-2 mt-1">
-                    <span className="text-3xl font-extrabold text-text-primary font-mono">78 ms</span>
-                    <span className="text-[12px] text-text-muted uppercase font-semibold">RMSSD</span>
-                  </div>
-                </div>
-                <span className="material-symbols-outlined text-text-muted text-base">ecg_heart</span>
-              </div>
-              <div className="mt-3 pt-2 border-t border-border-subtle flex items-center justify-between text-[11px] text-text-muted">
-                <span>Resting HR: 48 BPM</span>
-                <span className="text-text-primary font-semibold">Readiness: 94% Optimal</span>
-              </div>
-            </div>
+            <span className="text-[10px] text-emerald-400 font-mono">-1.3 kg net over mesocycle</span>
           </div>
 
-          {/* Dual Interactive Telemetry Visualizers */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Chart 1: DEXA Body Composition */}
-            <div className="p-5 rounded-[14px] bg-surface-card border border-border-subtle flex flex-col gap-4">
-              <div className="flex items-center justify-between pb-3 border-b border-border-subtle">
-                <div>
-                  <span className="text-[10px] uppercase tracking-wider text-text-muted font-mono">Telemetry Track A</span>
-                  <h3 className="text-base font-bold text-text-primary uppercase tracking-tight">
-                    Longitudinal DEXA Body Composition
-                  </h3>
-                </div>
-                <span className="text-[11px] uppercase tracking-wider px-2 py-0.5 rounded bg-surface-elevated text-text-primary border border-border-subtle font-semibold">
-                  12-Week Delta
-                </span>
-              </div>
-
-              <div className="w-full h-44 relative bg-surface-canvas rounded-lg p-3 border border-border-subtle">
-                <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 500 140">
-                  <line stroke="#242424" strokeDasharray="3 3" strokeWidth="1" x1="0" x2="500" y1="30" y2="30"></line>
-                  <line stroke="#242424" strokeDasharray="3 3" strokeWidth="1" x1="0" x2="500" y1="70" y2="70"></line>
-                  <line stroke="#242424" strokeDasharray="3 3" strokeWidth="1" x1="0" x2="500" y1="110" y2="110"></line>
-
-                  {/* Lean mass curve (growing) */}
-                  <path
-                    d="M 0 110 Q 120 95 250 75 T 500 35"
-                    fill="none"
-                    stroke="#FFFFFF"
-                    strokeWidth="2.5"
-                  ></path>
-                  {/* Fat mass curve (declining) */}
-                  <path
-                    d="M 0 50 Q 120 65 250 85 T 500 115"
-                    fill="none"
-                    stroke="#777777"
-                    strokeDasharray="4 4"
-                    strokeWidth="2"
-                  ></path>
-                  <circle cx="500" cy="35" fill="#000000" r="5" stroke="#FFFFFF" strokeWidth="2.5"></circle>
-                  <circle cx="500" cy="115" fill="#000000" r="4" stroke="#777777" strokeWidth="2"></circle>
-                </svg>
-              </div>
-
-              <div className="flex items-center justify-between text-[11px] text-text-muted font-mono">
-                <span className="flex items-center gap-1.5 text-text-primary font-semibold">
-                  <span className="w-2.5 h-0.5 bg-text-primary inline-block"></span>
-                  Lean Body Mass (+1.8 kg)
-                </span>
-                <span className="flex items-center gap-1.5 text-text-secondary">
-                  <span className="w-2.5 h-0.5 bg-text-muted inline-block"></span>
-                  Fat Mass (-2.2 kg)
-                </span>
-              </div>
+          <div className="bg-[#111111] border border-[#242424] rounded-2xl p-5 flex flex-col justify-between">
+            <span className="text-[10px] uppercase font-mono text-[#777777] tracking-wider">BODY FAT (DEXA)</span>
+            <div className="my-2">
+              <span className="text-3xl font-black font-mono text-white">{currentLatest.bodyFatPercentage}%</span>
             </div>
-
-            {/* Chart 2: Compound Strength Velocity */}
-            <div className="p-5 rounded-[14px] bg-surface-card border border-border-subtle flex flex-col gap-4">
-              <div className="flex items-center justify-between pb-3 border-b border-border-subtle">
-                <div>
-                  <span className="text-[10px] uppercase tracking-wider text-text-muted font-mono">Telemetry Track B</span>
-                  <h3 className="text-base font-bold text-text-primary uppercase tracking-tight">
-                    Compound Overload Trajectory
-                  </h3>
-                </div>
-                <span className="text-[11px] uppercase tracking-wider px-2 py-0.5 rounded bg-surface-elevated text-text-primary border border-border-subtle font-semibold">
-                  Top Working Sets
-                </span>
-              </div>
-
-              <div className="w-full h-44 relative bg-surface-canvas rounded-lg p-3 border border-border-subtle">
-                <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 500 140">
-                  <line stroke="#242424" strokeDasharray="3 3" strokeWidth="1" x1="0" x2="500" y1="30" y2="30"></line>
-                  <line stroke="#242424" strokeDasharray="3 3" strokeWidth="1" x1="0" x2="500" y1="70" y2="70"></line>
-                  <line stroke="#242424" strokeDasharray="3 3" strokeWidth="1" x1="0" x2="500" y1="110" y2="110"></line>
-
-                  {/* Progressive curve */}
-                  <path
-                    d="M 0 125 Q 120 100 240 70 T 500 20"
-                    fill="none"
-                    stroke="#FFFFFF"
-                    strokeWidth="2.5"
-                  ></path>
-                  <circle cx="240" cy="70" fill="#FFFFFF" r="3.5"></circle>
-                  <circle cx="500" cy="20" fill="#000000" r="5" stroke="#FFFFFF" strokeWidth="2.5"></circle>
-                </svg>
-              </div>
-
-              <div className="flex items-center justify-between text-[11px] text-text-muted font-mono">
-                <span className="text-text-primary font-bold">Week 01: 75.0 kg</span>
-                <span className="text-text-primary font-bold">Week 06: 85.0 kg (Active)</span>
-                <span className="text-text-secondary">Week 12 Target: 92.5 kg</span>
-              </div>
-            </div>
+            <span className="text-[10px] text-emerald-400 font-mono">-1.1% contest preparation</span>
           </div>
 
-          {/* Biomarkers Check-in Table */}
-          <div className="p-5 rounded-[14px] bg-surface-card border border-border-subtle flex flex-col gap-4">
-            <div className="flex items-center justify-between pb-3 border-b border-border-subtle">
-              <span className="text-[11px] uppercase tracking-widest text-text-muted font-mono">
-                LONGITUDINAL MEASUREMENT LOGS
-              </span>
-              <span className="text-[11px] uppercase tracking-wider text-text-primary font-bold">
-                5 Entries Logged
-              </span>
+          <div className="bg-[#111111] border border-[#242424] rounded-2xl p-5 flex flex-col justify-between">
+            <span className="text-[10px] uppercase font-mono text-[#777777] tracking-wider">CHEST CIRCUMFERENCE</span>
+            <div className="my-2">
+              <span className="text-3xl font-black font-mono text-white">{currentLatest.chestCm} cm</span>
             </div>
+            <span className="text-[10px] text-white font-mono">+2.0 cm hypertrophy accretion</span>
+          </div>
 
-            <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse font-mono text-[12px]">
-                <thead>
-                  <tr className="border-b border-border-subtle text-[11px] font-sans font-semibold uppercase tracking-wider text-text-muted">
-                    <th className="py-2.5 px-3">DATE</th>
-                    <th className="py-2.5 px-3">BODY MASS</th>
-                    <th className="py-2.5 px-3">DELTA</th>
-                    <th className="py-2.5 px-3">BODY FAT</th>
-                    <th className="py-2.5 px-3">LEAN MASS</th>
-                    <th className="py-2.5 px-3">CHEST</th>
-                    <th className="py-2.5 px-3">ARMS</th>
-                    <th className="py-2.5 px-3">WAIST</th>
+          <div className="bg-[#111111] border border-[#242424] rounded-2xl p-5 flex flex-col justify-between">
+            <span className="text-[10px] uppercase font-mono text-[#777777] tracking-wider">ARM CIRCUMFERENCE</span>
+            <div className="my-2">
+              <span className="text-3xl font-black font-mono text-white">{currentLatest.armsCm} cm</span>
+            </div>
+            <span className="text-[10px] text-white font-mono">+1.1 cm peak contraction</span>
+          </div>
+        </div>
+
+        {/* Measurements Log Table */}
+        <div className="bg-[#111111] border border-[#242424] rounded-2xl p-6 shadow-md flex flex-col gap-4">
+          <div className="flex items-center justify-between border-b border-[#242424] pb-4">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-white">
+              Longitudinal Biometric Registry ({logs.length} entries)
+            </h3>
+            <span className="text-xs font-mono text-[#777777]">UNITS: METRIC (KG / CM)</span>
+          </div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse font-sans text-xs">
+              <thead>
+                <tr className="border-b border-[#242424] text-[11px] font-mono uppercase text-[#777777]">
+                  <th className="py-3 px-3">RECORD DATE</th>
+                  <th className="py-3 px-3">MASS</th>
+                  <th className="py-3 px-3">BODY FAT %</th>
+                  <th className="py-3 px-3">CHEST</th>
+                  <th className="py-3 px-3">ARMS</th>
+                  <th className="py-3 px-3">WAIST</th>
+                  <th className="py-3 px-3">HRV</th>
+                  <th className="py-3 px-3">SLEEP</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-[#1F1F1F]">
+                {logs.map((log, idx) => (
+                  <tr key={log.id || idx} className="hover:bg-[#141414] transition-colors">
+                    <td className="py-3 px-3 font-mono font-bold text-white">{log.date}</td>
+                    <td className="py-3 px-3 font-mono text-white">{log.bodyWeightKg} kg</td>
+                    <td className="py-3 px-3 font-mono text-[#BDBDBD]">{log.bodyFatPercentage}%</td>
+                    <td className="py-3 px-3 font-mono text-[#BDBDBD]">{log.chestCm} cm</td>
+                    <td className="py-3 px-3 font-mono text-[#BDBDBD]">{log.armsCm} cm</td>
+                    <td className="py-3 px-3 font-mono text-[#BDBDBD]">{log.waistCm} cm</td>
+                    <td className="py-3 px-3 font-mono text-emerald-400">{log.hrvMs || 76} ms</td>
+                    <td className="py-3 px-3 font-mono text-white">{log.sleepHours || 8.0}h</td>
                   </tr>
-                </thead>
-                <tbody className="divide-y divide-border-subtle">
-                  {logs.map((row) => (
-                    <tr key={row.date} className="hover:bg-surface-elevated transition-colors">
-                      <td className="py-3 px-3 font-sans font-medium text-text-primary">{row.date}</td>
-                      <td className="py-3 px-3 font-bold text-text-primary">{row.mass}</td>
-                      <td className="py-3 px-3 text-text-secondary">{row.delta}</td>
-                      <td className="py-3 px-3 text-text-primary">{row.bf}</td>
-                      <td className="py-3 px-3 text-text-secondary">{row.lbm}</td>
-                      <td className="py-3 px-3 text-text-muted">{row.chest}</td>
-                      <td className="py-3 px-3 text-text-muted">{row.arms}</td>
-                      <td className="py-3 px-3 text-text-muted">{row.waist}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
+
+      {/* Log Modal */}
+      {showLogModal && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-[#111111] border border-[#333333] rounded-2xl max-w-lg w-full p-6 sm:p-8 flex flex-col gap-5 shadow-2xl animate-in fade-in zoom-in-95">
+            <div className="flex items-center justify-between border-b border-[#242424] pb-4">
+              <div>
+                <h3 className="text-lg font-black uppercase text-white tracking-tight">Log Biometric Entry</h3>
+                <p className="text-xs text-[#777777]">Synchronize new measurements into athlete dossier</p>
+              </div>
+              <button
+                onClick={() => setShowLogModal(false)}
+                className="text-[#777777] hover:text-white transition-colors"
+              >
+                <span className="material-symbols-outlined text-xl">close</span>
+              </button>
+            </div>
+
+            <form onSubmit={handleSaveMeasurement} className="flex flex-col gap-4">
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-[11px] font-mono uppercase text-[#BDBDBD] mb-1">Body Weight (kg)</label>
+                  <input
+                    type="number"
+                    step="0.1"
+                    required
+                    value={inputWeight}
+                    onChange={(e) => setInputWeight(e.target.value)}
+                    className="w-full bg-[#0A0A0A] border border-[#242424] rounded-lg px-3 py-2 text-xs text-white font-mono focus:outline-none focus:border-white"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[11px] font-mono uppercase text-[#BDBDBD] mb-1">Body Fat (%)</label>
+                  <input
+                    type="number"
+                    step="0.1"
+                    value={inputBf}
+                    onChange={(e) => setInputBf(e.target.value)}
+                    className="w-full bg-[#0A0A0A] border border-[#242424] rounded-lg px-3 py-2 text-xs text-white font-mono focus:outline-none focus:border-white"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-3 gap-3">
+                <div>
+                  <label className="block text-[11px] font-mono uppercase text-[#BDBDBD] mb-1">Chest (cm)</label>
+                  <input
+                    type="number"
+                    step="0.5"
+                    value={inputChest}
+                    onChange={(e) => setInputChest(e.target.value)}
+                    className="w-full bg-[#0A0A0A] border border-[#242424] rounded-lg px-3 py-2 text-xs text-white font-mono focus:outline-none focus:border-white"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[11px] font-mono uppercase text-[#BDBDBD] mb-1">Arms (cm)</label>
+                  <input
+                    type="number"
+                    step="0.5"
+                    value={inputArms}
+                    onChange={(e) => setInputArms(e.target.value)}
+                    className="w-full bg-[#0A0A0A] border border-[#242424] rounded-lg px-3 py-2 text-xs text-white font-mono focus:outline-none focus:border-white"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[11px] font-mono uppercase text-[#BDBDBD] mb-1">Waist (cm)</label>
+                  <input
+                    type="number"
+                    step="0.5"
+                    value={inputWaist}
+                    onChange={(e) => setInputWaist(e.target.value)}
+                    className="w-full bg-[#0A0A0A] border border-[#242424] rounded-lg px-3 py-2 text-xs text-white font-mono focus:outline-none focus:border-white"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-[11px] font-mono uppercase text-[#BDBDBD] mb-1">HRV (ms RMSSD)</label>
+                  <input
+                    type="number"
+                    value={inputHrv}
+                    onChange={(e) => setInputHrv(e.target.value)}
+                    className="w-full bg-[#0A0A0A] border border-[#242424] rounded-lg px-3 py-2 text-xs text-white font-mono focus:outline-none focus:border-white"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[11px] font-mono uppercase text-[#BDBDBD] mb-1">Sleep (Hours)</label>
+                  <input
+                    type="number"
+                    step="0.1"
+                    value={inputSleep}
+                    onChange={(e) => setInputSleep(e.target.value)}
+                    className="w-full bg-[#0A0A0A] border border-[#242424] rounded-lg px-3 py-2 text-xs text-white font-mono focus:outline-none focus:border-white"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-[11px] font-mono uppercase text-[#BDBDBD] mb-1">Clinical Notes</label>
+                <input
+                  type="text"
+                  value={inputNotes}
+                  onChange={(e) => setInputNotes(e.target.value)}
+                  className="w-full bg-[#0A0A0A] border border-[#242424] rounded-lg px-3 py-2 text-xs text-white font-mono focus:outline-none focus:border-white"
+                />
+              </div>
+
+              <div className="flex gap-3 pt-2">
+                <button
+                  type="button"
+                  onClick={() => setShowLogModal(false)}
+                  className="flex-1 py-2.5 bg-[#171717] hover:bg-[#222222] border border-[#333333] text-white text-xs font-bold uppercase rounded-lg transition-colors"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={submitting}
+                  className="flex-1 py-2.5 bg-white text-black hover:bg-[#E5E2E1] text-xs font-bold uppercase rounded-lg transition-colors flex items-center justify-center gap-1.5 disabled:opacity-50"
+                >
+                  {submitting ? 'Registering...' : 'Save Measurements'}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

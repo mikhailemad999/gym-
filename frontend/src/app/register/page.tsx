@@ -8,7 +8,7 @@ import { UserRole } from '@/types';
 
 export default function RegisterPage() {
   const router = useRouter();
-  const { setUser } = useAuthStore();
+  const { register } = useAuthStore();
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -17,25 +17,30 @@ export default function RegisterPage() {
     primaryGoal: 'Hypertrophy & Biomechanical Overload',
   });
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setError(null);
 
-    // Simulate registration
-    localStorage.setItem('accessToken', 'mock-jwt-access-token-new');
-    localStorage.setItem('refreshToken', 'mock-jwt-refresh-token-new');
-    setUser({
-      id: `mkr-${Date.now()}`,
-      email: formData.email,
-      firstName: formData.firstName || 'Athlete',
-      lastName: formData.lastName || 'User',
-      role: UserRole.CLIENT,
-      isActive: true,
-      isVerified: true,
-    });
-
-    router.push('/app/dashboard');
+    try {
+      await register({
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        password: formData.password,
+      });
+      router.push('/app/dashboard');
+    } catch (err: any) {
+      const msg =
+        err?.response?.data?.message ||
+        err?.message ||
+        'Registration failed. Please check your data and try again.';
+      setError(typeof msg === 'string' ? msg : JSON.stringify(msg));
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -73,6 +78,12 @@ export default function RegisterPage() {
               Initialize your bio-profile to receive customized mesocycles, nutrition fueling, and CSCS coach sync.
             </p>
           </div>
+
+          {error && (
+            <div className="p-3 bg-[#171717] border border-[#ffb4ab] text-[#ffb4ab] rounded-lg text-xs font-mono">
+              {error}
+            </div>
+          )}
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
             <div className="grid grid-cols-2 gap-3">

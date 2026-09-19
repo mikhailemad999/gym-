@@ -90,7 +90,7 @@ export const useAuthStore = create<AuthState>()(
 
       refreshUser: async () => {
         try {
-          const response = await api.get<AuthUser>('/auth/me');
+          const response = await api.get<AuthUser>('/users/me');
           set({
             user: response.data,
             isAuthenticated: true,

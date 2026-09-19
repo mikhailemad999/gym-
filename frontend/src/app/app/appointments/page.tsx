@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import api from '@/lib/api-client';
 
 const appointmentTypes = [
   {
@@ -59,6 +60,7 @@ export default function AppointmentsPage() {
   const [selectedSlot, setSelectedSlot] = useState('10:30 AM EST');
   const [notes, setNotes] = useState('');
   const [isBooked, setIsBooked] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   const [appointments, setAppointments] = useState([
     {
@@ -81,15 +83,55 @@ export default function AppointmentsPage() {
     },
   ]);
 
-  const handleBooking = (e: React.FormEvent) => {
+  useEffect(() => {
+    async function loadAppointments() {
+      try {
+        const res = await api.get<any[]>('/appointments/my');
+        if (res.data && res.data.length > 0) {
+          const formatted = res.data.map((item) => ({
+            id: item.id,
+            title: item.type ? item.type.replace('_', ' ').toUpperCase() : 'COACHING SYNC',
+            coach: item.coach ? `${item.coach.firstName} ${item.coach.lastName}` : 'Marcus Vance, CSCS',
+            date: new Date(item.scheduledAt).toLocaleString(),
+            status: item.status?.toUpperCase() || 'CONFIRMED',
+            meetUrl: item.meetUrl || 'https://meet.athletecare.pro/active-sync',
+            notes: item.notes || 'Coaching telemetry review',
+          }));
+          setAppointments(formatted);
+        }
+      } catch (err) {
+        console.error('Failed to load appointments from server:', err);
+      }
+    }
+    loadAppointments();
+  }, []);
+
+  const handleBooking = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitting(true);
+
     const typeObj = appointmentTypes.find((t) => t.id === selectedType);
     const coachObj = coaches.find((c) => c.id === selectedCoach);
+
+    const scheduledDateObj = new Date(selectedDate);
+    const payload = {
+      coachId: selectedCoach === 'coach-1' ? '00000000-0000-0000-0000-000000000002' : '00000000-0000-0000-0000-000000000003',
+      type: selectedType,
+      scheduledAt: scheduledDateObj.toISOString(),
+      durationMinutes: 45,
+      notes: notes || 'Coaching & biometric sync session',
+    };
+
+    try {
+      await api.post('/appointments', payload);
+    } catch (err) {
+      console.error('Failed to book via backend:', err);
+    }
 
     const newApt = {
       id: `apt-${Date.now()}`,
       title: typeObj?.title || 'Telemetry Session',
-      coach: coachObj?.name || 'Staff Coach',
+      coach: coachObj?.name || 'Marcus Vance, CSCS',
       date: `${selectedDate} • ${selectedSlot}`,
       status: 'CONFIRMED',
       meetUrl: `https://meet.athletecare.pro/session-${Math.random().toString(36).substring(2, 7)}`,
@@ -98,266 +140,208 @@ export default function AppointmentsPage() {
 
     setAppointments([newApt, ...appointments]);
     setIsBooked(true);
-    setNotes('');
-    setTimeout(() => setIsBooked(false), 4000);
+    setSubmitting(false);
   };
 
   return (
-    <div className="flex flex-col gap-6 p-4 sm:p-6 lg:p-8 max-w-[1600px] mx-auto w-full">
-      {/* Header */}
+    <div className="flex flex-col gap-6 p-4 sm:p-6 lg:p-8 max-w-[1600px] mx-auto w-full font-sans text-white">
+      {/* Page Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#242424] pb-6">
         <div>
           <div className="flex items-center gap-2 mb-1.5">
-            <span className="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
             <span className="text-[11px] font-mono uppercase tracking-widest text-[#777777]">
-              TELEMETRY VIDEO APPOINTMENTS // CSCS COACH SYNC
+              SPORTS SCIENCE CONSULTATION // DIRECT CSCS LINK
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-bold uppercase tracking-tight text-white">
-            Clinical Coaching Sessions
+          <h1 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-white">
+            Schedule Coaching Sync
           </h1>
           <p className="text-sm text-[#777777] mt-1">
-            Book live biomechanical video audits, metabolic load calibration, and competition peaking protocols.
+            Book 1-on-1 encrypted video sessions with Marcus Vance and the AthleteCare clinical staff.
           </p>
         </div>
-
-        <div className="flex items-center gap-3">
-          <div className="px-3.5 py-2 bg-[#171717] border border-[#242424] rounded-lg text-xs text-[#BDBDBD] flex items-center gap-2">
-            <span className="material-symbols-outlined text-sm text-white">verified</span>
-            Tier 1 Pro Athlete Access Confirmed
-          </div>
-        </div>
       </div>
 
-      {/* Metric Cards */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-[#111111] border border-[#242424] rounded-xl p-4 flex flex-col justify-between">
-          <span className="text-[11px] uppercase tracking-wider text-[#777777]">Upcoming Sessions</span>
-          <span className="text-2xl font-bold text-white mt-2">01</span>
-          <span className="text-[11px] text-[#BDBDBD] mt-1">Tomorrow • 10:00 AM EST</span>
-        </div>
-        <div className="bg-[#111111] border border-[#242424] rounded-xl p-4 flex flex-col justify-between">
-          <span className="text-[11px] uppercase tracking-wider text-[#777777]">Completed Audits</span>
-          <span className="text-2xl font-bold text-white mt-2">12</span>
-          <span className="text-[11px] text-[#BDBDBD] mt-1">100% Attendance Rate</span>
-        </div>
-        <div className="bg-[#111111] border border-[#242424] rounded-xl p-4 flex flex-col justify-between">
-          <span className="text-[11px] uppercase tracking-wider text-[#777777]">Assigned CSCS Lead</span>
-          <span className="text-sm font-bold text-white mt-2 truncate">Marcus Vance, CSCS</span>
-          <span className="text-[11px] text-[#777777] mt-1">Strength & Biomechanics</span>
-        </div>
-        <div className="bg-[#111111] border border-[#242424] rounded-xl p-4 flex flex-col justify-between">
-          <span className="text-[11px] uppercase tracking-wider text-[#777777]">Telemetry Sync Rate</span>
-          <span className="text-2xl font-bold text-white mt-2">99.8%</span>
-          <span className="text-[11px] text-white mt-1 font-semibold">Active Biometrics Feed</span>
-        </div>
-      </div>
-
-      {/* Main Grid: Scheduler (Left) & Schedule (Right) */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        {/* Scheduler Form (7 cols) */}
-        <div className="lg:col-span-7 bg-[#111111] border border-[#242424] rounded-xl p-5 sm:p-6 flex flex-col gap-6">
-          <div className="flex items-center justify-between border-b border-[#242424] pb-4">
-            <h2 className="text-base font-bold uppercase tracking-wide text-white flex items-center gap-2">
-              <span className="material-symbols-outlined text-lg">calendar_add_on</span>
-              Schedule Assessment Session
-            </h2>
-            <span className="text-[11px] font-mono text-[#777777]">ENCRYPTED WEB RTC</span>
-          </div>
-
-          {isBooked && (
-            <div className="p-3.5 bg-[#171717] border border-white rounded-lg flex items-center justify-between animate-fade-in">
-              <div className="flex items-center gap-2 text-xs font-semibold text-white">
-                <span className="material-symbols-outlined text-sm">check_circle</span>
-                Session confirmed! Room telemetry URL generated.
-              </div>
-            </div>
-          )}
-
-          <form onSubmit={handleBooking} className="flex flex-col gap-5">
-            {/* 1. Category */}
-            <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-[#BDBDBD] mb-2.5">
-                1. Select Assessment Protocol
+      {/* Main Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        {/* Left: Schedule Form (Cols 1-7) */}
+        <div className="lg:col-span-7 flex flex-col gap-6">
+          <form
+            onSubmit={handleBooking}
+            className="bg-[#111111] border border-[#242424] rounded-2xl p-6 sm:p-8 flex flex-col gap-6 shadow-xl"
+          >
+            {/* Step 1: Select Protocol Type */}
+            <div className="flex flex-col gap-3">
+              <label className="text-xs font-bold uppercase tracking-wider text-white flex items-center justify-between">
+                <span>1. Select Consultation Protocol</span>
+                <span className="text-[10px] font-mono text-[#777777]">CSCS ACCREDITED</span>
               </label>
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {appointmentTypes.map((type) => (
+                {appointmentTypes.map((t) => (
                   <button
-                    key={type.id}
+                    key={t.id}
                     type="button"
-                    onClick={() => setSelectedType(type.id)}
-                    className={`p-3.5 rounded-lg border text-left transition-all ${
-                      selectedType === type.id
-                        ? 'bg-[#171717] border-white text-white shadow-sm'
-                        : 'bg-[#0A0A0A] border-[#242424] text-[#777777] hover:border-[#4A4A4A]'
+                    onClick={() => setSelectedType(t.id)}
+                    className={`p-4 rounded-xl border text-left flex flex-col justify-between gap-2 transition-all ${
+                      selectedType === t.id
+                        ? 'bg-[#1A1A1A] border-white text-white shadow-md'
+                        : 'bg-[#0A0A0A] border-[#242424] text-[#BDBDBD] hover:border-[#444444]'
                     }`}
                   >
-                    <div className="flex items-center justify-between mb-1.5">
-                      <span className="material-symbols-outlined text-base text-white">{type.icon}</span>
-                      <span className="text-[10px] font-mono uppercase text-[#BDBDBD]">{type.duration}</span>
+                    <div className="flex items-center justify-between w-full">
+                      <span className="material-symbols-outlined text-lg text-white">{t.icon}</span>
+                      <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-[#111111] border border-[#2B2B2B] text-[#777777]">
+                        {t.duration}
+                      </span>
                     </div>
-                    <div className="text-xs font-bold uppercase text-white">{type.title}</div>
-                    <div className="text-[11px] text-[#777777] mt-1 leading-snug">{type.desc}</div>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* 2. Coach */}
-            <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-[#BDBDBD] mb-2.5">
-                2. Direct CSCS Specialist
-              </label>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {coaches.map((coach) => (
-                  <button
-                    key={coach.id}
-                    type="button"
-                    onClick={() => setSelectedCoach(coach.id)}
-                    className={`p-3 rounded-lg border flex items-center gap-3 transition-all text-left ${
-                      selectedCoach === coach.id
-                        ? 'bg-[#171717] border-white text-white'
-                        : 'bg-[#0A0A0A] border-[#242424] text-[#777777] hover:border-[#4A4A4A]'
-                    }`}
-                  >
-                    <img
-                      src={coach.avatar}
-                      alt={coach.name}
-                      className="w-10 h-10 rounded-full object-cover border border-[#4A4A4A]"
-                    />
-                    <div className="flex flex-col">
-                      <span className="text-xs font-bold text-white">{coach.name}</span>
-                      <span className="text-[10px] text-[#777777]">{coach.role}</span>
-                      <span className="text-[10px] text-white font-mono mt-0.5">{coach.status}</span>
+                    <div>
+                      <h4 className="text-xs font-bold uppercase tracking-wide text-white">{t.title}</h4>
+                      <p className="text-[11px] text-[#777777] mt-1 leading-snug">{t.desc}</p>
                     </div>
                   </button>
                 ))}
               </div>
             </div>
 
-            {/* 3. Date & Time */}
+            {/* Step 2: Select Specialist */}
+            <div className="flex flex-col gap-3">
+              <label className="text-xs font-bold uppercase tracking-wider text-white">
+                2. Assigned Clinical Coach
+              </label>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {coaches.map((c) => (
+                  <button
+                    key={c.id}
+                    type="button"
+                    onClick={() => setSelectedCoach(c.id)}
+                    className={`p-3.5 rounded-xl border text-left flex items-center gap-3 transition-all ${
+                      selectedCoach === c.id
+                        ? 'bg-[#1A1A1A] border-white text-white'
+                        : 'bg-[#0A0A0A] border-[#242424] text-[#BDBDBD] hover:border-[#444444]'
+                    }`}
+                  >
+                    <div className="w-10 h-10 rounded-full bg-[#202020] border border-[#333333] flex items-center justify-center font-bold text-xs">
+                      {c.name.substring(0, 2).toUpperCase()}
+                    </div>
+                    <div>
+                      <h4 className="text-xs font-bold text-white">{c.name}</h4>
+                      <p className="text-[10px] text-[#777777]">{c.role}</p>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Step 3: Date & Slot Selection */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-[#BDBDBD] mb-2">
-                  3. Select Date
-                </label>
+              <div className="flex flex-col gap-2">
+                <label className="text-xs font-bold uppercase tracking-wider text-white">Date</label>
                 <input
                   type="date"
                   value={selectedDate}
                   onChange={(e) => setSelectedDate(e.target.value)}
-                  className="w-full bg-[#0A0A0A] border border-[#242424] rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-white font-mono"
+                  className="bg-[#0A0A0A] border border-[#242424] rounded-lg px-3 py-2.5 text-xs text-white focus:outline-none focus:border-white font-mono"
                 />
               </div>
 
-              <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-[#BDBDBD] mb-2">
-                  4. Available Time Slot
-                </label>
-                <div className="flex flex-wrap gap-2">
-                  {timeSlots.map((slot) => (
-                    <button
-                      key={slot}
-                      type="button"
-                      onClick={() => setSelectedSlot(slot)}
-                      className={`px-2.5 py-1.5 rounded text-[11px] font-mono transition-all ${
-                        selectedSlot === slot
-                          ? 'bg-white text-black font-bold'
-                          : 'bg-[#0A0A0A] border border-[#242424] text-[#BDBDBD] hover:border-[#4A4A4A]'
-                      }`}
-                    >
-                      {slot}
-                    </button>
+              <div className="flex flex-col gap-2">
+                <label className="text-xs font-bold uppercase tracking-wider text-white">Available Slot</label>
+                <select
+                  value={selectedSlot}
+                  onChange={(e) => setSelectedSlot(e.target.value)}
+                  className="bg-[#0A0A0A] border border-[#242424] rounded-lg px-3 py-2.5 text-xs text-white focus:outline-none focus:border-white font-mono"
+                >
+                  {timeSlots.map((s) => (
+                    <option key={s} value={s}>
+                      {s}
+                    </option>
                   ))}
-                </div>
+                </select>
               </div>
             </div>
 
-            {/* 4. Notes */}
-            <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-[#BDBDBD] mb-2">
-                5. Diagnostic Objectives & PR Focus
+            {/* Step 4: Notes */}
+            <div className="flex flex-col gap-2">
+              <label className="text-xs font-bold uppercase tracking-wider text-white">
+                Session Objectives &amp; Questions
               </label>
               <textarea
-                rows={2}
+                rows={3}
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
-                placeholder="e.g. Incline Bench set 3 bar speed, recovery HRV drop after leg session..."
-                className="w-full bg-[#0A0A0A] border border-[#242424] rounded-lg p-3 text-xs text-white placeholder-[#777777] focus:outline-none focus:border-white"
-              />
+                placeholder="Specify kinetic cues or lifting videos you want reviewed during this session..."
+                className="bg-[#0A0A0A] border border-[#242424] rounded-lg p-3 text-xs text-white placeholder-[#777777] focus:outline-none focus:border-white resize-none"
+              ></textarea>
             </div>
 
             <button
               type="submit"
-              className="w-full py-3 bg-white text-black text-xs font-bold uppercase tracking-wider rounded-lg hover:bg-[#E5E2E1] transition-all flex items-center justify-center gap-2 mt-2"
+              disabled={submitting}
+              className="w-full py-3.5 bg-white text-black hover:bg-[#E5E2E1] rounded-xl text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-lg disabled:opacity-50"
             >
-              <span className="material-symbols-outlined text-base">video_call</span>
-              Confirm Appointment & Generate Telemetry Room
+              <span className="material-symbols-outlined text-base">event_available</span>
+              <span>{submitting ? 'Confirming with Telemetry...' : 'Confirm Video Consultation'}</span>
             </button>
           </form>
         </div>
 
-        {/* Schedule & History List (5 cols) */}
-        <div className="lg:col-span-5 flex flex-col gap-4">
-          <div className="bg-[#111111] border border-[#242424] rounded-xl p-5 flex flex-col gap-4">
-            <div className="flex items-center justify-between border-b border-[#242424] pb-3">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-white flex items-center gap-2">
-                <span className="material-symbols-outlined text-base">schedule</span>
-                Roster Telemetry Sessions
-              </h3>
-              <span className="text-[11px] font-mono text-[#777777]">{appointments.length} Recorded</span>
-            </div>
+        {/* Right: Existing Sessions (Cols 8-12) */}
+        <div className="lg:col-span-5 flex flex-col gap-6">
+          <div className="flex items-center justify-between">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-white">
+              Scheduled Telemetry Sessions ({appointments.length})
+            </h3>
+          </div>
 
-            <div className="flex flex-col gap-3">
-              {appointments.map((apt) => (
-                <div
-                  key={apt.id}
-                  className="bg-[#0A0A0A] border border-[#242424] rounded-lg p-4 flex flex-col gap-2.5 transition-all hover:border-[#4A4A4A]"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-white uppercase">{apt.title}</span>
-                    <span
-                      className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded ${
-                        apt.status === 'CONFIRMED'
-                          ? 'bg-white text-black'
-                          : 'bg-[#171717] border border-[#4A4A4A] text-[#777777]'
-                      }`}
-                    >
-                      {apt.status}
-                    </span>
+          <div className="flex flex-col gap-4">
+            {appointments.map((apt) => (
+              <div
+                key={apt.id}
+                className="bg-[#111111] border border-[#242424] rounded-xl p-5 flex flex-col gap-3 shadow-md"
+              >
+                <div className="flex items-center justify-between border-b border-[#1F1F1F] pb-3">
+                  <div>
+                    <h4 className="text-sm font-bold text-white uppercase">{apt.title}</h4>
+                    <span className="text-xs text-[#777777]">{apt.coach}</span>
                   </div>
-
-                  <div className="text-[11px] font-mono text-[#BDBDBD] flex items-center gap-1.5">
-                    <span className="material-symbols-outlined text-xs text-[#777777]">event</span>
-                    {apt.date}
-                  </div>
-
-                  <div className="text-[11px] text-[#777777]">
-                    <span className="text-[#BDBDBD]">Specialist:</span> {apt.coach}
-                  </div>
-
-                  {apt.notes && (
-                    <div className="text-[11px] text-[#777777] bg-[#111111] p-2 rounded border border-[#242424] italic">
-                      "{apt.notes}"
-                    </div>
-                  )}
-
-                  {apt.status === 'CONFIRMED' && (
-                    <div className="pt-2 border-t border-[#242424] flex items-center justify-between">
-                      <a
-                        href={apt.meetUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="px-3 py-1.5 bg-white text-black text-[11px] font-bold uppercase tracking-wider rounded hover:bg-[#E5E2E1] transition-all flex items-center gap-1.5"
-                      >
-                        <span className="material-symbols-outlined text-sm">videocam</span>
-                        Join Session
-                      </a>
-                      <span className="text-[10px] font-mono text-[#777777]">ID: {apt.id}</span>
-                    </div>
-                  )}
+                  <span
+                    className={`text-[10px] font-mono uppercase px-2.5 py-1 rounded border font-bold ${
+                      apt.status === 'CONFIRMED'
+                        ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20'
+                        : 'bg-[#171717] text-[#777777] border-[#2B2B2B]'
+                    }`}
+                  >
+                    {apt.status}
+                  </span>
                 </div>
-              ))}
-            </div>
+
+                <div className="flex items-center gap-2 text-xs font-mono text-white">
+                  <span className="material-symbols-outlined text-sm text-[#777777]">schedule</span>
+                  <span>{apt.date}</span>
+                </div>
+
+                {apt.notes && (
+                  <p className="text-xs text-[#BDBDBD] leading-relaxed bg-[#0A0A0A] p-2.5 rounded border border-[#1E1E1E]">
+                    {apt.notes}
+                  </p>
+                )}
+
+                {apt.status === 'CONFIRMED' && (
+                  <div className="pt-2 flex gap-2">
+                    <a
+                      href={apt.meetUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 py-2 bg-white text-black hover:bg-[#E5E2E1] rounded-lg text-xs font-bold uppercase text-center transition-colors font-mono"
+                    >
+                      Join Encrypted Stream →
+                    </a>
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </div>

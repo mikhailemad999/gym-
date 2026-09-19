@@ -8,7 +8,7 @@ import { UserRole } from '@/types';
 
 export default function LoginPage() {
   const router = useRouter();
-  const { setUser } = useAuthStore();
+  const { login } = useAuthStore();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
@@ -20,22 +20,14 @@ export default function LoginPage() {
     setError(null);
 
     try {
-      // Simulate authentication
-      localStorage.setItem('accessToken', 'mock-jwt-access-token-884');
-      localStorage.setItem('refreshToken', 'mock-jwt-refresh-token-884');
-      setUser({
-        id: '884-MKR',
-        email: email || 'mikhail@athletecare.pro',
-        firstName: 'Mikhail',
-        lastName: 'R.',
-        role: UserRole.CLIENT,
-        isActive: true,
-        isVerified: true,
-        profilePhoto: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
-      });
+      await login(email, password);
       router.push('/app/dashboard');
-    } catch {
-      setError('Invalid telemetry credentials. Please check your email and password.');
+    } catch (err: any) {
+      const msg =
+        err?.response?.data?.message ||
+        err?.message ||
+        'Invalid telemetry credentials. Please check your email and password.';
+      setError(typeof msg === 'string' ? msg : JSON.stringify(msg));
     } finally {
       setLoading(false);
     }
