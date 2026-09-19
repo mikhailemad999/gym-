@@ -32,7 +32,6 @@ export class Exercise {
   name: string;
 
   @Column({ unique: true, length: 255 })
-  @Index()
   slug: string;
 
   @Column({ type: 'text', nullable: true })

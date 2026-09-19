@@ -43,10 +43,10 @@ export class UserSubscription {
   })
   status: UserSubscriptionStatus;
 
-  @Column({ type: 'timestamp', name: 'current_period_start' })
+  @Column({ type: 'datetime', name: 'current_period_start' })
   currentPeriodStart: Date;
 
-  @Column({ type: 'timestamp', name: 'current_period_end' })
+  @Column({ type: 'datetime', name: 'current_period_end' })
   currentPeriodEnd: Date;
 
   @Column({ default: false, name: 'cancel_at_period_end' })

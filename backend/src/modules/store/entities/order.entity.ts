@@ -40,7 +40,6 @@ export class Order {
   user: User;
 
   @Column({ name: 'order_number', unique: true, length: 100 })
-  @Index()
   orderNumber: string;
 
   @Column({ name: 'total_amount', type: 'decimal', precision: 10, scale: 2 })

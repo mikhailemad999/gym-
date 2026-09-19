@@ -36,7 +36,7 @@ export class Thread {
   @OneToMany(() => Message, (message) => message.thread)
   messages: Message[];
 
-  @Column({ type: 'timestamp', nullable: true, name: 'last_message_at' })
+  @Column({ type: 'datetime', nullable: true, name: 'last_message_at' })
   lastMessageAt: Date;
 
   @CreateDateColumn({ name: 'created_at' })

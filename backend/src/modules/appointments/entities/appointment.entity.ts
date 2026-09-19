@@ -56,7 +56,7 @@ export class Appointment {
   })
   status: AppointmentStatus;
 
-  @Column({ type: 'timestamp', name: 'scheduled_at' })
+  @Column({ type: 'datetime', name: 'scheduled_at' })
   scheduledAt: Date;
 
   @Column({ type: 'int', default: 45 })

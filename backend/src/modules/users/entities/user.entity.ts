@@ -16,7 +16,6 @@ export class User {
   id: string;
 
   @Column({ unique: true, length: 255 })
-  @Index()
   email: string;
 
   @Column({ nullable: true, length: 20 })
