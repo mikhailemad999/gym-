@@ -73,7 +73,15 @@ The platform strictly adheres to a sports science laboratory aesthetic:
 - **CNS Recovery Index**: Readiness metrics derived from HRV, resting heart rate, and sleep duration.
 - **Body Composition & Velocity**: Weekly weigh-ins and phase targets.
 
-### 5. Appointments & Telemetry Video Booking (`/app/appointments`)
+### 5. Physiological Recovery & Autonomic Telemetry (`/app/recovery`)
+- **Autonomic Readiness Ring**: Real-time 0-100 neuromuscular readiness score computed from parasympathetic HRV RMSSD, sleep debt, and muscular soreness.
+- **Dynamic AI Physiological Prescription**: AI coach briefings providing intensity ceilings, load volume recommendations, and injury risk mitigation.
+- **Hydration & Electrolyte Command**: Fluid balance tracker with one-click quick add (+250ml, +500ml, +750ml) and timestamped beverage history.
+- **7-Day Longitudinal Autonomic Trends**: Dual-axis Recharts graphs displaying rolling HRV baselines, resting heart rate, and sleep efficiency.
+- **Musculoskeletal Soreness & DOMS Matrix**: Interactive clickable body map (Chest, Deltoids, Lats, Quads, Hamstrings, Glutes, Core) to isolate and treat fatigue.
+- **Restorative Modalities**: Evidence-based recovery protocols including Contrast Therapy, Infrared Sauna, and Sleep Hygiene checklists.
+
+### 6. Appointments & Telemetry Video Booking (`/app/appointments`)
 - **CSCS Specialist Booking**: Schedule 1-on-1 video reviews with lead coach Marcus Vance or nutritionist Sarah Jenkins.
 - **Protocol Presets**: Frame-by-frame Biomechanical Review, Macro & Fueling Telemetry Audit, CNS Fatigue Diagnostics, and Competition Peaking.
 - **Integrated Video Rooms**: Auto-generated encrypted telemetry session URLs.

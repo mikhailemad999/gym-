@@ -10,6 +10,7 @@ const operationsLinks = [
   { label: 'Workout', href: '/app/workout', icon: 'fitness_center' },
   { label: 'Nutrition', href: '/app/nutrition', icon: 'restaurant' },
   { label: 'Progress', href: '/app/progress', icon: 'monitoring' },
+  { label: 'Recovery & Bio', href: '/app/recovery', icon: 'vital_signs' },
   { label: 'AI Coach', href: '/app/ai-coach', icon: 'psychology' },
   { label: 'Appointments', href: '/app/appointments', icon: 'calendar_add_on' },
 ];

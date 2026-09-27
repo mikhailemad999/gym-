@@ -13,6 +13,7 @@ import { AiModule } from './modules/ai/ai.module';
 import { AppointmentsModule } from './modules/appointments/appointments.module';
 import { MessagingModule } from './modules/messaging/messaging.module';
 import { SubscriptionsModule } from './modules/subscriptions/subscriptions.module';
+import { RecoveryModule } from './modules/recovery/recovery.module';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -70,6 +71,7 @@ import { AppService } from './app.service';
     AppointmentsModule,
     MessagingModule,
     SubscriptionsModule,
+    RecoveryModule,
   ],
 })
 export class AppModule {}

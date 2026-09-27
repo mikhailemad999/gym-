@@ -35,13 +35,13 @@ export default function DashboardPage() {
 
           {/* Quick Action Operations */}
           <div className="flex flex-wrap items-center gap-2.5 pt-2 md:pt-0">
-            <button
+            <Link
+              href="/app/recovery"
               className="px-4 h-10 rounded-[10px] bg-surface-card border border-border-medium hover:border-text-primary text-text-primary text-[13px] font-semibold uppercase tracking-wider flex items-center gap-2 transition-all duration-150 active:scale-[0.98]"
-              type="button"
             >
-              <span className="material-symbols-outlined text-base text-text-muted">fact_check</span>
-              Log Daily Check-in
-            </button>
+              <span className="material-symbols-outlined text-base text-emerald-400">vital_signs</span>
+              Recovery &amp; Bio
+            </Link>
             <Link
               href="/app/nutrition"
               className="px-4 h-10 rounded-[10px] bg-surface-card border border-border-medium hover:border-text-primary text-text-primary text-[13px] font-semibold uppercase tracking-wider flex items-center gap-2 transition-all duration-150 active:scale-[0.98]"
