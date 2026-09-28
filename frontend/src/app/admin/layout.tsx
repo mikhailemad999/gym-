@@ -35,7 +35,7 @@ export default function AdminLayout({
 
       {/* Main Content Area */}
       <div className="lg:pl-64">
-        <main className="w-full pt-16 bg-[#000000] min-h-screen">
+        <main className="w-full pt-16 pb-20 lg:pb-0 bg-[#000000] min-h-screen">
           {/* Admin Dedicated Sub-Navigation Rail */}
           <div className="bg-[#0A0A0A] border-b border-[#242424] px-4 sm:px-6 lg:px-8 py-2.5 flex items-center justify-between overflow-x-auto gap-4">
             <div className="flex items-center gap-1 sm:gap-2">

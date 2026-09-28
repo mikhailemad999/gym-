@@ -16,7 +16,7 @@ export default function AppLayout({
 
       {/* Main Content Area */}
       <div className="lg:pl-64">
-        <main className="w-full pt-16 bg-surface-base min-h-screen">
+        <main className="w-full pt-16 pb-20 lg:pb-0 bg-surface-base min-h-screen">
           {children}
         </main>
       </div>

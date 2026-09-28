@@ -7,10 +7,10 @@ import {
   ResponsiveContainer,
   LineChart,
   Line,
+  CartesianGrid,
   XAxis,
   YAxis,
   Tooltip,
-  CartesianGrid,
   BarChart,
   Bar,
 } from 'recharts';
@@ -134,6 +134,12 @@ export default function RecoveryPage() {
     avgReadiness: 84,
     cnsStatus: 'SUPERCOMPENSATED',
   });
+
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Fetch data
   const fetchData = async () => {
@@ -735,37 +741,41 @@ export default function RecoveryPage() {
               </div>
 
               <div className="h-64 w-full mt-4">
-                <ResponsiveContainer width="100%" height="100%">
-                  <LineChart data={trends} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#242424" />
-                    <XAxis dataKey="date" stroke="#777777" tick={{ fontSize: 11 }} />
-                    <YAxis stroke="#777777" tick={{ fontSize: 11 }} domain={[40, 100]} />
-                    <Tooltip
-                      contentStyle={{
-                        backgroundColor: '#171717',
-                        borderColor: '#333333',
-                        borderRadius: '8px',
-                        fontSize: '12px',
-                      }}
-                    />
-                    <Line
-                      type="monotone"
-                      dataKey="readiness"
-                      name="Readiness Score"
-                      stroke="#34d399"
-                      strokeWidth={2.5}
-                      dot={{ r: 4, fill: '#34d399' }}
-                    />
-                    <Line
-                      type="monotone"
-                      dataKey="hrv"
-                      name="HRV RMSSD (ms)"
-                      stroke="#22d3ee"
-                      strokeWidth={2}
-                      dot={{ r: 3, fill: '#22d3ee' }}
-                    />
-                  </LineChart>
-                </ResponsiveContainer>
+                {mounted ? (
+                  <ResponsiveContainer width="100%" height="100%">
+                    <LineChart data={trends} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                      <CartesianGrid strokeDasharray="3 3" stroke="#242424" />
+                      <XAxis dataKey="date" stroke="#777777" tick={{ fontSize: 11 }} />
+                      <YAxis stroke="#777777" tick={{ fontSize: 11 }} domain={[40, 100]} />
+                      <Tooltip
+                        contentStyle={{
+                          backgroundColor: '#171717',
+                          borderColor: '#333333',
+                          borderRadius: '8px',
+                          fontSize: '12px',
+                        }}
+                      />
+                      <Line
+                        type="monotone"
+                        dataKey="readiness"
+                        name="Readiness Score"
+                        stroke="#34d399"
+                        strokeWidth={2.5}
+                        dot={{ r: 4, fill: '#34d399' }}
+                      />
+                      <Line
+                        type="monotone"
+                        dataKey="hrv"
+                        name="HRV RMSSD (ms)"
+                        stroke="#22d3ee"
+                        strokeWidth={2}
+                        dot={{ r: 3, fill: '#22d3ee' }}
+                      />
+                    </LineChart>
+                  </ResponsiveContainer>
+                ) : (
+                  <div className="h-full w-full bg-[#111111] animate-pulse rounded-lg" />
+                )}
               </div>
             </div>
 
@@ -784,22 +794,26 @@ export default function RecoveryPage() {
               </div>
 
               <div className="h-64 w-full mt-4">
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={trends} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#242424" />
-                    <XAxis dataKey="date" stroke="#777777" tick={{ fontSize: 11 }} />
-                    <YAxis stroke="#777777" tick={{ fontSize: 11 }} domain={[0, 10]} />
-                    <Tooltip
-                      contentStyle={{
-                        backgroundColor: '#171717',
-                        borderColor: '#333333',
-                        borderRadius: '8px',
-                        fontSize: '12px',
-                      }}
-                    />
-                    <Bar dataKey="sleep" name="Sleep (Hours)" fill="#818cf8" radius={[4, 4, 0, 0]} />
-                  </BarChart>
-                </ResponsiveContainer>
+                {mounted ? (
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart data={trends} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                      <CartesianGrid strokeDasharray="3 3" stroke="#242424" />
+                      <XAxis dataKey="date" stroke="#777777" tick={{ fontSize: 11 }} />
+                      <YAxis stroke="#777777" tick={{ fontSize: 11 }} domain={[0, 10]} />
+                      <Tooltip
+                        contentStyle={{
+                          backgroundColor: '#171717',
+                          borderColor: '#333333',
+                          borderRadius: '8px',
+                          fontSize: '12px',
+                        }}
+                      />
+                      <Bar dataKey="sleep" name="Sleep (Hours)" fill="#818cf8" radius={[4, 4, 0, 0]} />
+                    </BarChart>
+                  </ResponsiveContainer>
+                ) : (
+                  <div className="h-full w-full bg-[#111111] animate-pulse rounded-lg" />
+                )}
               </div>
             </div>
           </div>

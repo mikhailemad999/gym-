@@ -265,7 +265,7 @@ export default function WorkoutPage() {
   return (
     <div className="flex flex-col w-full bg-[#000000] text-white min-h-screen font-sans">
       {/* Active Workout HUD Bar */}
-      <div className="w-full bg-[#0A0A0A] border-b border-[#242424] px-4 sm:px-6 lg:px-8 py-4 sticky top-0 z-30 shadow-xl backdrop-blur-md">
+      <div className="w-full bg-[#0A0A0A] border-b border-[#242424] px-4 sm:px-6 lg:px-8 py-4 sticky top-16 z-30 shadow-xl backdrop-blur-md">
         <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4">
           {/* Session Name & Telemetry Chips */}
           <div className="flex flex-col gap-1.5">
